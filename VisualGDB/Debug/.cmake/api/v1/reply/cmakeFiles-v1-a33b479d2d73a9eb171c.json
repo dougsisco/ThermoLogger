@@ -1,0 +1,941 @@
+{
+	"inputs" : 
+	[
+		{
+			"path" : "CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/tools/cmake/project.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/tools/cmake/idf_functions.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/tools/cmake/utilities.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/tools/cmake/components.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/tools/cmake/kconfig.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/ExternalProject.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "VisualGDB/Debug/mconf-idf-prefix/tmp/mconf-idf-cfgcmd.txt.in"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/tools/cmake/targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/tools/cmake/component_utils.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/tools/cmake/git_submodules.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/FindGit.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/tools/cmake/third_party/GetGitRevisionDescription.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/tools/cmake/crosstool_version_check.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/tools/cmake/ldgen.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "VisualGDB/Debug/CMakeFiles/3.15.2/CMakeSystem.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/tools/cmake/toolchain-esp32.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/CMakeSystemSpecificInitialize.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "VisualGDB/Debug/CMakeFiles/3.15.2/CMakeCCompiler.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "VisualGDB/Debug/CMakeFiles/3.15.2/CMakeCXXCompiler.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "VisualGDB/Debug/CMakeFiles/3.15.2/CMakeASMCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/CMakeSystemSpecificInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/CMakeGenericSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/CMakeInitializeConfigs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/Platform/Generic.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/CMakeCInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/Compiler/GNU-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/Compiler/GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/Internal/CMakeCheckCompilerFlag.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/Platform/Generic.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/CMakeCXXInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/Compiler/GNU-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/Compiler/GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/Platform/Generic.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/CMakeASMInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/Compiler/GNU-ASM.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/Compiler/GNU.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "VisualGDB/Debug/component_depends.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "VisualGDB/Debug/config/sdkconfig.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/.git/HEAD"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/tools/cmake/third_party/GetGitRevisionDescription.cmake.in"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "VisualGDB/Debug/CMakeFiles/git-data/grabRef.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/.git/refs/heads/release/v3.3"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/partition_table/project_include.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/app_update/project_include.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp32/project_include.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/bootloader/project_include.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "VisualGDB/Debug/bootloader-prefix/tmp/bootloader-cfgcmd.txt.in"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esptool_py/project_include.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/tools/cmake/project_description.json.in"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/app_trace/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/app_update/Kconfig.projbuild"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/aws_iot/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/bootloader/Kconfig.projbuild"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/bt/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/driver/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/efuse/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp32/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp_adc_cal/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp_event/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp_http_client/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp_http_server/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp_https_ota/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/espcoredump/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esptool_py/Kconfig.projbuild"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/ethernet/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/fatfs/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/freemodbus/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/freertos/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/heap/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/libsodium/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/log/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/lwip/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/mbedtls/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/mdns/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/mqtt/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/nvs_flash/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/openssl/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/partition_table/Kconfig.projbuild"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/pthread/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/spi_flash/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/spiffs/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/tcpip_adapter/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/unity/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/vfs/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/wear_levelling/Kconfig"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/wifi_provisioning/Kconfig"
+		},
+		{
+			"path" : "sdkconfig"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "VisualGDB/Debug/config/sdkconfig.h"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "VisualGDB/Debug/config/sdkconfig.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/tools/kconfig_new/confgen.py"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/tools/kconfig_new/kconfiglib.py"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/asio/asio/.git"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/.git/modules/components/asio/asio/HEAD"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/aws_iot/aws-iot-device-sdk-embedded-C/.git"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/.git/modules/components/aws_iot/aws-iot-device-sdk-embedded-C/HEAD"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/bt/lib/.git"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/.git/modules/components/bt/lib/HEAD"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/coap/libcoap/.git"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/.git/modules/components/coap/libcoap/HEAD"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp32/lib/.git"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/.git/modules/components/esp32/lib/HEAD"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esptool_py/esptool/.git"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/.git/modules/components/esptool_py/esptool/HEAD"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/expat/expat/.git"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/.git/modules/components/expat/expat/HEAD"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/json/cJSON/.git"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/.git/modules/components/json/cJSON/HEAD"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/libsodium/libsodium/.git"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/.git/modules/components/libsodium/libsodium/HEAD"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/lwip/lwip/.git"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/.git/modules/components/lwip/lwip/HEAD"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/mbedtls/mbedtls/.git"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/.git/modules/components/mbedtls/mbedtls/HEAD"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/micro-ecc/micro-ecc/.git"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/.git/modules/components/micro-ecc/micro-ecc/HEAD"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/mqtt/esp-mqtt/.git"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/.git/modules/components/mqtt/esp-mqtt/HEAD"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/nghttp/nghttp2/.git"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/.git/modules/components/nghttp/nghttp2/HEAD"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/nimble/nimble/.git"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/.git/modules/components/nimble/nimble/HEAD"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/protobuf-c/protobuf-c/.git"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/.git/modules/components/protobuf-c/protobuf-c/HEAD"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/spiffs/spiffs/.git"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/.git/modules/components/spiffs/spiffs/HEAD"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/unity/unity/.git"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/.git/modules/components/unity/unity/HEAD"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/examples/build_system/cmake/import_lib/main/lib/tinyxml2/.git"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/.git/modules/examples/build_system/cmake/import_lib/main/lib/tinyxml2/HEAD"
+		},
+		{
+			"path" : "partitions.csv"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/CMakeLists.txt"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/CMakeASMInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/Compiler/GNU-ASM.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/Compiler/GNU.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/soc/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/soc/esp32/sources.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/log/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/heap/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/xtensa-debug-module/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/app_trace/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/freertos/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/vfs/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/newlib/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp_ringbuf/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/driver/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp_event/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/ethernet/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/mbedtls/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/mbedtls/mbedtls/CMakeLists.txt"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/FindPythonInterp.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/FindPerl.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/FindCygwin.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/dgs/AppData/Local/VisualGDB/CMake/share/cmake-3.15/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/mbedtls/mbedtls/library/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/mbedtls/mbedtls/include/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/micro-ecc/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/efuse/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/efuse/esp32/sources.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/bootloader_support/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/partition_table/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/app_update/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/spi_flash/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/nvs_flash/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/lwip/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/tcpip_adapter/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/pthread/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/smartconfig_ack/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/wpa_supplicant/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/espcoredump/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp32/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/cxx/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/asio/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/jsmn/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/aws_iot/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/bootloader/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/nimble/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/bt/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/coap/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/console/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/nghttp/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp-tls/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp_adc_cal/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/tcp_transport/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp_http_client/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp_http_server/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp_https_ota/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/openssl/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp_https_server/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esptool_py/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esptool_py/flash_project_args.in"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esptool_py/flash_app_args.in"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esptool_py/flash_bootloader_args.in"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esptool_py/flash_partition_table_args.in"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esptool_py/flasher_args.json.in"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/expat/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/wear_levelling/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/sdmmc/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/fatfs/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/freemodbus/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/idf_test/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/json/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/libsodium/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/mdns/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/mqtt/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/protobuf-c/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/protocomm/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/spiffs/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/ulp/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/unity/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/wifi_provisioning/CMakeLists.txt"
+		},
+		{
+			"path" : "main/CMakeLists.txt"
+		}
+	],
+	"kind" : "cmakeFiles",
+	"paths" : 
+	{
+		"build" : "C:/Projects/ThermoLogger/VisualGDB/Debug",
+		"source" : "C:/Projects/ThermoLogger"
+	},
+	"version" : 
+	{
+		"major" : 1,
+		"minor" : 0
+	}
+}

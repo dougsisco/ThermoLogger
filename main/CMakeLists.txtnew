@@ -1,0 +1,5 @@
+set(COMPONENT_SRCS ds18b20.cpp main.cpp http_client.cpp tc_common.h ThreadReadTemp.cpp max31856.c mcp23017.c)
+set(COMPONENT_ADD_INCLUDEDIRS "")
+set(COMPONENT_PRIV_INCLUDEDIRS ../VisualGDB/Debug/bootloader/config ../$(ToolchainDir)/esp-idf/v3.2.2/components/esp32/include ../$(ToolchainDir)/esp-idf/v3.2.2/components/lwip/include_compat/apps/sntp)
+
+register_component()

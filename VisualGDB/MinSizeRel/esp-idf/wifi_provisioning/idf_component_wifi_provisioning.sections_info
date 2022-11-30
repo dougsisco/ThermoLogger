@@ -1,0 +1,1138 @@
+In archive C:/Projects/ThermoLogger/VisualGDB/MinSizeRel/esp-idf/wifi_provisioning/libwifi_provisioning.a:
+
+wifi_config.c.obj:     file format elf32-xtensa-le
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .literal.lookup_cmd_handler 00000004  00000000  00000000  00000034  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  1 .literal.wifi_prov_config_command_dispatcher 00000024  00000000  00000000  00000038  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  2 .literal.cmd_apply_config_handler 00000024  00000000  00000000  0000005c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  3 .literal.cmd_set_config_handler 00000034  00000000  00000000  00000080  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  4 .literal.wifi_prov_config_command_cleanup 0000002c  00000000  00000000  000000b4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  5 .literal.cmd_get_status_handler 0000005c  00000000  00000000  000000e0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  6 .literal.wifi_prov_config_data_handler 00000054  00000000  00000000  0000013c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  7 .text         00000000  00000000  00000000  00000190  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  8 .data         00000000  00000000  00000000  00000190  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  9 .bss          00000000  00000000  00000000  00000190  2**0
+                  ALLOC
+ 10 .text.lookup_cmd_handler 00000020  00000000  00000000  00000190  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 11 .rodata.str1.4 00000200  00000000  00000000  000001b0  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 12 .text.wifi_prov_config_command_dispatcher 00000060  00000000  00000000  000003b0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 13 .text.cmd_apply_config_handler 00000076  00000000  00000000  00000410  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 14 .text.cmd_set_config_handler 000000db  00000000  00000000  00000488  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 15 .text.wifi_prov_config_command_cleanup 00000086  00000000  00000000  00000564  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 16 .text.cmd_get_status_handler 00000164  00000000  00000000  000005ec  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 17 .text.wifi_prov_config_data_handler 000000ea  00000000  00000000  00000750  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 18 .rodata.cmd_table 00000018  00000000  00000000  0000083c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+ 19 .debug_frame  000000b8  00000000  00000000  00000854  2**2
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 20 .debug_info   0000159d  00000000  00000000  0000090c  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 21 .debug_abbrev 00000324  00000000  00000000  00001ea9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 22 .debug_loc    00000379  00000000  00000000  000021cd  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 23 .debug_aranges 00000050  00000000  00000000  00002546  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 24 .debug_ranges 00000040  00000000  00000000  00002596  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 25 .debug_line   0000082f  00000000  00000000  000025d6  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 26 .debug_str    0000135b  00000000  00000000  00002e05  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 27 .comment      0000003c  00000000  00000000  00004160  2**0
+                  CONTENTS, READONLY
+ 28 .xtensa.info  00000038  00000000  00000000  0000419c  2**0
+                  CONTENTS, READONLY
+ 29 .xt.lit       00000038  00000000  00000000  000041d4  2**0
+                  CONTENTS, RELOC, READONLY
+ 30 .xt.prop      0000042c  00000000  00000000  0000420c  2**0
+                  CONTENTS, RELOC, READONLY
+
+wifi_scan.c.obj:     file format elf32-xtensa-le
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .literal.lookup_cmd_handler 00000004  00000000  00000000  00000034  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  1 .literal.wifi_prov_scan_cmd_dispatcher 00000024  00000000  00000000  00000038  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  2 .literal.cmd_scan_result_handler 00000070  00000000  00000000  0000005c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  3 .literal.cmd_scan_status_handler 00000024  00000000  00000000  000000cc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  4 .literal.cmd_scan_start_handler 00000024  00000000  00000000  000000f0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  5 .literal.wifi_prov_scan_cmd_cleanup 0000002c  00000000  00000000  00000114  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  6 .literal.wifi_prov_scan_handler 00000054  00000000  00000000  00000140  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  7 .text         00000000  00000000  00000000  00000194  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  8 .data         00000000  00000000  00000000  00000194  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  9 .bss          00000000  00000000  00000000  00000194  2**0
+                  ALLOC
+ 10 .text.lookup_cmd_handler 00000020  00000000  00000000  00000194  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 11 .rodata.str1.4 00000320  00000000  00000000  000001b4  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 12 .text.wifi_prov_scan_cmd_dispatcher 00000060  00000000  00000000  000004d4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 13 .text.cmd_scan_result_handler 000001bd  00000000  00000000  00000534  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 14 .text.cmd_scan_status_handler 00000089  00000000  00000000  000006f4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 15 .text.cmd_scan_start_handler 00000089  00000000  00000000  00000780  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 16 .text.wifi_prov_scan_cmd_cleanup 0000009e  00000000  00000000  0000080c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 17 .text.wifi_prov_scan_handler 000000ea  00000000  00000000  000008ac  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 18 .rodata.cmd_table 00000018  00000000  00000000  00000998  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+ 19 .debug_frame  000000b8  00000000  00000000  000009b0  2**2
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 20 .debug_info   00001453  00000000  00000000  00000a68  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 21 .debug_abbrev 000002dc  00000000  00000000  00001ebb  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 22 .debug_loc    000004a0  00000000  00000000  00002197  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 23 .debug_aranges 00000050  00000000  00000000  00002637  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 24 .debug_ranges 00000070  00000000  00000000  00002687  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 25 .debug_line   00000863  00000000  00000000  000026f7  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 26 .debug_str    00001014  00000000  00000000  00002f5a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 27 .comment      0000003c  00000000  00000000  00003f6e  2**0
+                  CONTENTS, READONLY
+ 28 .xtensa.info  00000038  00000000  00000000  00003faa  2**0
+                  CONTENTS, READONLY
+ 29 .xt.lit       00000038  00000000  00000000  00003fe2  2**0
+                  CONTENTS, RELOC, READONLY
+ 30 .xt.prop      000003f0  00000000  00000000  0000401a  2**0
+                  CONTENTS, RELOC, READONLY
+
+manager.c.obj:     file format elf32-xtensa-le
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .literal.execute_event_cb 00000004  00000000  00000000  00000034  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  1 .literal.update_wifi_scan_results 00000054  00000000  00000000  00000038  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  2 .literal.debug_print_wifi_credentials 00000008  00000000  00000000  0000008c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  3 .literal.prov_stop_task 00000038  00000000  00000000  00000094  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  4 .literal.wifi_prov_mgr_stop_service 00000020  00000000  00000000  000000cc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  5 .literal.wifi_prov_get_info_json 00000050  00000000  00000000  000000ec  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  6 .literal.wifi_prov_mgr_start_service 00000100  00000000  00000000  0000013c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  7 .literal.wifi_prov_mgr_set_app_info 00000040  00000000  00000000  0000023c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  8 .literal.wifi_prov_mgr_endpoint_create 00000024  00000000  00000000  0000027c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  9 .literal.wifi_prov_mgr_endpoint_register 00000028  00000000  00000000  000002a0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 10 .literal.wifi_prov_mgr_endpoint_unregister 0000001c  00000000  00000000  000002c8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 11 .literal.wifi_prov_mgr_disable_auto_stop 00000018  00000000  00000000  000002e4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 12 .literal.wifi_prov_mgr_event_handler 00000034  00000000  00000000  000002fc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 13 .literal.wifi_prov_mgr_wifi_scan_start 00000034  00000000  00000000  00000330  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 14 .literal.wifi_prov_mgr_wifi_scan_finished 00000020  00000000  00000000  00000364  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 15 .literal.wifi_prov_mgr_wifi_scan_result_count 00000020  00000000  00000000  00000384  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 16 .literal.wifi_prov_mgr_wifi_scan_result 00000020  00000000  00000000  000003a4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 17 .literal.wifi_prov_mgr_get_wifi_state 00000018  00000000  00000000  000003c4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 18 .literal.wifi_prov_mgr_get_wifi_disconnect_reason 00000018  00000000  00000000  000003dc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 19 .literal.wifi_prov_mgr_is_provisioned 00000024  00000000  00000000  000003f4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 20 .literal.wifi_prov_mgr_configure_sta 00000084  00000000  00000000  00000418  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 21 .literal.wifi_prov_mgr_init 000000a4  00000000  00000000  0000049c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 22 .literal.wifi_prov_mgr_wait 0000001c  00000000  00000000  00000540  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 23 .literal.wifi_prov_mgr_deinit 00000024  00000000  00000000  0000055c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 24 .literal.wifi_prov_mgr_start_provisioning 000000cc  00000000  00000000  00000580  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 25 .literal.wifi_prov_mgr_stop_provisioning 00000018  00000000  00000000  0000064c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 26 .literal.wifi_prov_mgr_done 0000001c  00000000  00000000  00000664  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 27 .literal.stop_prov_timer_cb 00000004  00000000  00000000  00000680  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 28 .text         00000000  00000000  00000000  00000684  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 29 .data         00000000  00000000  00000000  00000684  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+ 30 .bss          00000000  00000000  00000000  00000684  2**0
+                  ALLOC
+ 31 .text.execute_event_cb 0000002a  00000000  00000000  00000684  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 32 .rodata.str1.4 00000995  00000000  00000000  000006b0  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 33 .text.update_wifi_scan_results 0000022a  00000000  00000000  00001048  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 34 .text.debug_print_wifi_credentials 00000036  00000000  00000000  00001274  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 35 .text.prov_stop_task 000000c2  00000000  00000000  000012ac  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 36 .text.wifi_prov_mgr_stop_service 00000101  00000000  00000000  00001370  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 37 .text.wifi_prov_get_info_json 000000ae  00000000  00000000  00001474  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 38 .text.wifi_prov_mgr_start_service 000002fe  00000000  00000000  00001524  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 39 .text.wifi_prov_mgr_set_app_info 000000dd  00000000  00000000  00001824  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 40 .text.wifi_prov_mgr_endpoint_create 0000007f  00000000  00000000  00001904  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 41 .text.wifi_prov_mgr_endpoint_register 00000074  00000000  00000000  00001984  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 42 .text.wifi_prov_mgr_endpoint_unregister 0000003f  00000000  00000000  000019f8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 43 .text.wifi_prov_mgr_disable_auto_stop 0000004a  00000000  00000000  00001a38  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 44 .text.wifi_prov_mgr_event_handler 00000109  00000000  00000000  00001a84  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 45 .text.wifi_prov_mgr_wifi_scan_start 00000124  00000000  00000000  00001b90  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 46 .text.wifi_prov_mgr_wifi_scan_finished 00000059  00000000  00000000  00001cb4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 47 .text.wifi_prov_mgr_wifi_scan_result_count 00000063  00000000  00000000  00001d10  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 48 .text.wifi_prov_mgr_wifi_scan_result 00000064  00000000  00000000  00001d74  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 49 .text.wifi_prov_mgr_get_wifi_state 00000044  00000000  00000000  00001dd8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 50 .text.wifi_prov_mgr_get_wifi_disconnect_reason 0000004d  00000000  00000000  00001e1c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 51 .text.wifi_prov_mgr_is_provisioned 0000007c  00000000  00000000  00001e6c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 52 .text.wifi_prov_mgr_configure_sta 0000015a  00000000  00000000  00001ee8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 53 .text.wifi_prov_mgr_init 00000219  00000000  00000000  00002044  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 54 .text.wifi_prov_mgr_wait 0000003e  00000000  00000000  00002260  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 55 .text.wifi_prov_mgr_deinit 000000a6  00000000  00000000  000022a0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 56 .rodata       00000010  00000000  00000000  00002348  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+ 57 .text.wifi_prov_mgr_start_provisioning 0000028a  00000000  00000000  00002358  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 58 .text.wifi_prov_mgr_stop_provisioning 0000002e  00000000  00000000  000025e4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 59 .text.wifi_prov_mgr_done 00000052  00000000  00000000  00002614  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 60 .text.stop_prov_timer_cb 0000000b  00000000  00000000  00002668  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 61 .bss.prov_ctx 00000004  00000000  00000000  00002674  2**2
+                  ALLOC
+ 62 .bss.prov_ctx_lock 00000004  00000000  00000000  00002674  2**2
+                  ALLOC
+ 63 .debug_frame  000002b0  00000000  00000000  00002674  2**2
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 64 .debug_info   000038c1  00000000  00000000  00002924  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 65 .debug_abbrev 00000411  00000000  00000000  000061e5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 66 .debug_loc    00000f23  00000000  00000000  000065f6  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 67 .debug_aranges 000000f8  00000000  00000000  00007519  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 68 .debug_ranges 00000130  00000000  00000000  00007611  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 69 .debug_line   000018e6  00000000  00000000  00007741  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 70 .debug_str    000021f4  00000000  00000000  00009027  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 71 .comment      0000003c  00000000  00000000  0000b21b  2**0
+                  CONTENTS, READONLY
+ 72 .xtensa.info  00000038  00000000  00000000  0000b257  2**0
+                  CONTENTS, READONLY
+ 73 .xt.lit       000000e0  00000000  00000000  0000b28f  2**0
+                  CONTENTS, RELOC, READONLY
+ 74 .xt.prop      00001338  00000000  00000000  0000b36f  2**0
+                  CONTENTS, RELOC, READONLY
+
+handlers.c.obj:     file format elf32-xtensa-le
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .literal.free_config 00000004  00000000  00000000  00000034  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  1 .literal.apply_config_handler 00000028  00000000  00000000  00000038  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  2 .literal.new_config 0000000c  00000000  00000000  00000060  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  3 .literal.set_config_handler 00000024  00000000  00000000  0000006c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  4 .literal.get_status_handler 00000038  00000000  00000000  00000090  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  5 .literal.scan_result 0000000c  00000000  00000000  000000c8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  6 .literal.scan_status 00000008  00000000  00000000  000000d4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  7 .literal.scan_start 00000004  00000000  00000000  000000dc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  8 .literal.get_wifi_prov_handlers 0000000c  00000000  00000000  000000e0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  9 .literal.get_wifi_scan_handlers 0000000c  00000000  00000000  000000ec  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 10 .text         00000000  00000000  00000000  000000f8  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 11 .data         00000000  00000000  00000000  000000f8  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+ 12 .bss          00000000  00000000  00000000  000000f8  2**0
+                  ALLOC
+ 13 .text.get_config 00000007  00000000  00000000  000000f8  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 14 .text.free_config 00000012  00000000  00000000  00000100  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 15 .rodata.str1.4 000000f2  00000000  00000000  00000114  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 16 .text.apply_config_handler 0000005c  00000000  00000000  00000208  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 17 .text.new_config 00000026  00000000  00000000  00000264  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 18 .text.set_config_handler 0000005e  00000000  00000000  0000028c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 19 .text.get_status_handler 000000a8  00000000  00000000  000002ec  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 20 .text.scan_result 00000044  00000000  00000000  00000394  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 21 .text.scan_status 00000019  00000000  00000000  000003d8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 22 .text.scan_start 00000018  00000000  00000000  000003f4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 23 .text.get_wifi_prov_handlers 00000021  00000000  00000000  0000040c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 24 .text.get_wifi_scan_handlers 00000021  00000000  00000000  00000430  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 25 .debug_frame  00000118  00000000  00000000  00000454  2**2
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 26 .debug_info   0000102f  00000000  00000000  0000056c  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 27 .debug_abbrev 00000240  00000000  00000000  0000159b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 28 .debug_loc    00000273  00000000  00000000  000017db  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 29 .debug_aranges 00000070  00000000  00000000  00001a4e  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 30 .debug_ranges 00000060  00000000  00000000  00001abe  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 31 .debug_line   0000059d  00000000  00000000  00001b1e  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 32 .debug_str    00000bc4  00000000  00000000  000020bb  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 33 .comment      0000003c  00000000  00000000  00002c7f  2**0
+                  CONTENTS, READONLY
+ 34 .xtensa.info  00000038  00000000  00000000  00002cbb  2**0
+                  CONTENTS, READONLY
+ 35 .xt.lit       00000050  00000000  00000000  00002cf3  2**0
+                  CONTENTS, RELOC, READONLY
+ 36 .xt.prop      000002d0  00000000  00000000  00002d43  2**0
+                  CONTENTS, RELOC, READONLY
+
+scheme_softap.c.obj:     file format elf32-xtensa-le
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .literal.set_config_service 00000024  00000000  00000000  00000034  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  1 .literal.delete_config 00000014  00000000  00000000  00000058  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  2 .literal.new_config 00000018  00000000  00000000  0000006c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  3 .literal.prov_stop 00000020  00000000  00000000  00000084  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  4 .literal.start_wifi_ap 00000038  00000000  00000000  000000a4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  5 .literal.prov_start 00000090  00000000  00000000  000000dc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  6 .literal.wifi_prov_scheme_softap_set_httpd_handle 00000004  00000000  00000000  0000016c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  7 .text         00000000  00000000  00000000  00000170  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  8 .data         00000000  00000000  00000000  00000170  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  9 .bss          00000000  00000000  00000000  00000170  2**0
+                  ALLOC
+ 10 .text.set_config_endpoint 00000007  00000000  00000000  00000170  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 11 .rodata.str1.4 000003bf  00000000  00000000  00000178  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 12 .text.set_config_service 00000069  00000000  00000000  00000538  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 13 .text.delete_config 0000002a  00000000  00000000  000005a4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 14 .text.new_config 00000048  00000000  00000000  000005d0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 15 .text.prov_stop 0000003a  00000000  00000000  00000618  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 16 .text.start_wifi_ap 000000b2  00000000  00000000  00000654  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 17 .text.prov_start 00000156  00000000  00000000  00000708  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 18 .text.wifi_prov_scheme_softap_set_httpd_handle 0000000a  00000000  00000000  00000860  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 19 .rodata.wifi_prov_scheme_softap 0000001c  00000000  00000000  0000086c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+ 20 .bss.scheme_softap_prov_httpd_handle 00000004  00000000  00000000  00000888  2**2
+                  ALLOC
+ 21 .debug_frame  000000d0  00000000  00000000  00000888  2**2
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 22 .debug_info   00000db9  00000000  00000000  00000958  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 23 .debug_abbrev 0000021b  00000000  00000000  00001711  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 24 .debug_loc    0000026c  00000000  00000000  0000192c  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 25 .debug_aranges 00000058  00000000  00000000  00001b98  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 26 .debug_ranges 00000048  00000000  00000000  00001bf0  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 27 .debug_line   0000068d  00000000  00000000  00001c38  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 28 .debug_str    000007d6  00000000  00000000  000022c5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 29 .comment      0000003c  00000000  00000000  00002a9b  2**0
+                  CONTENTS, READONLY
+ 30 .xtensa.info  00000038  00000000  00000000  00002ad7  2**0
+                  CONTENTS, READONLY
+ 31 .xt.lit       00000038  00000000  00000000  00002b0f  2**0
+                  CONTENTS, RELOC, READONLY
+ 32 .xt.prop      000002f4  00000000  00000000  00002b47  2**0
+                  CONTENTS, RELOC, READONLY
+
+scheme_console.c.obj:     file format elf32-xtensa-le
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .literal.delete_config 00000014  00000000  00000000  00000034  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  1 .literal.new_config 0000001c  00000000  00000000  00000048  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  2 .literal.prov_start 0000002c  00000000  00000000  00000064  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  3 .text         00000000  00000000  00000000  00000090  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  4 .data         00000000  00000000  00000000  00000090  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  5 .bss          00000000  00000000  00000000  00000090  2**0
+                  ALLOC
+  6 .text.set_config_service 00000007  00000000  00000000  00000090  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  7 .text.set_config_endpoint 00000007  00000000  00000000  00000098  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  8 .rodata.str1.4 0000014d  00000000  00000000  000000a0  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  9 .text.delete_config 0000002a  00000000  00000000  000001f0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 10 .rodata       00000008  00000000  00000000  0000021c  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 11 .text.new_config 00000043  00000000  00000000  00000224  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 12 .text.prov_start 00000072  00000000  00000000  00000268  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 13 .rodata.wifi_prov_scheme_console 0000001c  00000000  00000000  000002dc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+ 14 .debug_frame  00000088  00000000  00000000  000002f8  2**2
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 15 .debug_info   0000057c  00000000  00000000  00000380  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 16 .debug_abbrev 000001a8  00000000  00000000  000008fc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 17 .debug_loc    000000cc  00000000  00000000  00000aa4  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 18 .debug_aranges 00000040  00000000  00000000  00000b70  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 19 .debug_ranges 00000030  00000000  00000000  00000bb0  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 20 .debug_line   00000470  00000000  00000000  00000be0  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 21 .debug_str    000003f4  00000000  00000000  00001050  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 22 .comment      0000003c  00000000  00000000  00001444  2**0
+                  CONTENTS, READONLY
+ 23 .xtensa.info  00000038  00000000  00000000  00001480  2**0
+                  CONTENTS, READONLY
+ 24 .xt.lit       00000018  00000000  00000000  000014b8  2**0
+                  CONTENTS, RELOC, READONLY
+ 25 .xt.prop      00000168  00000000  00000000  000014d0  2**0
+                  CONTENTS, RELOC, READONLY
+
+wifi_config.pb-c.c.obj:     file format elf32-xtensa-le
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .literal.cmd_get_status__init 00000004  00000000  00000000  00000034  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  1 .literal.resp_get_status__init 00000004  00000000  00000000  00000038  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  2 .literal.cmd_set_config__init 00000004  00000000  00000000  0000003c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  3 .literal.resp_set_config__init 00000004  00000000  00000000  00000040  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  4 .literal.cmd_apply_config__init 00000004  00000000  00000000  00000044  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  5 .literal.resp_apply_config__init 00000004  00000000  00000000  00000048  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  6 .literal.wi_fi_config_payload__init 00000004  00000000  00000000  0000004c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  7 .literal.cmd_get_status__get_packed_size 00000004  00000000  00000000  00000050  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  8 .literal.cmd_get_status__pack 00000004  00000000  00000000  00000054  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  9 .literal.cmd_get_status__pack_to_buffer 00000004  00000000  00000000  00000058  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 10 .literal.cmd_get_status__unpack 00000008  00000000  00000000  0000005c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 11 .literal.cmd_get_status__free_unpacked 00000004  00000000  00000000  00000064  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 12 .literal.resp_get_status__get_packed_size 00000004  00000000  00000000  00000068  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 13 .literal.resp_get_status__pack 00000004  00000000  00000000  0000006c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 14 .literal.resp_get_status__pack_to_buffer 00000004  00000000  00000000  00000070  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 15 .literal.resp_get_status__unpack 00000008  00000000  00000000  00000074  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 16 .literal.resp_get_status__free_unpacked 00000004  00000000  00000000  0000007c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 17 .literal.cmd_set_config__get_packed_size 00000004  00000000  00000000  00000080  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 18 .literal.cmd_set_config__pack 00000004  00000000  00000000  00000084  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 19 .literal.cmd_set_config__pack_to_buffer 00000004  00000000  00000000  00000088  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 20 .literal.cmd_set_config__unpack 00000008  00000000  00000000  0000008c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 21 .literal.cmd_set_config__free_unpacked 00000004  00000000  00000000  00000094  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 22 .literal.resp_set_config__get_packed_size 00000004  00000000  00000000  00000098  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 23 .literal.resp_set_config__pack 00000004  00000000  00000000  0000009c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 24 .literal.resp_set_config__pack_to_buffer 00000004  00000000  00000000  000000a0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 25 .literal.resp_set_config__unpack 00000008  00000000  00000000  000000a4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 26 .literal.resp_set_config__free_unpacked 00000004  00000000  00000000  000000ac  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 27 .literal.cmd_apply_config__get_packed_size 00000004  00000000  00000000  000000b0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 28 .literal.cmd_apply_config__pack 00000004  00000000  00000000  000000b4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 29 .literal.cmd_apply_config__pack_to_buffer 00000004  00000000  00000000  000000b8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 30 .literal.cmd_apply_config__unpack 00000008  00000000  00000000  000000bc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 31 .literal.cmd_apply_config__free_unpacked 00000004  00000000  00000000  000000c4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 32 .literal.resp_apply_config__get_packed_size 00000004  00000000  00000000  000000c8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 33 .literal.resp_apply_config__pack 00000004  00000000  00000000  000000cc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 34 .literal.resp_apply_config__pack_to_buffer 00000004  00000000  00000000  000000d0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 35 .literal.resp_apply_config__unpack 00000008  00000000  00000000  000000d4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 36 .literal.resp_apply_config__free_unpacked 00000004  00000000  00000000  000000dc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 37 .literal.wi_fi_config_payload__get_packed_size 00000004  00000000  00000000  000000e0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 38 .literal.wi_fi_config_payload__pack 00000004  00000000  00000000  000000e4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 39 .literal.wi_fi_config_payload__pack_to_buffer 00000004  00000000  00000000  000000e8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 40 .literal.wi_fi_config_payload__unpack 00000008  00000000  00000000  000000ec  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 41 .literal.wi_fi_config_payload__free_unpacked 00000004  00000000  00000000  000000f4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 42 .text         00000000  00000000  00000000  000000f8  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 43 .data         00000000  00000000  00000000  000000f8  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+ 44 .bss          00000000  00000000  00000000  000000f8  2**0
+                  ALLOC
+ 45 .text.cmd_get_status__init 00000010  00000000  00000000  000000f8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 46 .text.resp_get_status__init 00000018  00000000  00000000  00000108  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 47 .text.cmd_set_config__init 0000001e  00000000  00000000  00000120  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 48 .text.resp_set_config__init 00000012  00000000  00000000  00000140  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 49 .text.cmd_apply_config__init 00000010  00000000  00000000  00000154  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 50 .text.resp_apply_config__init 00000012  00000000  00000000  00000164  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 51 .text.wi_fi_config_payload__init 00000016  00000000  00000000  00000178  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 52 .text.cmd_get_status__get_packed_size 00000010  00000000  00000000  00000190  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 53 .text.cmd_get_status__pack 00000011  00000000  00000000  000001a0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 54 .text.cmd_get_status__pack_to_buffer 00000011  00000000  00000000  000001b4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 55 .text.cmd_get_status__unpack 00000016  00000000  00000000  000001c8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 56 .text.cmd_get_status__free_unpacked 00000012  00000000  00000000  000001e0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 57 .text.resp_get_status__get_packed_size 00000010  00000000  00000000  000001f4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 58 .text.resp_get_status__pack 00000011  00000000  00000000  00000204  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 59 .text.resp_get_status__pack_to_buffer 00000011  00000000  00000000  00000218  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 60 .text.resp_get_status__unpack 00000016  00000000  00000000  0000022c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 61 .text.resp_get_status__free_unpacked 00000012  00000000  00000000  00000244  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 62 .text.cmd_set_config__get_packed_size 00000010  00000000  00000000  00000258  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 63 .text.cmd_set_config__pack 00000011  00000000  00000000  00000268  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 64 .text.cmd_set_config__pack_to_buffer 00000011  00000000  00000000  0000027c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 65 .text.cmd_set_config__unpack 00000016  00000000  00000000  00000290  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 66 .text.cmd_set_config__free_unpacked 00000012  00000000  00000000  000002a8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 67 .text.resp_set_config__get_packed_size 00000010  00000000  00000000  000002bc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 68 .text.resp_set_config__pack 00000011  00000000  00000000  000002cc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 69 .text.resp_set_config__pack_to_buffer 00000011  00000000  00000000  000002e0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 70 .text.resp_set_config__unpack 00000016  00000000  00000000  000002f4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 71 .text.resp_set_config__free_unpacked 00000012  00000000  00000000  0000030c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 72 .text.cmd_apply_config__get_packed_size 00000010  00000000  00000000  00000320  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 73 .text.cmd_apply_config__pack 00000011  00000000  00000000  00000330  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 74 .text.cmd_apply_config__pack_to_buffer 00000011  00000000  00000000  00000344  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 75 .text.cmd_apply_config__unpack 00000016  00000000  00000000  00000358  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 76 .text.cmd_apply_config__free_unpacked 00000012  00000000  00000000  00000370  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 77 .text.resp_apply_config__get_packed_size 00000010  00000000  00000000  00000384  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 78 .text.resp_apply_config__pack 00000011  00000000  00000000  00000394  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 79 .text.resp_apply_config__pack_to_buffer 00000011  00000000  00000000  000003a8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 80 .text.resp_apply_config__unpack 00000016  00000000  00000000  000003bc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 81 .text.resp_apply_config__free_unpacked 00000012  00000000  00000000  000003d4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 82 .text.wi_fi_config_payload__get_packed_size 00000010  00000000  00000000  000003e8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 83 .text.wi_fi_config_payload__pack 00000011  00000000  00000000  000003f8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 84 .text.wi_fi_config_payload__pack_to_buffer 00000011  00000000  00000000  0000040c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 85 .text.wi_fi_config_payload__unpack 00000016  00000000  00000000  00000420  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 86 .text.wi_fi_config_payload__free_unpacked 00000012  00000000  00000000  00000438  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 87 .rodata.str1.4 000002bd  00000000  00000000  0000044c  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 88 .rodata.wi_fi_config_msg_type__descriptor 0000003c  00000000  00000000  0000070c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+ 89 .rodata.wi_fi_config_msg_type__enum_values_by_name 00000030  00000000  00000000  00000748  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+ 90 .rodata.wi_fi_config_msg_type__value_ranges 00000010  00000000  00000000  00000778  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 91 .rodata.wi_fi_config_msg_type__enum_values_by_number 00000048  00000000  00000000  00000788  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+ 92 .rodata.wi_fi_config_payload__descriptor 0000003c  00000000  00000000  000007d0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+ 93 .rodata.wi_fi_config_payload__number_ranges 00000018  00000000  00000000  0000080c  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 94 .rodata.wi_fi_config_payload__field_indices_by_name 0000001c  00000000  00000000  00000824  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 95 .rodata.wi_fi_config_payload__field_descriptors 00000150  00000000  00000000  00000840  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+ 96 .rodata.resp_apply_config__descriptor 0000003c  00000000  00000000  00000990  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+ 97 .rodata.resp_apply_config__number_ranges 00000010  00000000  00000000  000009cc  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 98 .rodata.resp_apply_config__field_indices_by_name 00000004  00000000  00000000  000009dc  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 99 .rodata.resp_apply_config__field_descriptors 00000030  00000000  00000000  000009e0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+100 .rodata.cmd_apply_config__descriptor 0000003c  00000000  00000000  00000a10  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+101 .rodata.resp_set_config__descriptor 0000003c  00000000  00000000  00000a4c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+102 .rodata.resp_set_config__number_ranges 00000010  00000000  00000000  00000a88  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+103 .rodata.resp_set_config__field_indices_by_name 00000004  00000000  00000000  00000a98  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+104 .rodata.resp_set_config__field_descriptors 00000030  00000000  00000000  00000a9c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+105 .rodata.cmd_set_config__descriptor 0000003c  00000000  00000000  00000acc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+106 .rodata.cmd_set_config__number_ranges 00000010  00000000  00000000  00000b08  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+107 .rodata.cmd_set_config__field_indices_by_name 00000010  00000000  00000000  00000b18  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+108 .rodata.cmd_set_config__field_descriptors 000000c0  00000000  00000000  00000b28  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+109 .rodata.resp_get_status__descriptor 0000003c  00000000  00000000  00000be8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+110 .rodata.resp_get_status__number_ranges 00000018  00000000  00000000  00000c24  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+111 .rodata.resp_get_status__field_indices_by_name 00000010  00000000  00000000  00000c3c  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+112 .rodata.resp_get_status__field_descriptors 000000c0  00000000  00000000  00000c4c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+113 .rodata.cmd_get_status__descriptor 0000003c  00000000  00000000  00000d0c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+114 .debug_frame  00000400  00000000  00000000  00000d48  2**2
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+115 .debug_info   00001aac  00000000  00000000  00001148  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+116 .debug_abbrev 00000282  00000000  00000000  00002bf4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+117 .debug_loc    0000039c  00000000  00000000  00002e76  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+118 .debug_aranges 00000168  00000000  00000000  00003212  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+119 .debug_ranges 00000158  00000000  00000000  0000337a  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+120 .debug_line   000006c9  00000000  00000000  000034d2  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+121 .debug_str    000018ea  00000000  00000000  00003b9b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+122 .comment      0000003c  00000000  00000000  00005485  2**0
+                  CONTENTS, READONLY
+123 .xtensa.info  00000038  00000000  00000000  000054c1  2**0
+                  CONTENTS, READONLY
+124 .xt.lit       00000150  00000000  00000000  000054f9  2**0
+                  CONTENTS, RELOC, READONLY
+125 .xt.prop      0000096c  00000000  00000000  00005649  2**0
+                  CONTENTS, RELOC, READONLY
+
+wifi_scan.pb-c.c.obj:     file format elf32-xtensa-le
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .literal.cmd_scan_start__init 00000004  00000000  00000000  00000034  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  1 .literal.resp_scan_start__init 00000004  00000000  00000000  00000038  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  2 .literal.cmd_scan_status__init 00000004  00000000  00000000  0000003c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  3 .literal.resp_scan_status__init 00000004  00000000  00000000  00000040  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  4 .literal.cmd_scan_result__init 00000004  00000000  00000000  00000044  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  5 .literal.wi_fi_scan_result__init 00000004  00000000  00000000  00000048  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  6 .literal.resp_scan_result__init 00000004  00000000  00000000  0000004c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  7 .literal.wi_fi_scan_payload__init 00000004  00000000  00000000  00000050  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  8 .literal.cmd_scan_start__get_packed_size 00000004  00000000  00000000  00000054  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  9 .literal.cmd_scan_start__pack 00000004  00000000  00000000  00000058  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 10 .literal.cmd_scan_start__pack_to_buffer 00000004  00000000  00000000  0000005c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 11 .literal.cmd_scan_start__unpack 00000008  00000000  00000000  00000060  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 12 .literal.cmd_scan_start__free_unpacked 00000004  00000000  00000000  00000068  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 13 .literal.resp_scan_start__get_packed_size 00000004  00000000  00000000  0000006c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 14 .literal.resp_scan_start__pack 00000004  00000000  00000000  00000070  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 15 .literal.resp_scan_start__pack_to_buffer 00000004  00000000  00000000  00000074  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 16 .literal.resp_scan_start__unpack 00000008  00000000  00000000  00000078  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 17 .literal.resp_scan_start__free_unpacked 00000004  00000000  00000000  00000080  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 18 .literal.cmd_scan_status__get_packed_size 00000004  00000000  00000000  00000084  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 19 .literal.cmd_scan_status__pack 00000004  00000000  00000000  00000088  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 20 .literal.cmd_scan_status__pack_to_buffer 00000004  00000000  00000000  0000008c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 21 .literal.cmd_scan_status__unpack 00000008  00000000  00000000  00000090  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 22 .literal.cmd_scan_status__free_unpacked 00000004  00000000  00000000  00000098  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 23 .literal.resp_scan_status__get_packed_size 00000004  00000000  00000000  0000009c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 24 .literal.resp_scan_status__pack 00000004  00000000  00000000  000000a0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 25 .literal.resp_scan_status__pack_to_buffer 00000004  00000000  00000000  000000a4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 26 .literal.resp_scan_status__unpack 00000008  00000000  00000000  000000a8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 27 .literal.resp_scan_status__free_unpacked 00000004  00000000  00000000  000000b0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 28 .literal.cmd_scan_result__get_packed_size 00000004  00000000  00000000  000000b4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 29 .literal.cmd_scan_result__pack 00000004  00000000  00000000  000000b8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 30 .literal.cmd_scan_result__pack_to_buffer 00000004  00000000  00000000  000000bc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 31 .literal.cmd_scan_result__unpack 00000008  00000000  00000000  000000c0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 32 .literal.cmd_scan_result__free_unpacked 00000004  00000000  00000000  000000c8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 33 .literal.wi_fi_scan_result__get_packed_size 00000004  00000000  00000000  000000cc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 34 .literal.wi_fi_scan_result__pack 00000004  00000000  00000000  000000d0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 35 .literal.wi_fi_scan_result__pack_to_buffer 00000004  00000000  00000000  000000d4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 36 .literal.wi_fi_scan_result__unpack 00000008  00000000  00000000  000000d8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 37 .literal.wi_fi_scan_result__free_unpacked 00000004  00000000  00000000  000000e0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 38 .literal.resp_scan_result__get_packed_size 00000004  00000000  00000000  000000e4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 39 .literal.resp_scan_result__pack 00000004  00000000  00000000  000000e8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 40 .literal.resp_scan_result__pack_to_buffer 00000004  00000000  00000000  000000ec  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 41 .literal.resp_scan_result__unpack 00000008  00000000  00000000  000000f0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 42 .literal.resp_scan_result__free_unpacked 00000004  00000000  00000000  000000f8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 43 .literal.wi_fi_scan_payload__get_packed_size 00000004  00000000  00000000  000000fc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 44 .literal.wi_fi_scan_payload__pack 00000004  00000000  00000000  00000100  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 45 .literal.wi_fi_scan_payload__pack_to_buffer 00000004  00000000  00000000  00000104  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 46 .literal.wi_fi_scan_payload__unpack 00000008  00000000  00000000  00000108  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 47 .literal.wi_fi_scan_payload__free_unpacked 00000004  00000000  00000000  00000110  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 48 .text         00000000  00000000  00000000  00000114  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 49 .data         00000000  00000000  00000000  00000114  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+ 50 .bss          00000000  00000000  00000000  00000114  2**0
+                  ALLOC
+ 51 .text.cmd_scan_start__init 00000018  00000000  00000000  00000114  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 52 .text.resp_scan_start__init 00000010  00000000  00000000  0000012c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 53 .text.cmd_scan_status__init 00000010  00000000  00000000  0000013c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 54 .text.resp_scan_status__init 00000014  00000000  00000000  0000014c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 55 .text.cmd_scan_result__init 00000014  00000000  00000000  00000160  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 56 .text.wi_fi_scan_result__init 0000001e  00000000  00000000  00000174  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 57 .text.resp_scan_result__init 00000014  00000000  00000000  00000194  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 58 .text.wi_fi_scan_payload__init 00000018  00000000  00000000  000001a8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 59 .text.cmd_scan_start__get_packed_size 00000010  00000000  00000000  000001c0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 60 .text.cmd_scan_start__pack 00000011  00000000  00000000  000001d0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 61 .text.cmd_scan_start__pack_to_buffer 00000011  00000000  00000000  000001e4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 62 .text.cmd_scan_start__unpack 00000016  00000000  00000000  000001f8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 63 .text.cmd_scan_start__free_unpacked 00000012  00000000  00000000  00000210  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 64 .text.resp_scan_start__get_packed_size 00000010  00000000  00000000  00000224  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 65 .text.resp_scan_start__pack 00000011  00000000  00000000  00000234  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 66 .text.resp_scan_start__pack_to_buffer 00000011  00000000  00000000  00000248  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 67 .text.resp_scan_start__unpack 00000016  00000000  00000000  0000025c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 68 .text.resp_scan_start__free_unpacked 00000012  00000000  00000000  00000274  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 69 .text.cmd_scan_status__get_packed_size 00000010  00000000  00000000  00000288  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 70 .text.cmd_scan_status__pack 00000011  00000000  00000000  00000298  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 71 .text.cmd_scan_status__pack_to_buffer 00000011  00000000  00000000  000002ac  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 72 .text.cmd_scan_status__unpack 00000016  00000000  00000000  000002c0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 73 .text.cmd_scan_status__free_unpacked 00000012  00000000  00000000  000002d8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 74 .text.resp_scan_status__get_packed_size 00000010  00000000  00000000  000002ec  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 75 .text.resp_scan_status__pack 00000011  00000000  00000000  000002fc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 76 .text.resp_scan_status__pack_to_buffer 00000011  00000000  00000000  00000310  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 77 .text.resp_scan_status__unpack 00000016  00000000  00000000  00000324  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 78 .text.resp_scan_status__free_unpacked 00000012  00000000  00000000  0000033c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 79 .text.cmd_scan_result__get_packed_size 00000010  00000000  00000000  00000350  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 80 .text.cmd_scan_result__pack 00000011  00000000  00000000  00000360  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 81 .text.cmd_scan_result__pack_to_buffer 00000011  00000000  00000000  00000374  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 82 .text.cmd_scan_result__unpack 00000016  00000000  00000000  00000388  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 83 .text.cmd_scan_result__free_unpacked 00000012  00000000  00000000  000003a0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 84 .text.wi_fi_scan_result__get_packed_size 00000010  00000000  00000000  000003b4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 85 .text.wi_fi_scan_result__pack 00000011  00000000  00000000  000003c4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 86 .text.wi_fi_scan_result__pack_to_buffer 00000011  00000000  00000000  000003d8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 87 .text.wi_fi_scan_result__unpack 00000016  00000000  00000000  000003ec  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 88 .text.wi_fi_scan_result__free_unpacked 00000012  00000000  00000000  00000404  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 89 .text.resp_scan_result__get_packed_size 00000010  00000000  00000000  00000418  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 90 .text.resp_scan_result__pack 00000011  00000000  00000000  00000428  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 91 .text.resp_scan_result__pack_to_buffer 00000011  00000000  00000000  0000043c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 92 .text.resp_scan_result__unpack 00000016  00000000  00000000  00000450  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 93 .text.resp_scan_result__free_unpacked 00000012  00000000  00000000  00000468  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 94 .text.wi_fi_scan_payload__get_packed_size 00000010  00000000  00000000  0000047c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 95 .text.wi_fi_scan_payload__pack 00000011  00000000  00000000  0000048c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 96 .text.wi_fi_scan_payload__pack_to_buffer 00000011  00000000  00000000  000004a0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 97 .text.wi_fi_scan_payload__unpack 00000016  00000000  00000000  000004b4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 98 .text.wi_fi_scan_payload__free_unpacked 00000012  00000000  00000000  000004cc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 99 .rodata.str1.4 00000302  00000000  00000000  000004e0  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+100 .rodata.wi_fi_scan_msg_type__descriptor 0000003c  00000000  00000000  000007e4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+101 .rodata.wi_fi_scan_msg_type__enum_values_by_name 00000030  00000000  00000000  00000820  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+102 .rodata.wi_fi_scan_msg_type__value_ranges 00000010  00000000  00000000  00000850  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+103 .rodata.wi_fi_scan_msg_type__enum_values_by_number 00000048  00000000  00000000  00000860  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+104 .rodata.wi_fi_scan_payload__descriptor 0000003c  00000000  00000000  000008a8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+105 .rodata.wi_fi_scan_payload__number_ranges 00000018  00000000  00000000  000008e4  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+106 .rodata.wi_fi_scan_payload__field_indices_by_name 00000020  00000000  00000000  000008fc  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+107 .rodata.wi_fi_scan_payload__field_descriptors 00000180  00000000  00000000  0000091c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+108 .rodata.resp_scan_result__descriptor 0000003c  00000000  00000000  00000a9c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+109 .rodata.resp_scan_result__number_ranges 00000010  00000000  00000000  00000ad8  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+110 .rodata.resp_scan_result__field_indices_by_name 00000004  00000000  00000000  00000ae8  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+111 .rodata.resp_scan_result__field_descriptors 00000030  00000000  00000000  00000aec  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+112 .rodata.wi_fi_scan_result__descriptor 0000003c  00000000  00000000  00000b1c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+113 .rodata.wi_fi_scan_result__number_ranges 00000010  00000000  00000000  00000b58  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+114 .rodata.wi_fi_scan_result__field_indices_by_name 00000014  00000000  00000000  00000b68  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+115 .rodata.wi_fi_scan_result__field_descriptors 000000f0  00000000  00000000  00000b7c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+116 .rodata.cmd_scan_result__descriptor 0000003c  00000000  00000000  00000c6c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+117 .rodata.cmd_scan_result__number_ranges 00000010  00000000  00000000  00000ca8  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+118 .rodata.cmd_scan_result__field_indices_by_name 00000008  00000000  00000000  00000cb8  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+119 .rodata.cmd_scan_result__field_descriptors 00000060  00000000  00000000  00000cc0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+120 .rodata.resp_scan_status__descriptor 0000003c  00000000  00000000  00000d20  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+121 .rodata.resp_scan_status__number_ranges 00000010  00000000  00000000  00000d5c  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+122 .rodata.resp_scan_status__field_indices_by_name 00000008  00000000  00000000  00000d6c  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+123 .rodata.resp_scan_status__field_descriptors 00000060  00000000  00000000  00000d74  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+124 .rodata.cmd_scan_status__descriptor 0000003c  00000000  00000000  00000dd4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+125 .rodata.resp_scan_start__descriptor 0000003c  00000000  00000000  00000e10  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+126 .rodata.cmd_scan_start__descriptor 0000003c  00000000  00000000  00000e4c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+127 .rodata.cmd_scan_start__number_ranges 00000010  00000000  00000000  00000e88  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+128 .rodata.cmd_scan_start__field_indices_by_name 00000010  00000000  00000000  00000e98  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+129 .rodata.cmd_scan_start__field_descriptors 000000c0  00000000  00000000  00000ea8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+130 .debug_frame  00000490  00000000  00000000  00000f68  2**2
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+131 .debug_info   00001c55  00000000  00000000  000013f8  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+132 .debug_abbrev 00000282  00000000  00000000  0000304d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+133 .debug_loc    00000420  00000000  00000000  000032cf  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+134 .debug_aranges 00000198  00000000  00000000  000036ef  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+135 .debug_ranges 00000188  00000000  00000000  00003887  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+136 .debug_line   0000076d  00000000  00000000  00003a0f  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+137 .debug_str    000017b8  00000000  00000000  0000417c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+138 .comment      0000003c  00000000  00000000  00005934  2**0
+                  CONTENTS, READONLY
+139 .xtensa.info  00000038  00000000  00000000  00005970  2**0
+                  CONTENTS, READONLY
+140 .xt.lit       00000180  00000000  00000000  000059a8  2**0
+                  CONTENTS, RELOC, READONLY
+141 .xt.prop      00000ac8  00000000  00000000  00005b28  2**0
+                  CONTENTS, RELOC, READONLY
+
+wifi_constants.pb-c.c.obj:     file format elf32-xtensa-le
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .literal.wifi_connected_state__init 00000008  00000000  00000000  00000034  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  1 .literal.wifi_connected_state__get_packed_size 00000004  00000000  00000000  0000003c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  2 .literal.wifi_connected_state__pack 00000004  00000000  00000000  00000040  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  3 .literal.wifi_connected_state__pack_to_buffer 00000004  00000000  00000000  00000044  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  4 .literal.wifi_connected_state__unpack 00000008  00000000  00000000  00000048  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  5 .literal.wifi_connected_state__free_unpacked 00000004  00000000  00000000  00000050  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  6 .text         00000000  00000000  00000000  00000054  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  7 .data         00000000  00000000  00000000  00000054  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  8 .bss          00000000  00000000  00000000  00000054  2**0
+                  ALLOC
+  9 .text.wifi_connected_state__init 00000012  00000000  00000000  00000054  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 10 .text.wifi_connected_state__get_packed_size 00000010  00000000  00000000  00000068  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 11 .text.wifi_connected_state__pack 00000011  00000000  00000000  00000078  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 12 .text.wifi_connected_state__pack_to_buffer 00000011  00000000  00000000  0000008c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 13 .text.wifi_connected_state__unpack 00000016  00000000  00000000  000000a0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 14 .text.wifi_connected_state__free_unpacked 00000012  00000000  00000000  000000b8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 15 .rodata.init_value$2396 00000028  00000000  00000000  000000cc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+ 16 .rodata.str1.4 0000029c  00000000  00000000  000000f4  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 17 .rodata.wifi_auth_mode__descriptor 0000003c  00000000  00000000  00000390  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+ 18 .rodata.wifi_auth_mode__enum_values_by_name 00000030  00000000  00000000  000003cc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+ 19 .rodata.wifi_auth_mode__value_ranges 00000010  00000000  00000000  000003fc  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 20 .rodata.wifi_auth_mode__enum_values_by_number 00000048  00000000  00000000  0000040c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+ 21 .rodata.wifi_connect_failed_reason__descriptor 0000003c  00000000  00000000  00000454  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+ 22 .rodata.wifi_connect_failed_reason__enum_values_by_name 00000010  00000000  00000000  00000490  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+ 23 .rodata.wifi_connect_failed_reason__value_ranges 00000010  00000000  00000000  000004a0  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 24 .rodata.wifi_connect_failed_reason__enum_values_by_number 00000018  00000000  00000000  000004b0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+ 25 .rodata.wifi_station_state__descriptor 0000003c  00000000  00000000  000004c8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+ 26 .rodata.wifi_station_state__enum_values_by_name 00000020  00000000  00000000  00000504  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+ 27 .rodata.wifi_station_state__value_ranges 00000010  00000000  00000000  00000524  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 28 .rodata.wifi_station_state__enum_values_by_number 00000030  00000000  00000000  00000534  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+ 29 .rodata.wifi_connected_state__descriptor 0000003c  00000000  00000000  00000564  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+ 30 .rodata.wifi_connected_state__number_ranges 00000010  00000000  00000000  000005a0  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 31 .rodata.wifi_connected_state__field_indices_by_name 00000014  00000000  00000000  000005b0  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 32 .rodata.wifi_connected_state__field_descriptors 000000f0  00000000  00000000  000005c4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+ 33 .debug_frame  000000a0  00000000  00000000  000006b4  2**2
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 34 .debug_info   00000ba4  00000000  00000000  00000754  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 35 .debug_abbrev 000001d6  00000000  00000000  000012f8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 36 .debug_loc    00000084  00000000  00000000  000014ce  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 37 .debug_aranges 00000048  00000000  00000000  00001552  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 38 .debug_ranges 00000038  00000000  00000000  0000159a  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 39 .debug_line   0000027a  00000000  00000000  000015d2  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 40 .debug_str    00000c09  00000000  00000000  0000184c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 41 .comment      0000003c  00000000  00000000  00002455  2**0
+                  CONTENTS, READONLY
+ 42 .xtensa.info  00000038  00000000  00000000  00002491  2**0
+                  CONTENTS, READONLY
+ 43 .xt.lit       00000030  00000000  00000000  000024c9  2**0
+                  CONTENTS, RELOC, READONLY
+ 44 .xt.prop      000001f8  00000000  00000000  000024f9  2**0
+                  CONTENTS, RELOC, READONLY

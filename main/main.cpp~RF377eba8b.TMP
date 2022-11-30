@@ -1,0 +1,1199 @@
+/*
+ * Temperature Logger by Doug Sisco
+ * 
+ * The Temperature Logger records the temperature read from a Maxim 31856 Thermocouple IC and
+ *		creates a line graph viewable as a web page.
+ * 
+ * NEXT
+ *    Hardware:
+ *       Add USB socket for 5V power.
+ *       Add .1 caps across all thermocouple inputs.
+ *       All current mods.
+ *       Change 3.3V reg to smnt.
+ *    Periodic time update (that doesn't crash).
+ *    Current values: include time of this value since, if it is old it will NOT show in the chart.
+ *		Also may be a warning that the value is not current.
+ *    Startup: currently the web server is blocked until the date is set.
+ *        The date should be set to 1970 (or an old date) and then updated when the time svr is contacted.
+ *    All samples in flash, reboot continues where left off.
+ *		Auto reboot if no connection.
+ *		Need unit testing.
+ *    Need reboot button.
+ *    Check that all config settings are within range: I found that one of the axis settings was out of range but was
+ *       saved as part of the config.
+ *    Select temperatures to include in title (tab).
+ *    Setting to enable/disable slope.
+ *    Setting to select channel for title.
+ *    Zoom should be function of browser, not the same on all browsers.
+ *    Arrows in tab and in status pane to show temperature trends.
+ *    In main.htm, update values that are invalid with blanks.
+ *		WHAT IS CHARTSAMPLES??
+ *    Add channel names.
+ *		Setting to enable channel on chart.
+ *		If ajax does not respond within x seconds, show warning
+ *    If last N readings were in error then report.
+ *		Signal strength, battery level.
+ *		Bluetooth interface (for IP address, etc.)
+ *		Label each channel
+ *		Assign each channel to a slot.
+ *		Assign each channel color.
+ *		Warning email when channel temp reaches a high or low value.
+ * 
+ *		Bluetooth interface (for IP address, etc.)
+ * 
+ *		Press a push button to enable web server for 10 minutes (make this an option).
+ * 
+ * 
+ *		Show statistics: number of data points, current value.
+ * 
+ *		Use localized graph js.
+ * 
+ *		Show battery level.
+ * 
+ *		Download values as csv file.
+ * 
+ * 
+ *		Add multiple temperature inputs.
+ * 
+ *		
+ * 
+ * MAINTENANCE
+ *    6-19-19 Fixed memory leak in server/common.js/UpdateData(). 
+ *
+ *    6-18-19 Found that if a channel is not updating we will still see a current value but
+ *       the chart line will not appear. This is because the chart only shows current values.
+ *
+ *    6-17-19 Moved project to local drive (j:) because phpStorm doees not play well with mapped drives: some of the files simply 
+ *       would not sync from phpStorm to the NAS folder.
+ *
+ *    6-16-19 Completed printing current values on charts using additional SQL query.
+ *    Fixed problem where chart updates would halt. This was due to occasional errors in the JSON returned 
+ *       to the JS script: these errors were not handled so the script would simply quit. I added an error
+ *       handler which simply calls another
+ *
+ *	  6-15-19 ESP-IDF V3.3 
+ *	     Disabled html server.
+ *	     Bug: crash after about 5 hours:
+ *       -assertion "Operating mode must not be set while SNTP client is running" failed: file "C:/SysGCC/esp32/esp-idf/v3.3/components/lwip/lwip/src/apps/sntp/sntp.c", line 600, function: sntp_setoperatingmode abort() was called at PC 0x400d4243 on core 0
+ *       This was due to the thread Thread_UpdateTime() which was created on 5-3-19.
+ *       Removed all ESP-IDF informational statements by phy_printf(const char* format, ...) with an empty function in components/esp32/lib_printf.c to solve your problem.
+ *
+ *    5-3-19 Time is updated once per hour. 
+ *
+ *    2-15-19 Added Sensor Type menu to settings panel.
+ *			Added slope calculation.
+ * 
+ *    2-13-19 Added TC selector, removed thermocouple_task() and moved it to Thread_ReadTemperature().
+ * 
+ *    2.10 Fixed thermocouple sign problem in max31856.c/thermocouple_read_temperature().
+ * 
+ *    2.9 Added Config::CheckValues().
+ *        Increased accuracy of 18b20 sensors in ds18b20_get_temp().
+ * 
+ *    2.8 Initial update does not print invalid values on left.
+ *			 Bigger buttons.
+ *        After MAX_SUCCESSIVE_INVALID_READS successive temp reads the value is recorded as INVALID_TEMP (instead of being ignored).
+ *        Chart now reflects the same colors as the left panel. 
+ *           In ProcessChartRequest() added 'null' entries for invalid values instead of simply skipping the values in the chart data.
+ *    2.7 Changed X-axis date format.
+ * 
+ * 
+ * DESIGN NOTES
+  *		The MAX31856 driver code is from https://github.com/djkilgore/max31856.
+ * 
+ * Unusable: 6,7,8,9,10,11 (connected internally)
+ * Inputs-only: 34,35,36,39
+ *   12 is also unusable as an input on startup. * 
+ * 
+ * TOOLCHAIN NOTES
+ * 
+ * To send messages to error.txt, use make flash monitor &> error.txt
+ * 
+ * BUGS
+ *    3-28-19 Wlan suddenly would not connect until I removed the 'lasertag' wless entry, then it connected imediately.
+ */
+
+// **************** STRUCTS ****************
+
+// CONSTANTS
+/*
+			 [new Date(2015,01,01, 15,0,30), 65],
+			 [new Date(2015,01,01, 15,0,31), 66],
+			 [new Date(2015,01,01, 15,0,35), 67],
+			 [new Date(2015,01,02, 15,0,37), 66],
+			 [new Date(2015,01,02, 15,0,39), 68],
+			 [new Date(2015,01,02, 15,0,40), 69]
+ */
+#include "tc_common.h"
+
+// ****************************************************************************************************
+// GLOBALS
+CDataPoint ValuesArr[MAX_SAMPLES];
+time_t BootTime;
+volatile int ValuesArrInd = 0;
+std::queue<CDataPoint> SvrDataPointQ;
+max31856_cfg_t max31856;
+CConfig Config;
+//float temp1;
+//int Count = 0;
+char strftime_buf[64];
+//uint8_t *UARTbuf;
+//uart_config_t myUartConfig;
+//uint8_t *data;
+//CClientStats ClientStats;
+//CMsg *MsgPtr;
+#define BUF_SIZE_SKT 300
+#define BUF_SIZE (300)
+//int sock;
+int sockSMTP;
+int WifiAuthIndex = 0;
+int WifiStatus = 0;
+unsigned long long MACAddr;
+
+int ThermocoupleCurrent = 0;
+
+//E_BLINKTYPE BlinkType = BLINK_OFF;
+// This is the low level for dimming the LEDs. When set the leds will dim instead of blink.
+//int LEDDimLowLevel = 0;
+
+char HostName[20];
+long TimeSinceBootMS = 0;
+//long TimeSinceLastMsgMS = 0;
+// Indicates that the leds should show power on.
+//bool PowerBlinkIndictor = 1;
+
+// This holds the wifi authentication.
+typedef struct {
+	const char *SSID;
+	const char *Pwd;
+} s_WifiAuth;
+
+// Configure possible wireless networks here.
+#define WIFIAUTH_LAST_INDEX 1 /* Be sure to change this constant or we will crash. */
+s_WifiAuth WifiAuth[] = {
+	{"lasertag", ""},
+	{"full_quiver", "samrizzo"},
+};
+
+static void obtain_time(void) {
+	xEventGroupWaitBits(wifi_event_group, CONNECTED_BIT, false, true, portMAX_DELAY);
+	initialize_sntp();
+
+	// wait for time to be set
+	time_t now = 0;
+	struct tm timeinfo = {0,0,0,0,0,1970,0,0,0};
+//	int retry = 0;
+	//const int retry_count = 10;
+	// while (++retry < retry_count) { // Removed 3-14-19 dgs
+		ESP_LOGI(TAG, "Setting system time..\n");
+		vTaskDelay(2000 / portTICK_PERIOD_MS);
+		time(&now);
+		localtime_r(&now, &timeinfo);
+	// }
+
+	//ESP_ERROR_CHECK( esp_wifi_stop() );
+}
+
+static void initialize_sntp(void) {
+	ESP_LOGI(TAG, "Initializing SNTP");
+	sntp_setoperatingmode(SNTP_OPMODE_POLL); // 6-15-19 dgs $$$ THIS LINE CAUSES THE ASSERTION!
+	sntp_setservername(0, (char*)"pool.ntp.org");
+	sntp_init();
+}
+
+static esp_err_t event_handler(void *ctx, system_event_t *event) {
+	switch (event->event_id) {
+		case SYSTEM_EVENT_AP_START:
+			printf("Event:ESP32 is started in AP mode\n");
+			break;
+		
+		case SYSTEM_EVENT_AP_STACONNECTED:
+			xEventGroupSetBits(wifi_event_group, CLIENT_CONNECTED_BIT);
+			break;
+
+		case SYSTEM_EVENT_AP_STADISCONNECTED:
+			xEventGroupSetBits(wifi_event_group, CLIENT_DISCONNECTED_BIT);
+			break;		
+
+	case SYSTEM_EVENT_STA_START:
+			//printf("event_handler() SYSTEM_EVENT_STA_START\n");
+			esp_wifi_connect();
+			break;
+		case SYSTEM_EVENT_STA_GOT_IP:
+			//printf("event_handler() SYSTEM_EVENT_STA_GOT_IP\n");
+			xEventGroupSetBits(wifi_event_group, CONNECTED_BIT);
+			printf("My IP is " IPSTR "\n", IP2STR(&event->event_info.got_ip.ip_info.ip));
+			//        printf("netmask: " IPSTR "\n", IP2STR(&event->event_info.got_ip.ip_info.netmask));
+			//        printf("gw: " IPSTR "\n", IP2STR(&event->event_info.got_ip.ip_info.gw));
+			//        printf("\n");
+			fflush(stdout);
+			WifiStatus = 1; // $$$ was 1
+			break;
+		case SYSTEM_EVENT_STA_DISCONNECTED:
+			//printf("event_handler() SYSTEM_EVENT_STA_DISCONNECTED\n");
+
+			// If wifi was never connected..
+			if (WifiStatus == 0) {
+				//printf("event_handler() Trying the next wless network..\n");
+				// Try the next wireless network.
+				WifiAuthIndex++;
+				if (WifiAuthIndex > WIFIAUTH_LAST_INDEX)
+					WifiAuthIndex = 0;
+
+				//printf("event_handler() WifiAuthIndex=%u\n",WifiAuthIndex);
+				//printf("event_handler() Wifi trying to connect to %s with pwd %s\n", WifiAuth[WifiAuthIndex].SSID, WifiAuth[WifiAuthIndex].Pwd);
+				wifi_config_t sta_config;
+				sta_config.sta.bssid_set = false;
+				strcpy((char*) sta_config.sta.ssid, WifiAuth[WifiAuthIndex].SSID);
+				strcpy((char*) sta_config.sta.password, WifiAuth[WifiAuthIndex].Pwd);
+
+				//printf("event_handler() esp_wifi_set_config\n");
+				esp_wifi_set_config(WIFI_IF_STA, &sta_config);
+			}
+
+			WifiStatus = 0;
+			/* This is a workaround as ESP32 WiFi libs don't currently
+				auto-reassociate. */
+			//printf("event_handler() esp_wifi_connect\n");
+			esp_wifi_connect();
+		
+			xEventGroupClearBits(wifi_event_group, CONNECTED_BIT);
+			break;
+		default:
+			break;
+	}
+	return ESP_OK;
+}
+
+static int initialise_wifi(void) {
+	tcpip_adapter_init();
+	wifi_event_group = xEventGroupCreate();
+	ESP_ERROR_CHECK(esp_event_loop_init(event_handler, NULL));
+	wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
+	ESP_ERROR_CHECK(esp_wifi_init(&cfg));
+	ESP_ERROR_CHECK(esp_wifi_set_storage(WIFI_STORAGE_RAM));
+	ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
+
+	wifi_config_t sta_config;
+	sta_config.sta.bssid_set = false;
+	strcpy((char*) sta_config.sta.ssid, WifiAuth[0].SSID);
+	strcpy((char*) sta_config.sta.password, WifiAuth[0].Pwd);
+
+	ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &sta_config));
+
+	esp_wifi_stop();
+	vTaskDelay(pdMS_TO_TICKS(1000));
+
+	int r = esp_wifi_start();
+	return r;
+}
+
+void TimeSetup(int ForceUpdate) {
+	time_t now;
+	struct tm timeinfo;
+
+	time(&now);
+	localtime_r(&now, &timeinfo);
+	// Is time set?
+	if(ForceUpdate || timeinfo.tm_year < (2016 - 1900)) {
+//		ESP_LOGI(TAG, "Time is not set yet. Connecting to WiFi and getting time over NTP.");
+		obtain_time();
+		// update 'now' variable with current time
+		time(&now);
+	}
+
+	// Set timezone to Eastern Standard Time and print local time
+	setenv("TZ", "EST5EDT,M3.2.0/2,M11.1.0", 1);
+	tzset();
+	localtime_r(&now, &timeinfo);
+	strftime(strftime_buf, sizeof (strftime_buf), "%c", &timeinfo);
+	printf ("The current time is: %s\n", strftime_buf);
+}
+
+//static void UART_Init() {
+//	printf("UART_Init()\n");
+//
+//	/* Configure parameters of an UART driver,
+//	 * communication pins and install the driver */
+//	uart_config_t uart_config = {
+//		.baud_rate = 1200,
+//		.data_bits = UART_DATA_8_BITS,
+//		.parity = UART_PARITY_DISABLE,
+//		.stop_bits = UART_STOP_BITS_1,
+//		.flow_ctrl = UART_HW_FLOWCTRL_DISABLE
+//	};
+//	uart_param_config(UART_NUM_1, &uart_config);
+//	// RXD pin is GPIO 5
+//	uart_set_pin(UART_NUM_1, UART_PIN_NO_CHANGE, GPIO_NUM_5, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
+//	uart_driver_install(UART_NUM_1, BUF_SIZE * 2, 0, 0, NULL, 0);
+//
+//	// Configure a temporary buffer for the incoming data
+//	data = (uint8_t *) malloc(BUF_SIZE);
+//}
+
+/**
+ * Get the WIFI channel and signal strength.
+ * 
+ * @param info
+ */
+void getWifiInfo(SWifiInfo *info) {
+	info->rssi = 0;
+	info->channel = 0;
+	wifi_ap_record_t wifidata;
+	esp_wifi_sta_get_ap_info(&wifidata);
+	if (wifidata.primary != 0) {
+		info->rssi = wifidata.rssi;
+		info->channel = wifidata.primary;
+	}
+}
+
+/**
+ ** Update the time once per hour.
+ ***/
+void Thread_UpdateTime(void *pvParameter) {
+	while (1) {
+		// Delay for 1 hr
+		vTaskDelay(pdMS_TO_TICKS(60*60  * 1000));	
+		TimeSetup(1);
+	}
+}
+
+void Thread_ReadTemperature(void *pvParameter) {
+	CDataPoint DataPoint;
+	
+	// Initialize the thermocouple queue.
+	QueueHandle_t thermocouple_queue = xQueueCreate(5, sizeof (struct max31856_cfg_t));
+
+	if (thermocouple_queue == NULL) {
+		ESP_LOGI("queue", "Not Ready: thermocouple_queue");
+		return;
+	}
+	
+	// Init the MAX31856.
+#if !DEBUGGER
+	max31856_cfg_t max31856 = max31856_init();
+	thermocouple_set_type(&max31856, MAX31856_TCTYPE_K);
+#endif
+	
+	while (1) {
+//		printf("---Thread_ReadTemperature()\n");
+
+		DataPoint.Init();
+		// Get the current time.
+		time(&DataPoint.time);
+#ifdef PRINT_CURRENT_DATAPOINT_TIME
+		printf("%lu\n", (long int)DataPoint.time);
+#endif
+		
+		// Now get the sensor values.
+		for (int ChInd=0; ChInd<NUM_CHANNELS; ChInd++) {
+			// If this is a thermocouple..
+			if (Config.ChannelsAr[ChInd].SensorType == CChannel::SensorTypeE::TMAX31856) {				
+#if !DEBUGGER				
+				// Select the TC by setting the MUX address.
+				ThermocoupleSelect(Config.ChannelsAr[ChInd].MUXNum);
+
+				// Delay while the MUX settles.
+				// NOTE: if this delay is too short then the measurements will be off by a few degrees.
+				vTaskDelay(150 / portTICK_PERIOD_MS);
+				// Read the TC temperature.
+				thermocouple_read_temperature(&max31856);
+
+				if (max31856.thermocouple_f > 2000) // $$$$$$$
+					Config.ChannelsAr[ChInd].ValueCurrent = INVALID_TEMP;
+				else {
+					DataPoint.val[ChInd] = Config.ChannelsAr[ChInd].ValueCurrent = max31856.thermocouple_f;
+#ifdef PRINT_TEMPERATURE_VALUES						
+					printf("Ch %2u DS %2.2f MUX:%2u\n", ChInd+1, max31856.thermocouple_f, Config.ChannelsAr[ChInd].MUXNum);
+#endif
+				}
+#endif				
+			} else {
+				// If this is a DS1820B and it is configured..
+				if(Config.ChannelsAr[ChInd].T18b20.DS_GPIO > -1) {
+					float Temp = Config.ChannelsAr[ChInd].T18b20.ds18b20_get_temp();
+					
+					if (ChInd == 10 || ChInd == 11)
+						// Restore the LED color.
+						LEDSetColor(-1);
+
+					// If the temp is valid then record it.
+					if(Temp > -50) {
+#ifdef PRINT_TEMPERATURE_VALUES						
+						printf("Ch %2u DS %2.2f\n", ChInd+1, Temp);
+#endif
+						Config.ChannelsAr[ChInd].InvalidReads = 0;
+						DataPoint.val[ChInd] = Config.ChannelsAr[ChInd].ValueCurrent = Temp;
+					} else {
+						//printf("Thread_ReadTemperature: DS TEMP ERROR %u\n", ChInd);
+						
+						// If the value is invalid then inc the InvalidReads count.
+						//					printf("*****Config.ChannelsAr[%u] INVALID: count=%u *****\n",ChInd,Config.ChannelsAr[ChInd].InvalidReads);		
+											if(Config.ChannelsAr[ChInd].InvalidReads < MAX_SUCCESSIVE_INVALID_READS)
+												Config.ChannelsAr[ChInd].InvalidReads++;
+						else
+							// There have been too many successive invalid values so set the current value to INVALID_TEMP.
+							Config.ChannelsAr[ChInd].ValueCurrent = INVALID_TEMP;
+					}
+				}
+			}
+		}
+	
+		// Save the current data point to the array.
+		SaveDataPointToArray(DataPoint);		
+		
+		// Push the data point to the server queue.
+		if(SvrDataPointQ.size() < DATAPOINT_SVR_QUEUE_MAX_SIZE)
+			SvrDataPointQ.push(DataPoint);
+		else
+			printf("SvrDataPointQ is FULL!\n");
+
+		// Pause
+#ifdef PRINT_END_READTEMPERATURE		
+		printf("!");FLUSH;
+#endif
+
+//		printf("---END Thread_ReadTemperature()\n");
+
+		// This value is used to compensate for the thermocouple read delay (above).
+		int DelayTSec = Config.SamplePeriodTSec; 
+		if (DelayTSec > 0)
+			vTaskDelay(pdMS_TO_TICKS(DelayTSec * 100));	
+	}
+}
+
+/**
+ ** Save the current data point to the data array.
+ ***/
+void SaveDataPointToArray(CDataPoint DataPoint) {
+	if (Config.EnableLogging) {
+		//printf("Thread_SaveValuesToArray: %u:%u:%u t0=%.1f, t1=%.1f, t2=%.1f, t3=%.1f, t4=%.1f ValuesArrInd=%u\n",timeinfo.tm_hour,timeinfo.tm_min,timeinfo.tm_sec,
+		//		  Config.ChannelsAr[0].ValueCurrent,Config.ChannelsAr[1].ValueCurrent,Config.ChannelsAr[2].ValueCurrent,Config.ChannelsAr[3].ValueCurrent,Config.ChannelsAr[4].ValueCurrent, ValuesArrInd);
+
+			// Add the new value to the array.
+		for (int i=0; i<NUM_CHANNELS; i++)
+			ValuesArr[ValuesArrInd].val[i] = DataPoint.val[i];
+
+		ValuesArr[ValuesArrInd].time = DataPoint.time;
+
+		ValuesArrInd++;
+		if (ValuesArrInd >= MAX_SAMPLES)
+			ValuesArrInd = 0;	
+	} else 
+		printf("Logging disabled\n");
+}
+
+void NVS_Init() {
+	// Initialize NVS
+	esp_err_t err = nvs_flash_init();
+	if (err == ESP_ERR_NVS_NO_FREE_PAGES) {
+		// NVS partition was truncated and needs to be erased
+		// Retry nvs_flash_init
+		ESP_ERROR_CHECK(nvs_flash_erase());
+		err = nvs_flash_init();
+	}
+	ESP_ERROR_CHECK(err);
+}
+
+//esp_err_t Read(char *tag, char *value, size_t len) {
+//	nvs_handle my_handle;
+//
+//	// Get this target's name.
+//	esp_err_t err = nvs_open("preferences", NVS_READWRITE, &my_handle);
+//
+//	if (err != ESP_OK)
+//		printf("Error (%d) opening NVS handle!\n", err);
+//	else {
+//		err = nvs_get_str(my_handle, tag, value, &len);
+//		//printf("nvs_get_str: err=%X, '%s'\n",err,value);
+//	}
+//
+//	nvs_close(my_handle);
+//	return err;
+//}
+
+//esp_err_t Write(char *tag, char *value) {
+//	nvs_handle my_handle;
+//
+//	// Get this target's name.
+//	esp_err_t err = nvs_open("preferences", NVS_READWRITE, &my_handle);
+//
+//	if (err == ESP_OK) {
+//		err = nvs_set_str(my_handle, tag, value);
+//	} else
+//		printf("Error (%d) opening NVS handle!\n", err);
+//
+//	nvs_close(my_handle);
+//	return err;
+//}
+
+void Thread_CPUTimeUpdate() {
+	while (1) {
+		vTaskDelay(10 / portTICK_PERIOD_MS);
+
+		TimeSinceBootMS++;
+	}
+}
+
+void Replace(string& source, string const& find, string const& replace) {
+	for (string::size_type i = 0; (i = source.find(find, i)) != string::npos;) {
+		source.replace(i, find.length(), replace);
+		i += replace.length();
+	}
+}
+
+/**
+ * Open a socket to the server.
+ */
+void SocketInitSMTP() {
+
+	// Close first in case we are reconnecting because of a disconnect.
+	close(sockSMTP);
+
+	// Open a socket.
+	sockSMTP = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+	struct sockaddr_in serverAddress;
+	serverAddress.sin_family = AF_INET;
+	inet_pton(AF_INET, SVR_ADDR_SMTP, &serverAddress.sin_addr.s_addr);
+	serverAddress.sin_port = htons(26);
+	connect(sockSMTP, (struct sockaddr *) &serverAddress, sizeof (struct sockaddr_in));
+	listen(sockSMTP, 1);
+}
+
+
+/**
+ * Parse an html header string.
+ * 
+ * @param buf
+ * @param buflen
+ * @param StrArr
+ * @param StrMaxlen
+ */
+///
+void Parse(char *buf, int buflen, string StrArr[], int StrMaxlen) {
+	char *ptr = buf;
+	int i = 0;
+	char s[5];
+
+	for (i=0; i<StrMaxlen; i++)
+		StrArr[i].clear();
+
+	i=0;
+	// While EOL not detected and we are not at the end of the buffer..
+	while (*ptr != '\n' && (int)(ptr-buf) < buflen) {
+		//printf("While\n");
+		
+		//printf("i=%u *ptr=%c\n",i,*ptr);
+		// If this is a separator..
+		if ( strchr("?=& ",*ptr) ) {
+			// Save the separator as the current array token.
+			if (StrArr[i].size() > 0 && i < StrMaxlen-1)
+				i++;
+			s[0] = *ptr; s[1] = 0;
+			StrArr[i] = s;
+			if (i < StrMaxlen-1)
+				i++;
+		}
+		else {
+			// Add this char to the current array value.
+			StrArr[i] += (char)(*ptr);
+		}
+		ptr++;
+	}
+}
+
+
+
+
+
+//void Thread_BatteryTest() {
+//	adc1_config_width(ADC_WIDTH_9Bit);
+//	adc1_config_channel_atten(ADC1_CHANNEL_0, ADC_ATTEN_DB_11);
+//
+//	// https://esp-idf.readthedocs.io/en/v2.0/api/peripherals/dac.html
+//	// For curve fitting see https://mycurvefit.com/
+//	while (1) {
+//		float val = adc1_get_raw(ADC1_CHANNEL_0); // dgs: was adc1_get_voltage
+////		ClientStats.BatteryVoltage = (0.00951 * val + 1.263)*10;
+//		//printf("Battery=%d\n",ClientStats.BatteryVoltage);
+//		//dac_out_voltage(DAC_CHANNEL_1, val/2);
+//		delay(1000);
+//	}
+//}
+
+int SMTPWaitReply(int WaitTimeMS, string &s) {
+	char SMTPBuf[200];
+	int len;
+
+	// While there is no reply..
+	do {
+		// Get a CMsg from the server.
+		len = read(sockSMTP, SMTPBuf, BUF_SIZE_SKT);
+
+		// If disconnect occurred..
+		if (len < 0) {
+			printf("SMTP Disconnect\n");
+			return len;
+		}
+
+		DelayMS(1);
+	} while (len == 0 && WaitTimeMS-- > 0);
+
+	if (len > 0) {
+		SMTPBuf[len] = 0;
+		s = SMTPBuf;
+		printf("SMTP SVR: %s\n", SMTPBuf);
+	}
+	return len;
+}
+
+bool SendMailOK(string ToStr, string FromStr, string SubjectStr, string MsgStr, string UserNameStr, string PwdStr) {
+	int len, iResult;
+	string s;
+
+	SocketInitSMTP();
+
+	s = "EHLO\r\n";
+	printf("Send: %s", s.c_str());
+	iResult = send(sockSMTP, (char *) s.c_str(), s.length(), 0);
+	len = SMTPWaitReply(200, s);
+	if (len < 0)
+		return 0;
+
+	s = "EHLO\r\n";
+	printf("Send: %s", s.c_str());
+	iResult = send(sockSMTP, (char *) s.c_str(), s.length(), 0);
+	len = SMTPWaitReply(200, s);
+	if (len < 0)
+		return 0;
+
+	s = "AUTH LOGIN\r\n";
+	printf("Send: %s", s.c_str());
+	iResult = send(sockSMTP, (char *) s.c_str(), s.length(), 0);
+	len = SMTPWaitReply(200, s);
+	if (len < 0)
+		return 0;
+
+	s = "ZG91Z3NAZG91Z3Npc2NvLmNvbQ==\r\n"; // dougs@dougsisco.com
+	//s = UserNameEncStr;
+	printf("Send: %s", s.c_str());
+	iResult = send(sockSMTP, (char *) s.c_str(), s.length(), 0);
+	len = SMTPWaitReply(200, s);
+	if (len < 0)
+		return 0;
+
+	s = "bm9DYWxlYjU=\r\n"; // noCaleb5
+	//s = PwdEncStr;
+	printf("Send: %s", s.c_str());
+	iResult = send(sockSMTP, (char *) s.c_str(), s.length(), 0);
+	len = SMTPWaitReply(200, s);
+	if (len < 0)
+		return 0;
+
+	s = "MAIL FROM:" + FromStr + "\r\n";
+	printf("Send: %s", s.c_str());
+	iResult = send(sockSMTP, (char *) s.c_str(), s.length(), 0);
+	len = SMTPWaitReply(200, s);
+	if (len < 0)
+		return 0;
+
+	s = "RCPT TO:" + ToStr + "\r\n";
+	printf("Send: %s", s.c_str());
+	iResult = send(sockSMTP, (char *) s.c_str(), s.length(), 0);
+	len = SMTPWaitReply(200, s);
+	if (len < 0)
+		return 0;
+
+	s = "DATA\r\n";
+	printf("Send: %s", s.c_str());
+	iResult = send(sockSMTP, (char *) s.c_str(), s.length(), 0);
+	len = SMTPWaitReply(200, s);
+	if (len < 0)
+		return 0;
+
+	s = "From:" + FromStr + "\r\nTo:" + ToStr + "\r\nSubject:" + SubjectStr + "\r\n";
+	printf("Send: %s", s.c_str());
+	iResult = send(sockSMTP, (char *) s.c_str(), s.length(), 0);
+	len = SMTPWaitReply(200, s);
+	if (len < 0)
+		return 0;
+
+	s = MsgStr + "\r\n.\r\n";
+	printf("Send: %s", s.c_str());
+	iResult = send(sockSMTP, (char *) s.c_str(), s.length(), 0);
+	len = SMTPWaitReply(200, s);
+	if (len < 0)
+		return 0;
+
+	s = "QUIT\r\n";
+	printf("Send: %s", s.c_str());
+	iResult = send(sockSMTP, (char *) s.c_str(), s.length(), 0);
+	len = SMTPWaitReply(200, s);
+	if (len < 0)
+		return 0;
+
+	closesocket(sockSMTP);
+
+	return 1;
+}
+
+void InitGPIO() {
+	// Init the Thermocouple MUX outputs.
+	gpio_pad_select_gpio(TC_MUX_SEL0);
+	gpio_set_direction((gpio_num_t) TC_MUX_SEL0, GPIO_MODE_OUTPUT);
+	gpio_set_level((gpio_num_t)TC_MUX_SEL0, 0);
+
+	gpio_pad_select_gpio(TC_MUX_SEL1);
+	gpio_set_direction((gpio_num_t) TC_MUX_SEL1, GPIO_MODE_OUTPUT);
+	gpio_set_level((gpio_num_t)TC_MUX_SEL1, 0);
+
+	gpio_pad_select_gpio(TC_MUX_SEL2);
+	gpio_set_direction((gpio_num_t) TC_MUX_SEL2, GPIO_MODE_OUTPUT);
+	gpio_set_level((gpio_num_t)TC_MUX_SEL2, 0);
+
+	// Init LED outputs
+	gpio_pad_select_gpio(LEDR_GPIO_NUM);
+	gpio_set_direction((gpio_num_t) LEDR_GPIO_NUM, GPIO_MODE_OUTPUT);
+	gpio_set_level((gpio_num_t)LEDR_GPIO_NUM, 0);
+	
+	gpio_pad_select_gpio(LEDG_GPIO_NUM);
+	gpio_set_direction((gpio_num_t) LEDG_GPIO_NUM, GPIO_MODE_OUTPUT);
+	gpio_set_level((gpio_num_t)LEDG_GPIO_NUM, 1);
+	
+	gpio_pad_select_gpio(LEDB_GPIO_NUM);
+	gpio_set_direction((gpio_num_t) LEDB_GPIO_NUM, GPIO_MODE_OUTPUT);
+	gpio_set_level((gpio_num_t)LEDB_GPIO_NUM, 1);
+}
+
+// Set the LED color as 0xRRGGBB.
+// Where RR, GG, and BB are either on or off.
+// Color is restored to last if color == -1.
+void LEDSetColor(int color) {
+	static int LastColor;
+	
+	// If we want to restore the color..
+	if(color < 0) {
+		gpio_set_direction((gpio_num_t) LEDR_GPIO_NUM, GPIO_MODE_OUTPUT);	
+		gpio_set_direction((gpio_num_t) LEDG_GPIO_NUM, GPIO_MODE_OUTPUT);
+		gpio_set_direction((gpio_num_t) LEDB_GPIO_NUM, GPIO_MODE_OUTPUT);
+		color = LastColor;
+	}
+	else
+		LastColor = color;
+	
+	if (color & 0xff0000)
+		LEDR_ON;
+	else
+		LEDR_OFF;
+	
+	if (color & 0x00ff00)
+		LEDG_ON;
+	else
+		LEDG_OFF;
+	
+	if (color & 0x0000ff)
+		LEDB_ON;
+	else
+		LEDB_OFF;
+}
+
+#define SSID "TLOGGER"
+ 
+void app_main(void)
+{   
+    ESP_ERROR_CHECK( esp_event_loop_init(event_handler, NULL) );
+    wifi_event_group = xEventGroupCreate();
+    start_dhcp_server();
+    initialise_wifi_in_ap();
+    xTaskCreate(&print_sta_info,"print_sta_info",4096,NULL,5,NULL);
+}
+
+void app_main2(void) {
+	printf("\n\nTemperature Logger (C) 2019 Sisco Circuits Ver %s\n",VERSION);
+	
+	// Disable the annoying ESP-IDF messages.
+	esp_log_level_set("*", ESP_LOG_NONE);
+	
+	// Init the GPIO.
+	InitGPIO();
+	
+	// Red
+	LEDSetColor(RED);
+	
+	// Disable brownout detector.
+	WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0); 
+	
+	// Init the values array.
+	for(int i = 0 ; i < MAX_SAMPLES ; i++)
+		ValuesArr[i].time = 0;
+		
+	nvs_flash_init();
+
+	// Init the configuration.
+	esp_err_t err = Config.Read();
+		 
+	// If we are forcing a config write or there was an error reading the config or if the check value is incorrect..
+	if(err || Config.CheckValue != CHECK_VALUE_INIT) {
+		printf("\n---> CONFIG READ ERROR <---\n\n");
+		// Init the configuration and write it to flash.
+		Config.Init();
+		Config.Write();
+	}
+	
+	//*******************************************************************
+	// THESE WILL EVENTUALLY BE SET BY THE CONFIGURATION PAGE
+	// Chart channel values: assign each chart value to a channel.
+	Config.ChartVal[0].ChannelIndex = 0;
+	Config.ChartVal[0].Axis = 0;
+	Config.ChartVal[1].ChannelIndex = 1;
+	Config.ChartVal[1].Axis = 0;
+	Config.ChartVal[2].ChannelIndex = 2;
+	Config.ChartVal[2].Axis = 0;
+	Config.ChartVal[3].ChannelIndex = 7;
+	Config.ChartVal[3].Axis = 0;
+	Config.ChartVal[4].ChannelIndex = 8;
+	Config.ChartVal[4].Axis = 0;
+	
+	//*******************************************************************
+	// IMPORTANT: THE FOLLOWING NEEDS TO BE DONE AFTER Config.Init()!
+	// Init the DS18B20 sensors.
+	Config.ChannelsAr[0].SetChannel18b20(DS18B20_0_GPIO_NUM);
+	Config.ChannelsAr[1].SetChannel18b20(DS18B20_1_GPIO_NUM);
+	Config.ChannelsAr[2].SetChannel18b20(DS18B20_2_GPIO_NUM);
+	Config.ChannelsAr[3].SetChannel18b20(DS18B20_3_GPIO_NUM);
+	Config.ChannelsAr[4].SetChannelMAX31856(0);
+	Config.ChannelsAr[5].SetChannelMAX31856(1);
+	Config.ChannelsAr[6].SetChannelMAX31856(2);
+	Config.ChannelsAr[7].SetChannelMAX31856(3);
+	Config.ChannelsAr[8].SetChannelMAX31856(4);
+	Config.ChannelsAr[9].SetChannel18b20(DS18B20_4_GPIO_NUM);
+	Config.ChannelsAr[10].SetChannel18b20(DS18B20_5_GPIO_NUM);
+	Config.ChannelsAr[11].SetChannel18b20(DS18B20_6_GPIO_NUM);
+	//*******************************************************************
+		
+	// This is extra code which really does nothing except help to fix the 
+	// intermittent wifi connection problem.
+	// If wifi doesn't connect then either enable or disable this bit of code.
+#ifdef FIX_WIFI_CONNECTION_PROBLEM
+	vTaskDelay(pdMS_TO_TICKS(200));
+#endif
+	
+	// Init the wifi connection.
+	if(initialise_wifi())
+		printf("ERROR INITING WIFI!!\n");
+	
+	// Read the MAC address.
+	uint8_t mac[6];
+	system_efuse_read_mac(mac);
+	MACAddr = ((long long)mac[0] << 40) + ((long long)mac[1] << 32) + ((long long)mac[2] << 24)
+		+ ((long long)mac[3] << 16) + ((long long)mac[4] << 8) + (long long)mac[5]; 
+	
+	// Set the host name.
+	// Don't put a space in the hostname or it won't update!
+	// If done properly the router will show the new hostname immediately.
+	string s(Config.HostName);
+	Replace(s, " ", "_");
+	printf("My HostName is %s.\n", Config.HostName);
+	tcpip_adapter_set_hostname(TCPIP_ADAPTER_IF_STA, s.c_str());
+
+	// I'm not sure why, but without this we get watchdog timer errors.
+	// Wait here until wifi is connected.
+	xEventGroupWaitBits(wifi_event_group, CONNECTED_BIT, false, true, portMAX_DELAY);
+
+	// Set low power wifi mode. This alternates between 50mA and 100mA.
+	// **** MAYBE WAIT UNTIL WE ARE CONNECTED BEFORE DOING THIS??? ****
+	// See https://github.com/espressif/esp-idf/blob/master/examples/wifi/power_save/main/power_save.c
+//	esp_wifi_set_ps(WIFI_PS_MODEM);
+
+	// see http://esp32.info/docs/esp_idf/html/dd/d3c/group__xTaskCreate.html
+	//	xTaskCreatePinnedToCore((TaskFunction_t) & Thread_BatteryTest, "Thread_BatteryTest", 2048, NULL, 1, NULL, 0);
+	//	xTaskCreatePinnedToCore((TaskFunction_t) & Thread_Beep, "Thread_Beep", 2048, NULL, 1, NULL, 0);
+	// xTaskCreate(&http_server, "http_server", 15000, NULL, 5, NULL);
+
+	// Get the current time and set up the time server.
+	TimeSetup(1);
+	
+	// Led yellow
+	LEDSetColor(YELLOW);
+
+	// Start reading the temperature sensors. This thread has the highest priority 
+	// since it uses precise delays to read the DS18B20 sensors. It was found that 
+	// a low priority results in more checksum errors.
+	// 5-3-19 I lowered this from 8 to 5 because the time was getting way behind.
+	xTaskCreate(&Thread_ReadTemperature, "Thread_ReadTemperature", 2048, NULL, 5, NULL);
+
+	// Led green.
+	LEDSetColor(GREEN);
+	
+	// Set BootTime.
+	struct tm timeinfo;
+	localtime_r(&BootTime, &timeinfo);
+	strftime(strftime_buf, sizeof (strftime_buf), "%c", &timeinfo);
+	
+#ifdef HTTP_CLIENT
+	xTaskCreate(&Thread_SendDataToSvr, "Thread_SendDataToSvr", 4096, NULL, 5, NULL);
+#endif
+	// 6-15-19 This causes a crash!
+	//xTaskCreate(&Thread_UpdateTime, "Thread_UpdateTime", 2048, NULL, 5, NULL);
+}
+
+/**
+ * Read the configuration from the VFS.
+ * 
+ * See https://github.com/espressif/esp-idf/tree/master/examples/storage/nvs_rw_blob
+ * 
+ * @return 
+ */
+esp_err_t CConfig::Read() {
+	printf("Restoring configuration from FLASH..\n");
+	esp_err_t err;
+	size_t required_size;
+	nvs_handle my_handle;
+	
+	// Open the NVS.
+	err = nvs_open("preferences", NVS_READWRITE, &my_handle);
+
+	if (err != ESP_OK)
+		printf("Error (%d) opening NVS handle!\n", err);
+	else {
+		required_size = sizeof(Config);
+		//printf("required_size=%u\n", (int)required_size);
+		
+		if (required_size > 0) {
+			err = nvs_get_blob(my_handle, "config", this, &required_size);
+			if (err != ESP_OK) {
+				printf("Error nvs_get_blob.\n");
+			}
+		}
+	}	
+	nvs_close(my_handle);
+		
+	// Test all config values for ranges.
+	if ( Config.CheckValues() )
+		err = ESP_FAIL;
+	
+	return err;
+}
+
+/**
+ * Write the configuration to the VFS.
+ * 
+ * @return 
+ */
+esp_err_t CConfig::Write() {
+	esp_err_t err;
+	size_t required_size;
+	nvs_handle my_handle;
+
+	printf("**** Writing Config..\n");
+	
+	// Open the NVS.
+	err = nvs_open("preferences", NVS_READWRITE, &my_handle);
+	
+	// Write the config to the VFS.
+	required_size = sizeof(Config);
+	err = nvs_set_blob(my_handle, "config", this, required_size);
+
+	if (err != ESP_OK) 
+		printf("Error in nvs_set_blob.\n");
+
+	// Commit
+	err = nvs_commit(my_handle);
+	if (err != ESP_OK) 
+		printf("NVS commit error.\n");
+
+	nvs_close(my_handle);
+	
+	return err;
+}
+
+/**
+ * Select a thermocouple input.
+ * 
+ * @param n
+ */
+void ThermocoupleSelect(int n) {
+	if (n & 1)
+		gpio_set_level((gpio_num_t)TC_MUX_SEL0, 1);
+	else
+		gpio_set_level((gpio_num_t)TC_MUX_SEL0, 0);
+	
+	if (n & 2)
+		gpio_set_level((gpio_num_t)TC_MUX_SEL1, 1);
+	else
+		gpio_set_level((gpio_num_t)TC_MUX_SEL1, 0);
+		
+	if (n & 4)
+		gpio_set_level((gpio_num_t)TC_MUX_SEL2, 1);
+	else
+		gpio_set_level((gpio_num_t)TC_MUX_SEL2, 0);	
+}
+
+///
+/*		
+ * Get a sample given the offset from the current index.
+ * 
+ * @param offset
+ * @param Sample
+ * @return -1 on error.
+ */
+int GetSample(int offset,CDataPoint &Sample) {
+	if (offset < 0 || offset > MAX_SAMPLES-1)
+		return -1;
+	
+	int i = ValuesArrInd - offset - 1;
+	
+	if (i < 0)
+		i += MAX_SAMPLES;
+	
+	Sample = ValuesArr[i];
+	return 0;
+}
+
+/// Get this channel's slope over the SlopeTimeSec time.
+float GetSlope(int chan) {
+	float Yavg0 = 0;
+	float Yavg1 = 0;
+	CDataPoint DateVal;
+	
+	// SlopeSamples is the number of samples that will be used to calculate the slope.
+	int SlopeSamples = (int)((float)Config.SlopeTimeSec *10.0) / (float)Config.SamplePeriodTSec;
+	
+	// Force SlopeSamples to be even.
+	if (SlopeSamples %2 == 1)
+		SlopeSamples += 1;
+//	printf("GetSlope: SlopeSamples=%u\n",SlopeSamples);
+	
+	// Slope = (Yavg0 - Yavg1) / SlopeSamples
+	//   where Yavg = avg over SlopeSamples/2 samples
+
+	// Get Yavg0
+	// 9,8,7,6,5
+//	printf("\nGetSlope1: ");
+	for (int i = SlopeSamples-1; i >= SlopeSamples/2; i--) {
+		GetSample(i,DateVal);
+		Yavg0 += DateVal.val[chan];
+//		printf("[%u,%.1f], ",i,DateVal.val[chan]);
+	}
+	
+	// Get Yavg1
+	// 4,3,2,1,0
+//	printf("\nGetSlope2: ");
+	for (int i = (SlopeSamples/2)-1; i >= 0; i--) {
+		GetSample(i,DateVal);
+		Yavg1 += DateVal.val[chan];
+//		printf("[%u,%.1f], ",i,DateVal.val[chan]);
+	}
+	
+	float slope = ( (Yavg1 - Yavg0)*2.0 )/(float)SlopeSamples;	
+
+	return slope;
+}
+	
+char *Trim(char *str) {
+	char *end;
+
+	// Trim leading space
+	while(isspace((unsigned char)*str)) str++;
+
+	if (*str == 0)  // All spaces?
+	  return str;
+
+	// Trim trailing space
+	end = str + strlen(str) - 1;
+	while (end > str && isspace((unsigned char)*end)) end--;
+
+	// Write new null terminator character
+	end[1] = '\0';
+
+	return str;
+}
+
+// *******************************************************************************************
+// THIS IS THE AP CODE
+static void start_dhcp_server() {
+    
+	// initialize the tcp stack
+	tcpip_adapter_init();
+	// stop DHCP server
+	ESP_ERROR_CHECK(tcpip_adapter_dhcps_stop(TCPIP_ADAPTER_IF_AP));
+	// assign a static IP to the network interface
+	tcpip_adapter_ip_info_t info;
+	memset(&info, 0, sizeof(info));
+	IP4_ADDR(&info.ip, 192, 168, 1, 1);
+	IP4_ADDR(&info.gw, 192, 168, 1, 1); //ESP acts as router, so gw addr will be its own addr
+	IP4_ADDR(&info.netmask, 255, 255, 255, 0);
+	ESP_ERROR_CHECK(tcpip_adapter_set_ip_info(TCPIP_ADAPTER_IF_AP, &info));
+	// start the DHCP server   
+	ESP_ERROR_CHECK(tcpip_adapter_dhcps_start(TCPIP_ADAPTER_IF_AP));
+	printf("DHCP server started \n");
+}
+static void initialise_wifi_in_ap(void)
+{
+	esp_log_level_set("wifi", ESP_LOG_NONE);  // disable wifi driver logging
+	wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
+	ESP_ERROR_CHECK(esp_wifi_init(&cfg));
+	ESP_ERROR_CHECK(esp_wifi_set_storage(WIFI_STORAGE_RAM));
+	ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_AP));
+
+	// configure the wifi connection and start the interface
+	wifi_config_t ap_config = {
+		.ap = {
+		.ssid = AP_SSID,
+		.password = AP_PASSPHARSE,
+		.ssid_len = 0,
+		.channel = 0,
+		.authmode = AP_AUTHMODE,
+		.ssid_hidden = AP_SSID_HIDDEN,
+		.max_connection = AP_MAX_CONNECTIONS,
+		.beacon_interval = AP_BEACON_INTERVAL,			
+	},
+	};
+	ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_AP, &ap_config));
+	ESP_ERROR_CHECK(esp_wifi_start());
+	printf("ESP WiFi started in AP mode \n");
+}
+
+// print the list of connected stations
+void printStationList() 
+{
+	printf(" Connected stations:\n");
+	printf("--------------------------------------------------\n");
+	
+	wifi_sta_list_t wifi_sta_list;
+	tcpip_adapter_sta_list_t adapter_sta_list;
+   
+	memset(&wifi_sta_list, 0, sizeof(wifi_sta_list));
+	memset(&adapter_sta_list, 0, sizeof(adapter_sta_list));
+   
+	ESP_ERROR_CHECK(esp_wifi_ap_get_sta_list(&wifi_sta_list));	
+	ESP_ERROR_CHECK(tcpip_adapter_get_sta_list(&wifi_sta_list, &adapter_sta_list));
+	
+	for (int i = 0; i < adapter_sta_list.num; i++) {
+		
+		tcpip_adapter_sta_info_t station = adapter_sta_list.sta[i];
+		printf("%d - mac: %.2x:%.2x:%.2x:%.2x:%.2x:%.2x - IP: %s\n",
+			i + 1,
+			station.mac[0],
+			station.mac[1],
+			station.mac[2],
+			station.mac[3],
+			station.mac[4],
+			station.mac[5],
+			ip4addr_ntoa(&(station.ip)));
+	}
+	
+	printf("\n");
+}
+
+void print_sta_info(void *pvParam) {
+	printf("print_sta_info task started \n");
+	while (1) {	
+		EventBits_t staBits = xEventGroupWaitBits(wifi_event_group, CLIENT_CONNECTED_BIT | CLIENT_CONNECTED_BIT, pdTRUE, pdFALSE, portMAX_DELAY);
+		if ((staBits & CLIENT_CONNECTED_BIT) != 0) printf("New station connected\n\n");
+		else printf("A station disconnected\n\n");
+		printStationList();
+	}
+}
+// END AP CODE
+// *******************************************************************************************

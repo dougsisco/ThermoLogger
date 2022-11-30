@@ -1,0 +1,13 @@
+# Target labels
+ mconf-idf
+# Source files and their labels
+C:/Projects/ThermoLogger/VisualGDB/MinSizeRel/CMakeFiles/mconf-idf
+C:/Projects/ThermoLogger/VisualGDB/MinSizeRel/CMakeFiles/mconf-idf.rule
+C:/Projects/ThermoLogger/VisualGDB/MinSizeRel/CMakeFiles/mconf-idf-complete.rule
+C:/Projects/ThermoLogger/VisualGDB/MinSizeRel/mconf-idf-prefix/src/mconf-idf-stamp/mconf-idf-install.rule
+C:/Projects/ThermoLogger/VisualGDB/MinSizeRel/mconf-idf-prefix/src/mconf-idf-stamp/mconf-idf-mkdir.rule
+C:/Projects/ThermoLogger/VisualGDB/MinSizeRel/mconf-idf-prefix/src/mconf-idf-stamp/mconf-idf-download.rule
+C:/Projects/ThermoLogger/VisualGDB/MinSizeRel/mconf-idf-prefix/src/mconf-idf-stamp/mconf-idf-update.rule
+C:/Projects/ThermoLogger/VisualGDB/MinSizeRel/mconf-idf-prefix/src/mconf-idf-stamp/mconf-idf-patch.rule
+C:/Projects/ThermoLogger/VisualGDB/MinSizeRel/mconf-idf-prefix/src/mconf-idf-stamp/mconf-idf-configure.rule
+C:/Projects/ThermoLogger/VisualGDB/MinSizeRel/mconf-idf-prefix/src/mconf-idf-stamp/mconf-idf-build.rule

@@ -1,0 +1,498 @@
+In archive C:/Projects/ThermoLogger/VisualGDB/RelWithDebInfo/esp-idf/spi_flash/libspi_flash.a:
+
+cache_utils.c.obj:     file format elf32-xtensa-le
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .iram1.30.literal 00000020  00000000  00000000  00000034  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  1 .iram1.24.literal 00000020  00000000  00000000  00000054  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  2 .iram1.29.literal 00000030  00000000  00000000  00000074  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  3 .literal.spi_flash_init_lock 00000008  00000000  00000000  000000a4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  4 .literal.spi_flash_op_lock 00000008  00000000  00000000  000000ac  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  5 .literal.spi_flash_op_unlock 00000008  00000000  00000000  000000b4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  6 .iram1.25.literal 00000038  00000000  00000000  000000bc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  7 .iram1.26.literal 00000024  00000000  00000000  000000f4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  8 .iram1.27.literal 00000010  00000000  00000000  00000118  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  9 .iram1.28.literal 0000000c  00000000  00000000  00000128  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 10 .iram1.31.literal 00000010  00000000  00000000  00000134  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 11 .text         00000000  00000000  00000000  00000144  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 12 .data         00000000  00000000  00000000  00000144  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+ 13 .bss          00000000  00000000  00000000  00000144  2**0
+                  ALLOC
+ 14 .iram1.30     0000006c  00000000  00000000  00000144  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 15 .iram1.24     0000004f  00000000  00000000  000001b0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 16 .iram1.29     0000006e  00000000  00000000  00000200  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 17 .text.spi_flash_init_lock 00000013  00000000  00000000  00000270  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 18 .text.spi_flash_op_lock 00000012  00000000  00000000  00000284  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 19 .text.spi_flash_op_unlock 00000010  00000000  00000000  00000298  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 20 .iram1.25     0000009e  00000000  00000000  000002a8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 21 .iram1.26     00000061  00000000  00000000  00000348  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 22 .iram1.27     00000033  00000000  00000000  000003ac  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 23 .iram1.28     00000020  00000000  00000000  000003e0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 24 .iram1.31     00000028  00000000  00000000  00000400  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 25 .bss.s_flash_op_complete 00000001  00000000  00000000  00000428  2**0
+                  ALLOC
+ 26 .bss.s_flash_op_can_start 00000001  00000000  00000000  00000428  2**0
+                  ALLOC
+ 27 .bss.s_flash_op_mutex 00000004  00000000  00000000  00000428  2**2
+                  ALLOC
+ 28 .bss.s_flash_op_cache_state 00000008  00000000  00000000  00000428  2**2
+                  ALLOC
+ 29 .debug_frame  00000118  00000000  00000000  00000428  2**2
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 30 .debug_info   000008e7  00000000  00000000  00000540  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 31 .debug_abbrev 0000024f  00000000  00000000  00000e27  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 32 .debug_loc    0000025c  00000000  00000000  00001076  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 33 .debug_aranges 00000070  00000000  00000000  000012d2  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 34 .debug_ranges 00000060  00000000  00000000  00001342  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 35 .debug_line   0000051a  00000000  00000000  000013a2  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 36 .debug_str    00000507  00000000  00000000  000018bc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 37 .comment      0000003c  00000000  00000000  00001dc3  2**0
+                  CONTENTS, READONLY
+ 38 .xtensa.info  00000038  00000000  00000000  00001dff  2**0
+                  CONTENTS, READONLY
+ 39 .xt.lit       00000058  00000000  00000000  00001e37  2**0
+                  CONTENTS, RELOC, READONLY
+ 40 .xt.prop      000002e8  00000000  00000000  00001e8f  2**0
+                  CONTENTS, RELOC, READONLY
+
+flash_mmap.c.obj:     file format elf32-xtensa-le
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .iram1.24.literal 00000008  00000000  00000000  00000034  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .iram1.23.literal 00000018  00000000  00000000  0000003c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  2 .iram1.28.literal 0000000c  00000000  00000000  00000054  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  3 .iram1.29.literal 00000010  00000000  00000000  00000060  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  4 .iram1.32.literal 00000028  00000000  00000000  00000070  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  5 .iram1.26.literal 00000078  00000000  00000000  00000098  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  6 .iram1.25.literal 00000018  00000000  00000000  00000110  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  7 .iram1.27.literal 0000001c  00000000  00000000  00000128  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  8 .literal.spi_flash_mmap_dump 00000020  00000000  00000000  00000144  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  9 .iram1.30.literal 00000020  00000000  00000000  00000164  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 10 .iram1.31.literal 00000010  00000000  00000000  00000184  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 11 .literal.spi_flash_cache2phys 00000018  00000000  00000000  00000194  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 12 .iram1.34.literal 00000024  00000000  00000000  000001ac  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 13 .text         00000000  00000000  00000000  000001d0  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 14 .data         00000000  00000000  00000000  000001d0  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+ 15 .bss          00000000  00000000  00000000  000001d0  2**0
+                  ALLOC
+ 16 .iram1.24     00000024  00000000  00000000  000001d0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 17 .iram1.23     00000087  00000000  00000000  000001f4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 18 .iram1.28     00000017  00000000  00000000  0000027c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 19 .iram1.29     0000001f  00000000  00000000  00000294  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 20 .iram1.32     0000008e  00000000  00000000  000002b4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 21 .iram1.26     00000242  00000000  00000000  00000344  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 22 .iram1.25     00000071  00000000  00000000  00000588  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 23 .iram1.27     0000007a  00000000  00000000  000005fc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 24 .rodata.str1.4 00000039  00000000  00000000  00000678  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 25 .text.spi_flash_mmap_dump 0000005b  00000000  00000000  000006b4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 26 .iram1.30     00000060  00000000  00000000  00000710  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 27 .iram1.31     0000004a  00000000  00000000  00000770  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 28 .text.spi_flash_cache2phys 00000062  00000000  00000000  000007bc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 29 .iram1.34     0000007b  00000000  00000000  00000820  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 30 .bss.written_pages 00000020  00000000  00000000  0000089c  2**2
+                  ALLOC
+ 31 .bss.s_mmap_last_handle 00000004  00000000  00000000  0000089c  2**2
+                  ALLOC
+ 32 .bss.s_mmap_page_refcnt 00000100  00000000  00000000  0000089c  2**2
+                  ALLOC
+ 33 .bss.s_mmap_entries_head 00000004  00000000  00000000  0000089c  2**2
+                  ALLOC
+ 34 .debug_frame  00000148  00000000  00000000  0000089c  2**2
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 35 .debug_info   0000110c  00000000  00000000  000009e4  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 36 .debug_abbrev 00000380  00000000  00000000  00001af0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 37 .debug_loc    00000ef0  00000000  00000000  00001e70  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 38 .debug_aranges 00000080  00000000  00000000  00002d60  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 39 .debug_ranges 00000120  00000000  00000000  00002de0  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 40 .debug_line   00000b71  00000000  00000000  00002f00  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 41 .debug_str    00000749  00000000  00000000  00003a71  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 42 .comment      0000003c  00000000  00000000  000041ba  2**0
+                  CONTENTS, READONLY
+ 43 .xtensa.info  00000038  00000000  00000000  000041f6  2**0
+                  CONTENTS, READONLY
+ 44 .xt.lit       00000068  00000000  00000000  0000422e  2**0
+                  CONTENTS, RELOC, READONLY
+ 45 .xt.prop      000006c0  00000000  00000000  00004296  2**0
+                  CONTENTS, RELOC, READONLY
+
+flash_ops.c.obj:     file format elf32-xtensa-le
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .iram1.39.literal 00000008  00000000  00000000  00000034  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .literal.is_safe_write_address 00000008  00000000  00000000  0000003c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  2 .iram1.31.literal 0000000c  00000000  00000000  00000044  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  3 .iram1.34.literal 00000004  00000000  00000000  00000050  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  4 .literal.spi_flash_init 00000004  00000000  00000000  00000054  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  5 .iram1.24.literal 00000004  00000000  00000000  00000058  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  6 .iram1.25.literal 00000004  00000000  00000000  0000005c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  7 .iram1.26.literal 00000004  00000000  00000000  00000060  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  8 .iram1.33.literal 00000030  00000000  00000000  00000064  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  9 .iram1.32.literal 0000000c  00000000  00000000  00000094  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 10 .iram1.35.literal 00000044  00000000  00000000  000000a0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 11 .iram1.37.literal 00000048  00000000  00000000  000000e4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 12 .iram1.38.literal 00000014  00000000  00000000  0000012c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 13 .iram1.36.literal 00000028  00000000  00000000  00000140  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 14 .text         00000000  00000000  00000000  00000168  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 15 .data         00000000  00000000  00000000  00000168  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+ 16 .bss          00000000  00000000  00000000  00000168  2**0
+                  ALLOC
+ 17 .iram1.39     0000001a  00000000  00000000  00000168  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 18 .text.is_safe_write_address 00000038  00000000  00000000  00000184  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 19 .iram1.31     00000042  00000000  00000000  000001bc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 20 .iram1.34     00000014  00000000  00000000  00000200  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 21 .text.spi_flash_init 0000000b  00000000  00000000  00000214  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 22 .iram1.24     0000000a  00000000  00000000  00000220  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 23 .iram1.25     0000000a  00000000  00000000  0000022c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 24 .iram1.26     0000000a  00000000  00000000  00000238  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 25 .iram1.33     0000010a  00000000  00000000  00000244  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 26 .iram1.32     00000031  00000000  00000000  00000350  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 27 .iram1.35     000001e2  00000000  00000000  00000384  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 28 .iram1.37     000002a5  00000000  00000000  00000568  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 29 .iram1.38     0000004e  00000000  00000000  00000810  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 30 .iram1.36     0000011e  00000000  00000000  00000860  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 31 .bss.unlocked$5949 00000001  00000000  00000000  0000097e  2**0
+                  ALLOC
+ 32 .bss.s_flash_guard_ops 00000004  00000000  00000000  00000980  2**2
+                  ALLOC
+ 33 .dram1.23     00000014  00000000  00000000  00000980  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+ 34 .dram1.22     00000014  00000000  00000000  00000994  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+ 35 .debug_frame  00000160  00000000  00000000  000009a8  2**2
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 36 .debug_info   000014c5  00000000  00000000  00000b08  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 37 .debug_abbrev 00000449  00000000  00000000  00001fcd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 38 .debug_loc    00000b06  00000000  00000000  00002416  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 39 .debug_aranges 00000088  00000000  00000000  00002f1c  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 40 .debug_ranges 000000c0  00000000  00000000  00002fa4  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 41 .debug_line   00000b72  00000000  00000000  00003064  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 42 .debug_str    00000d4d  00000000  00000000  00003bd6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 43 .comment      0000003c  00000000  00000000  00004923  2**0
+                  CONTENTS, READONLY
+ 44 .xtensa.info  00000038  00000000  00000000  0000495f  2**0
+                  CONTENTS, READONLY
+ 45 .xt.lit       00000070  00000000  00000000  00004997  2**0
+                  CONTENTS, RELOC, READONLY
+ 46 .xt.prop      00000774  00000000  00000000  00004a07  2**0
+                  CONTENTS, RELOC, READONLY
+
+partition.c.obj:     file format elf32-xtensa-le
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .literal.iterator_create 00000008  00000000  00000000  00000034  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  1 .literal.load_partitions 00000034  00000000  00000000  0000003c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  2 .literal.esp_partition_iterator_release 00000004  00000000  00000000  00000070  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  3 .literal.esp_partition_next 00000018  00000000  00000000  00000074  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  4 .literal.esp_partition_find 0000001c  00000000  00000000  0000008c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  5 .literal.esp_partition_find_first 0000000c  00000000  00000000  000000a8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  6 .literal.esp_partition_verify 00000014  00000000  00000000  000000b4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  7 .literal.esp_partition_write 00000008  00000000  00000000  000000c8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  8 .literal.esp_partition_erase_range 00000004  00000000  00000000  000000d0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  9 .literal.esp_partition_mmap 00000008  00000000  00000000  000000d4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 10 .literal.esp_partition_read 00000010  00000000  00000000  000000dc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 11 .literal.esp_partition_get_sha256 00000004  00000000  00000000  000000ec  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 12 .literal.esp_partition_check_identity 00000010  00000000  00000000  000000f0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 13 .text         00000000  00000000  00000000  00000100  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 14 .data         00000000  00000000  00000000  00000100  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+ 15 .bss          00000000  00000000  00000000  00000100  2**0
+                  ALLOC
+ 16 .text.iterator_create 00000021  00000000  00000000  00000100  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 17 .text.load_partitions 000000da  00000000  00000000  00000124  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 18 .text.esp_partition_iterator_release 0000000e  00000000  00000000  00000200  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 19 .text.esp_partition_next 0000006e  00000000  00000000  00000210  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 20 .text.esp_partition_find 0000004e  00000000  00000000  00000280  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 21 .text.esp_partition_get 00000007  00000000  00000000  000002d0  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 22 .text.esp_partition_find_first 0000002a  00000000  00000000  000002d8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 23 .text.esp_partition_verify 00000066  00000000  00000000  00000304  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 24 .text.esp_partition_write 0000003e  00000000  00000000  0000036c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 25 .text.esp_partition_erase_range 0000003e  00000000  00000000  000003ac  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 26 .text.esp_partition_mmap 00000042  00000000  00000000  000003ec  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 27 .text.esp_partition_read 0000005e  00000000  00000000  00000430  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 28 .text.esp_partition_get_sha256 00000015  00000000  00000000  00000490  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 29 .text.esp_partition_check_identity 00000048  00000000  00000000  000004a8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 30 .bss.s_partition_list_lock 00000004  00000000  00000000  000004f0  2**2
+                  ALLOC
+ 31 .bss.s_partition_list 00000004  00000000  00000000  000004f0  2**2
+                  ALLOC
+ 32 .debug_frame  00000160  00000000  00000000  000004f0  2**2
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 33 .debug_info   00000da2  00000000  00000000  00000650  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 34 .debug_abbrev 000002b1  00000000  00000000  000013f2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 35 .debug_loc    00000645  00000000  00000000  000016a3  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 36 .debug_aranges 00000088  00000000  00000000  00001ce8  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 37 .debug_ranges 000000a8  00000000  00000000  00001d70  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 38 .debug_line   000007a0  00000000  00000000  00001e18  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 39 .debug_str    00000aba  00000000  00000000  000025b8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 40 .comment      0000003c  00000000  00000000  00003072  2**0
+                  CONTENTS, READONLY
+ 41 .xtensa.info  00000038  00000000  00000000  000030ae  2**0
+                  CONTENTS, READONLY
+ 42 .xt.lit       00000068  00000000  00000000  000030e6  2**0
+                  CONTENTS, RELOC, READONLY
+ 43 .xt.prop      000005c4  00000000  00000000  0000314e  2**0
+                  CONTENTS, RELOC, READONLY
+
+spi_flash_rom_patch.c.obj:     file format elf32-xtensa-le
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .literal.spi_cache_mode_switch 00000038  00000000  00000000  00000034  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  1 .literal.esp_rom_spiflash_read_status 00000014  00000000  00000000  0000006c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  2 .literal.esp_rom_spiflash_wait_idle 0000000c  00000000  00000000  00000080  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  3 .literal.esp_rom_spiflash_erase_chip_internal 00000010  00000000  00000000  0000008c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  4 .literal.esp_rom_spiflash_erase_block_internal 00000018  00000000  00000000  0000009c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  5 .literal.esp_rom_spiflash_erase_sector_internal 00000018  00000000  00000000  000000b4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  6 .literal.esp_rom_spiflash_read_data 00000018  00000000  00000000  000000cc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  7 .literal.esp_rom_spiflash_enable_write 00000010  00000000  00000000  000000e4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  8 .literal.esp_rom_spiflash_program_page_internal 00000024  00000000  00000000  000000f4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  9 .literal.esp_rom_spiflash_read_statushigh 0000000c  00000000  00000000  00000118  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 10 .literal.esp_rom_spiflash_write_status 00000014  00000000  00000000  00000124  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 11 .literal.esp_rom_spiflash_unlock 00000028  00000000  00000000  00000138  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 12 .literal.esp_rom_spiflash_lock 00000018  00000000  00000000  00000160  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 13 .literal.esp_rom_spiflash_config_readmode 00000030  00000000  00000000  00000178  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 14 .literal.esp_rom_spiflash_erase_chip 0000000c  00000000  00000000  000001a8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 15 .literal.esp_rom_spiflash_erase_block 00000020  00000000  00000000  000001b4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 16 .literal.esp_rom_spiflash_erase_sector 00000020  00000000  00000000  000001d4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 17 .literal.esp_rom_spiflash_write 00000028  00000000  00000000  000001f4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 18 .literal.esp_rom_spiflash_write_encrypted 00000010  00000000  00000000  0000021c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 19 .literal.esp_rom_spiflash_read 0000005c  00000000  00000000  0000022c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 20 .literal.esp_rom_spiflash_erase_area 00000018  00000000  00000000  00000288  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 21 .text         00000000  00000000  00000000  000002a0  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 22 .data         00000000  00000000  00000000  000002a0  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+ 23 .bss          00000000  00000000  00000000  000002a0  2**0
+                  ALLOC
+ 24 .text.spi_cache_mode_switch 00000266  00000000  00000000  000002a0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 25 .text.esp_rom_spiflash_read_status 00000061  00000000  00000000  00000508  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 26 .text.esp_rom_spiflash_wait_idle 00000032  00000000  00000000  0000056c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 27 .text.esp_rom_spiflash_erase_chip_internal 00000030  00000000  00000000  000005a0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 28 .text.esp_rom_spiflash_erase_block_internal 0000003c  00000000  00000000  000005d0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 29 .text.esp_rom_spiflash_erase_sector_internal 00000044  00000000  00000000  0000060c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 30 .text.esp_rom_spiflash_read_data 000000e2  00000000  00000000  00000650  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 31 .text.esp_rom_spiflash_enable_write 0000003d  00000000  00000000  00000734  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 32 .text.esp_rom_spiflash_program_page_internal 000000ee  00000000  00000000  00000774  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 33 .text.esp_rom_spiflash_read_statushigh 00000021  00000000  00000000  00000864  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 34 .text.esp_rom_spiflash_write_status 00000038  00000000  00000000  00000888  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 35 .text.esp_rom_spiflash_unlock 0000007e  00000000  00000000  000008c0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 36 .text.esp_rom_spiflash_lock 0000004e  00000000  00000000  00000940  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 37 .text.esp_rom_spiflash_config_readmode 000000a0  00000000  00000000  00000990  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 38 .rodata.esp_rom_spiflash_config_readmode 00000018  00000000  00000000  00000a30  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+ 39 .text.esp_rom_spiflash_erase_chip 00000024  00000000  00000000  00000a48  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 40 .text.esp_rom_spiflash_erase_block 00000066  00000000  00000000  00000a6c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 41 .text.esp_rom_spiflash_erase_sector 00000065  00000000  00000000  00000ad4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 42 .text.esp_rom_spiflash_write 000000ca  00000000  00000000  00000b3c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 43 .text.esp_rom_spiflash_write_encrypted 0000005a  00000000  00000000  00000c08  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 44 .text.esp_rom_spiflash_read 00000284  00000000  00000000  00000c64  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 45 .text.esp_rom_spiflash_erase_area 000000be  00000000  00000000  00000ee8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 46 .debug_frame  00000208  00000000  00000000  00000fa8  2**2
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 47 .debug_info   00000b11  00000000  00000000  000011b0  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 48 .debug_abbrev 0000022e  00000000  00000000  00001cc1  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 49 .debug_loc    00000a20  00000000  00000000  00001eef  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 50 .debug_aranges 000000c0  00000000  00000000  0000290f  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 51 .debug_ranges 000000b0  00000000  00000000  000029cf  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 52 .debug_line   00000ac6  00000000  00000000  00002a7f  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 53 .debug_str    00000781  00000000  00000000  00003545  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 54 .comment      0000003c  00000000  00000000  00003cc6  2**0
+                  CONTENTS, READONLY
+ 55 .xtensa.info  00000038  00000000  00000000  00003d02  2**0
+                  CONTENTS, READONLY
+ 56 .xt.lit       000000a8  00000000  00000000  00003d3a  2**0
+                  CONTENTS, RELOC, READONLY
+ 57 .xt.prop      00000b1c  00000000  00000000  00003de2  2**0
+                  CONTENTS, RELOC, READONLY

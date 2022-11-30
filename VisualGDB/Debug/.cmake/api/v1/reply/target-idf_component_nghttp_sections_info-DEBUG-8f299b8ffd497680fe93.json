@@ -1,0 +1,95 @@
+{
+	"backtrace" : 3,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_custom_target",
+			"ldgen_generate_sections_info",
+			"register_component"
+		],
+		"files" : 
+		[
+			"C:/SysGCC/esp32/esp-idf/v3.3/tools/cmake/ldgen.cmake",
+			"C:/SysGCC/esp32/esp-idf/v3.3/tools/cmake/components.cmake",
+			"C:/SysGCC/esp32/esp-idf/v3.3/components/nghttp/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 2
+			},
+			{
+				"command" : 2,
+				"file" : 2,
+				"line" : 26,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 67,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 39,
+				"parent" : 2
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"id" : "idf_component_nghttp::@6ca59972b809fbe6ce53"
+		}
+	],
+	"id" : "idf_component_nghttp_sections_info::@6ca59972b809fbe6ce53",
+	"name" : "idf_component_nghttp_sections_info",
+	"paths" : 
+	{
+		"build" : "esp-idf/nghttp",
+		"source" : "C:/SysGCC/esp32/esp-idf/v3.3/components/nghttp"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				1,
+				2
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 3,
+			"isGenerated" : true,
+			"path" : "VisualGDB/Debug/esp-idf/nghttp/CMakeFiles/idf_component_nghttp_sections_info",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "VisualGDB/Debug/esp-idf/nghttp/CMakeFiles/idf_component_nghttp_sections_info.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "VisualGDB/Debug/esp-idf/nghttp/idf_component_nghttp.sections_info.rule",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "UTILITY"
+}

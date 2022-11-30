@@ -1,0 +1,713 @@
+ets Jun  8 2016 00:22:57
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0018,len:4
+load:0x3fff001c,len:6184
+load:0x40078000,len:10168
+load:0x40080400,len:6632
+entry 0x40080764
+I (28) boot: ESP-IDF v3.3-dev-206-g7b1777dd3 2nd stage bootloader
+I (29) boot: compile time 09:26:29
+I (29) boot: Enabling RNG early entropy source...
+I (35) boot: SPI Speed      : 40MHz
+I (39) boot: SPI Mode       : DIO
+I (43) boot: SPI Flash Size : 4MB
+I (47) boot: Partition Table:
+I (50) boot: ## Label            Usage          Type ST Offset   Length
+I (58) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (65) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (73) boot:  2 factory          factory app      00 00 00010000 00100000
+I (80) boot: End of partition table
+I (84) esp_image: segment 0: paddr=0x00010020 vaddr=0x3f400020 size=0x2aff4 (176116) map
+I (155) esp_image: segment 1: paddr=0x0003b01c vaddr=0x3ff80000 size=0x00000 (     0) load
+I (155) esp_image: segment 2: paddr=0x0003b024 vaddr=0x3ff80000 size=0x00000 (     0) load
+I (162) esp_image: segment 3: paddr=0x0003b02c vaddr=0x3ffb0000 size=0x02cf0 ( 11504) load
+I (175) esp_image: segment 4: paddr=0x0003dd24 vaddr=0x3ffb2cf0 size=0x00000 (     0) load
+I (180) esp_image: segment 5: paddr=0x0003dd2c vaddr=0x40080000 size=0x00400 (  1024) load
+I (189) esp_image: segment 6: paddr=0x0003e134 vaddr=0x40080400 size=0x01edc (  7900) load
+I (201) esp_image: segment 7: paddr=0x00040018 vaddr=0x400d0018 size=0x6cf5c (446300) map
+I (363) esp_image: segment 8: paddr=0x000acf7c vaddr=0x400822dc size=0x101ac ( 65964) load
+I (390) esp_image: segment 9: paddr=0x000bd130 vaddr=0x400c0000 size=0x00000 (     0) load
+I (391) esp_image: segment 10: paddr=0x000bd138 vaddr=0x50000000 size=0x00000 (     0) load
+I (397) esp_image: segment 11: paddr=0x000bd140 vaddr=0x50000000 size=0x00000 (     0) load
+I (417) boot: Loaded app from partition at offset 0x10000
+I (417) boot: Disabling RNG early entropy source...
+I (418) cpu_start: Pro cpu up.
+I (421) cpu_start: Starting app cpu, entry point is 0x400810ec
+I (0) cpu_start: App cpu up.
+I (432) heap_init: Initializing. RAM available for dynamic allocation:
+I (439) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM
+I (445) heap_init: At 3FFBEE50 len 000211B0 (132 KiB): DRAM
+I (451) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM
+I (457) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM
+I (464) heap_init: At 40092488 len 0000DB78 (54 KiB): IRAM
+I (470) cpu_start: Pro cpu start user code
+I (155) cpu_start: Starting scheduler on PRO CPU.
+I (0) cpu_start: Starting scheduler on APP CPU.
+
+
+Temperature Logger
+   (C) 2019 Sisco Circuits
+
+***** Restoring Config..
+Hello, Doug, I'm TempLogger.
+I (245) wifi: wifi driver task: 3ffcac74, prio:23, stack:3584, core=0
+I (245) wifi: wifi firmware version: cf7682f
+I (255) wifi: config NVS flash: enabled
+I (255) wifi: config nano formating: disabled
+I (255) system_api: Base MAC address is not set, read default base MAC address from BLK0 of EFUSE
+I (265) system_api: Base MAC address is not set, read default base MAC address from BLK0 of EFUSE
+I (295) wifi: Init dynamic tx buffer num: 32
+I (295) wifi: Init data frame dynamic rx buffer num: 32
+I (295) wifi: Init management frame dynamic rx buffer num: 32
+I (305) wifi: Init static rx buffer size: 1600
+I (305) wifi: Init static rx buffer num: 10
+I (315) wifi: Init dynamic rx buffer num: 32
+esp_wifi_start()
+I (385) phy: phy_version: 4000, b6198fa, Sep  3 2018, 15:11:06, 0, 0
+I (385) wifi: mode : sta (30:ae:a4:18:6a:78)
+esp_wifi_start() done, r=0
+event_handler() SYSTEM_EVENT_STA_START
+s=TempLogger
+event_handler() SYSTEM_EVENT_STA_DISCONNECTED
+event_handler() Wifi trying to connect to full_quiver with pwd samrizzo
+event_handler() esp_wifi_connect
+I (5215) wifi: n:6 2, o:1 0, ap:255 255, sta:6 2, prof:1
+I (6205) wifi: state: init -> auth (b0)
+I (6205) wifi: state: auth -> assoc (0)
+I (6215) wifi: state: assoc -> run (10)
+I (6255) wifi: connected with full_quiver, channel 6
+I (6255) wifi: pm start, type: 1
+
+I (7245) event: sta ip: 192.168.100.118, mask: 255.255.255.0, gw: 192.168.100.1
+event_handler() SYSTEM_EVENT_STA_GOT_IP
+ip: 192.168.100.118
+I (7245) wifi: Set ps type: 1
+
+I (7245) example: Time is not set yet. Connecting to WiFi and getting time over NTP.
+I (7255) example: Initializing SNTP
+I (7265) example: Waiting for system time to be set... (1/10)
+I (9265) example: Waiting for system time to be set... (2/10)
+I (11265) example: Waiting for system time to be set... (3/10)
+I (13265) example: Waiting for system time to be set... (4/10)
+I (15265) example: Waiting for system time to be set... (5/10)
+I (17265) example: Waiting for system time to be set... (6/10)
+I (19265) example: Waiting for system time to be set... (7/10)
+I (21265) example: Waiting for system time to be set... (8/10)
+I (23265) example: Waiting for system time to be set... (9/10)
+The current time is: Wed Mar 13 09:36:15 2019
+I (25265) MAX31856: Initialize
+Thread_SaveValuesToArray: 9:36:15 t0=83.8, t1=84.1, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=0
+I (25265) gpio: GPIO[27]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch0 is TC: 2501.70
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:36:16 t0=2501.7, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=1
+Thread_SaveValuesToArray: 9:36:17 t0=2501.7, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=2
+***tc_temp3 = 0xB1A, Neg=0, tc_temp_float=22.20
+*************************************************
+Ch0 is TC: 71.97
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:36:18 t0=72.0, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=3
+Thread_SaveValuesToArray: 9:36:19 t0=72.0, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=4
+***tc_temp3 = 0xB13, Neg=0, tc_temp_float=22.15
+*************************************************
+Ch0 is TC: 71.87
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:36:20 t0=71.9, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=5
+Thread_SaveValuesToArray: 9:36:21 t0=71.9, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=6
+***tc_temp3 = 0xB11, Neg=0, tc_temp_float=22.13
+*************************************************
+Ch0 is TC: 71.84
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:36:22 t0=71.8, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=7
+Thread_SaveValuesToArray: 9:36:23 t0=71.8, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=8
+***tc_temp3 = 0xB06, Neg=0, tc_temp_float=22.05
+*************************************************
+Ch0 is TC: 71.68
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:36:24 t0=71.7, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=9
+***tc_temp3 = 0xB00, Neg=0, tc_temp_float=22.00
+*************************************************
+Thread_SaveValuesToArray: 9:36:25 t0=71.7, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=10
+Ch0 is TC: 71.60
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:36:26 t0=71.6, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=11
+***tc_temp3 = 0xB05, Neg=0, tc_temp_float=22.04
+*************************************************
+Thread_SaveValuesToArray: 9:36:27 t0=71.6, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=12
+Ch0 is TC: 71.67
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:36:28 t0=71.7, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=13
+***tc_temp3 = 0xB03, Neg=0, tc_temp_float=22.02
+*************************************************
+Ch0 is TC: 71.64
+Thread_SaveValuesToArray: 9:36:29 t0=71.6, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=14
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:36:30 t0=71.6, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=15
+***tc_temp3 = 0xB02, Neg=0, tc_temp_float=22.02
+*************************************************
+Ch0 is TC: 71.63
+Thread_SaveValuesToArray: 9:36:31 t0=71.6, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=16
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:36:32 t0=71.6, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=17
+***tc_temp3 = 0xAF2, Neg=0, tc_temp_float=21.89
+*************************************************
+Ch0 is TC: 71.40
+Thread_SaveValuesToArray: 9:36:33 t0=71.4, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=18
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:36:34 t0=71.4, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=19
+***tc_temp3 = 0xB08, Neg=0, tc_temp_float=22.06
+*************************************************
+Ch0 is TC: 71.71
+Thread_SaveValuesToArray: 9:36:35 t0=71.7, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=20
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:36:36 t0=71.7, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=21
+***tc_temp3 = 0xB09, Neg=0, tc_temp_float=22.07
+*************************************************
+Ch0 is TC: 71.73
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Thread_SaveValuesToArray: 9:36:37 t0=71.7, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=22
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:36:38 t0=71.7, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=23
+***tc_temp3 = 0xB21, Neg=0, tc_temp_float=22.26
+*************************************************
+Ch0 is TC: 72.06
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Thread_SaveValuesToArray: 9:36:39 t0=72.1, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=24
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:36:40 t0=72.1, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=25
+***tc_temp3 = 0xB03, Neg=0, tc_temp_float=22.02
+*************************************************
+Ch0 is TC: 71.64
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:36:41 t0=71.6, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=26
+Thread_SaveValuesToArray: 9:36:42 t0=71.6, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=27
+***tc_temp3 = 0xB0E, Neg=0, tc_temp_float=22.11
+*************************************************
+Ch0 is TC: 71.80
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:36:43 t0=71.8, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=28
+Thread_SaveValuesToArray: 9:36:44 t0=71.8, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=29
+***tc_temp3 = 0xB19, Neg=0, tc_temp_float=22.20
+*************************************************
+Ch0 is TC: 71.95
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:36:45 t0=72.0, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=30
+Thread_SaveValuesToArray: 9:36:46 t0=72.0, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=31
+***tc_temp3 = 0xAF4, Neg=0, tc_temp_float=21.91
+*************************************************
+Ch0 is TC: 71.43
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:36:47 t0=71.4, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=32
+Thread_SaveValuesToArray: 9:36:48 t0=71.4, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=33
+***tc_temp3 = 0xAED, Neg=0, tc_temp_float=21.85
+*************************************************
+Ch0 is TC: 71.33
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:36:49 t0=71.3, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=34
+***tc_temp3 = 0xAFA, Neg=0, tc_temp_float=21.95
+*************************************************
+Thread_SaveValuesToArray: 9:36:50 t0=71.3, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=35
+Ch0 is TC: 71.52
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:36:51 t0=71.5, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=36
+***tc_temp3 = 0xAFE, Neg=0, tc_temp_float=21.98
+*************************************************
+Thread_SaveValuesToArray: 9:36:52 t0=71.5, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=37
+Ch0 is TC: 71.57
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:36:53 t0=71.6, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=38
+***tc_temp3 = 0xAFE, Neg=0, tc_temp_float=21.98
+*************************************************
+Ch0 is TC: 71.57
+Thread_SaveValuesToArray: 9:36:54 t0=71.6, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=39
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:36:55 t0=71.6, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=40
+***tc_temp3 = 0xB03, Neg=0, tc_temp_float=22.02
+*************************************************
+Ch0 is TC: 71.64
+Thread_SaveValuesToArray: 9:36:56 t0=71.6, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=41
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:36:57 t0=71.6, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=42
+***tc_temp3 = 0xAFE, Neg=0, tc_temp_float=21.98
+*************************************************
+Ch0 is TC: 71.57
+Thread_SaveValuesToArray: 9:36:58 t0=71.6, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=43
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:36:59 t0=71.6, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=44
+***tc_temp3 = 0xB0B, Neg=0, tc_temp_float=22.09
+*************************************************
+Ch0 is TC: 71.75
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Thread_SaveValuesToArray: 9:37:0 t0=71.8, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=45
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:37:1 t0=71.8, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=46
+***tc_temp3 = 0xB16, Neg=0, tc_temp_float=22.17
+*************************************************
+Ch0 is TC: 71.91
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Thread_SaveValuesToArray: 9:37:2 t0=71.9, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=47
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:37:3 t0=71.9, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=48
+***tc_temp3 = 0xAF7, Neg=0, tc_temp_float=21.93
+*************************************************
+Ch0 is TC: 71.47
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Thread_SaveValuesToArray: 9:37:4 t0=71.5, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=49
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:37:5 t0=71.5, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=50
+***tc_temp3 = 0xAF4, Neg=0, tc_temp_float=21.91
+*************************************************
+Ch0 is TC: 71.43
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:37:6 t0=71.4, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=51
+Thread_SaveValuesToArray: 9:37:7 t0=71.4, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=52
+***tc_temp3 = 0xAE1, Neg=0, tc_temp_float=21.76
+*************************************************
+Ch0 is TC: 71.16
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:37:8 t0=71.2, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=53
+Thread_SaveValuesToArray: 9:37:9 t0=71.2, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=54
+***tc_temp3 = 0xAF7, Neg=0, tc_temp_float=21.93
+*************************************************
+Ch0 is TC: 71.47
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:37:10 t0=71.5, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=55
+Thread_SaveValuesToArray: 9:37:11 t0=71.5, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=56
+***tc_temp3 = 0xAF7, Neg=0, tc_temp_float=21.93
+*************************************************
+Ch0 is TC: 71.47
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:37:12 t0=71.5, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=57
+Thread_SaveValuesToArray: 9:37:13 t0=71.5, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=58
+***tc_temp3 = 0xAF2, Neg=0, tc_temp_float=21.89
+*************************************************
+Ch0 is TC: 71.40
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:37:14 t0=71.4, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=59
+***tc_temp3 = 0xAF0, Neg=0, tc_temp_float=21.88
+*************************************************
+Thread_SaveValuesToArray: 9:37:15 t0=71.4, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=60
+Ch0 is TC: 71.38
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:37:16 t0=71.4, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=61
+***tc_temp3 = 0xAEA, Neg=0, tc_temp_float=21.83
+*************************************************
+Thread_SaveValuesToArray: 9:37:17 t0=71.4, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=62
+Ch0 is TC: 71.29
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:37:18 t0=71.3, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=63
+***tc_temp3 = 0xAF4, Neg=0, tc_temp_float=21.91
+*************************************************
+Ch0 is TC: 71.43
+Thread_SaveValuesToArray: 9:37:19 t0=71.4, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=64
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:37:20 t0=71.4, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=65
+***tc_temp3 = 0xAE5, Neg=0, tc_temp_float=21.79
+*************************************************
+Ch0 is TC: 71.22
+Thread_SaveValuesToArray: 9:37:21 t0=71.2, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=66
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:37:22 t0=71.2, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=67
+***tc_temp3 = 0xAF2, Neg=0, tc_temp_float=21.89
+*************************************************
+Ch0 is TC: 71.40
+Thread_SaveValuesToArray: 9:37:23 t0=71.4, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=68
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:37:24 t0=71.4, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=69
+***tc_temp3 = 0xB06, Neg=0, tc_temp_float=22.05
+*************************************************
+Ch0 is TC: 71.68
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Thread_SaveValuesToArray: 9:37:25 t0=71.7, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=70
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:37:26 t0=71.7, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=71
+***tc_temp3 = 0xB0B, Neg=0, tc_temp_float=22.09
+*************************************************
+Ch0 is TC: 71.75
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Thread_SaveValuesToArray: 9:37:27 t0=71.8, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=72
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:37:28 t0=71.8, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=73
+***tc_temp3 = 0xB0B, Neg=0, tc_temp_float=22.09
+*************************************************
+Ch0 is TC: 71.75
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Thread_SaveValuesToArray: 9:37:29 t0=71.8, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=74
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:37:30 t0=71.8, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=75
+***tc_temp3 = 0xB14, Neg=0, tc_temp_float=22.16
+*************************************************
+Ch0 is TC: 71.88
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:37:31 t0=71.9, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=76
+Thread_SaveValuesToArray: 9:37:32 t0=71.9, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=77
+***tc_temp3 = 0xB00, Neg=0, tc_temp_float=22.00
+*************************************************
+Ch0 is TC: 71.60
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:37:33 t0=71.6, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=78
+Thread_SaveValuesToArray: 9:37:34 t0=71.6, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=79
+***tc_temp3 = 0xB10, Neg=0, tc_temp_float=22.12
+*************************************************
+Ch0 is TC: 71.82
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:37:35 t0=71.8, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=80
+Thread_SaveValuesToArray: 9:37:36 t0=71.8, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=81
+***tc_temp3 = 0xB06, Neg=0, tc_temp_float=22.05
+*************************************************
+Ch0 is TC: 71.68
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:37:37 t0=71.7, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=82
+***tc_temp3 = 0xB24, Neg=0, tc_temp_float=22.28
+*************************************************
+Thread_SaveValuesToArray: 9:37:38 t0=71.7, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=83
+Ch0 is TC: 72.11
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:37:39 t0=72.1, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=84
+***tc_temp3 = 0xB10, Neg=0, tc_temp_float=22.12
+*************************************************
+Thread_SaveValuesToArray: 9:37:40 t0=72.1, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=85
+Ch0 is TC: 71.82
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:37:41 t0=71.8, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=86
+***tc_temp3 = 0xB02, Neg=0, tc_temp_float=22.02
+*************************************************
+Thread_SaveValuesToArray: 9:37:42 t0=71.8, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=87
+Ch0 is TC: 71.63
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:37:43 t0=71.6, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=88
+***tc_temp3 = 0xB14, Neg=0, tc_temp_float=22.16
+*************************************************
+Ch0 is TC: 71.88
+Thread_SaveValuesToArray: 9:37:44 t0=71.9, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=89
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:37:45 t0=71.9, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=90
+***tc_temp3 = 0xB10, Neg=0, tc_temp_float=22.12
+*************************************************
+Ch0 is TC: 71.82
+Thread_SaveValuesToArray: 9:37:46 t0=71.8, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=91
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:37:47 t0=71.8, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=92
+***tc_temp3 = 0xB09, Neg=0, tc_temp_float=22.07
+*************************************************
+Ch0 is TC: 71.73
+Thread_SaveValuesToArray: 9:37:48 t0=71.7, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=93
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:37:49 t0=71.7, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=94
+***tc_temp3 = 0xB0E, Neg=0, tc_temp_float=22.11
+*************************************************
+Ch0 is TC: 71.80
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Thread_SaveValuesToArray: 9:37:50 t0=71.8, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=95
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:37:51 t0=71.8, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=96
+***tc_temp3 = 0xB1A, Neg=0, tc_temp_float=22.20
+*************************************************
+Ch0 is TC: 71.97
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Thread_SaveValuesToArray: 9:37:52 t0=72.0, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=97
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:37:53 t0=72.0, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=98
+***tc_temp3 = 0xAF8, Neg=0, tc_temp_float=21.94
+*************************************************
+Ch0 is TC: 71.49
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Thread_SaveValuesToArray: 9:37:54 t0=71.5, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=99
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:37:55 t0=71.5, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=100
+***tc_temp3 = 0xB10, Neg=0, tc_temp_float=22.12
+*************************************************
+Ch0 is TC: 71.82
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:37:56 t0=71.8, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=101
+Thread_SaveValuesToArray: 9:37:57 t0=71.8, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=102
+***tc_temp3 = 0xB08, Neg=0, tc_temp_float=22.06
+*************************************************
+Ch0 is TC: 71.71
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:37:58 t0=71.7, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=103
+Thread_SaveValuesToArray: 9:37:59 t0=71.7, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=104
+***tc_temp3 = 0xB03, Neg=0, tc_temp_float=22.02
+*************************************************
+Ch0 is TC: 71.64
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:38:0 t0=71.6, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=105
+Thread_SaveValuesToArray: 9:38:1 t0=71.6, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=106
+***tc_temp3 = 0xB03, Neg=0, tc_temp_float=22.02
+*************************************************
+Ch0 is TC: 71.64
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:38:2 t0=71.6, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=107
+***tc_temp3 = 0xAED, Neg=0, tc_temp_float=21.85
+*************************************************
+Thread_SaveValuesToArray: 9:38:3 t0=71.6, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=108
+Ch0 is TC: 71.33
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:38:4 t0=71.3, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=109
+***tc_temp3 = 0xAE7, Neg=0, tc_temp_float=21.80
+*************************************************
+Thread_SaveValuesToArray: 9:38:5 t0=71.3, t1=2
+501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 V
+aluesArrInd=110
+Ch0 is TC: 71.25
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=13
+72.05
+**********************************************
+***
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:38:6 t0=71.2, t1=2
+501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 V
+aluesArrInd=111
+***tc_temp3 = 0xAF8, Neg=0, tc_temp_float=21.9
+4
+**********************************************
+***
+Thread_SaveValuesToArray: 9:38:7 t0=71.2, t1=2
+501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 V
+aluesArrInd=112
+Ch0 is TC: 71.49
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=13
+72.05
+**********************************************
+***
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:38:8 t0=71.5, t1=2
+501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 V
+aluesArrInd=113
+***tc_temp3 = 0xAD6, Neg=0, tc_temp_float=21.67
+************************************************
+*
+Ch0 is TC: 71.01
+Thread_SaveValuesToArray: 9:38:9 t0=71.0, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-200
+00.0 ValuesArrInd=114
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:38:10 t0=71.0, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=115
+***tc_temp3 = 0xAF5, Neg=0, tc_temp_float=21.91
+*************************************************
+Ch0 is TC: 71.45
+Thread_SaveValuesToArray: 9:38:11 t0=71.4, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=116
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:38:12 t0=71.4, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=117
+***tc_temp3 = 0xADE, Neg=0, tc_temp_float=21.73
+*************************************************
+Ch0 is TC: 71.12
+Thread_SaveValuesToArray: 9:38:13 t0=71.1, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=118
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:38:14 t0=71.1, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=119
+***tc_temp3 = 0xACE, Neg=0, tc_temp_float=21.61
+*************************************************
+Ch0 is TC: 70.90
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Thread_SaveValuesToArray: 9:38:15 t0=70.9, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=120
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:38:16 t0=70.9, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=121
+***tc_temp3 = 0xAE4, Neg=0, tc_temp_float=21.78
+*************************************************
+Ch0 is TC: 71.21
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Thread_SaveValuesToArray: 9:38:17 t0=71.2, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=122
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:38:18 t0=71.2, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=123
+***tc_temp3 = 0xB02, Neg=0, tc_temp_float=22.02
+*************************************************
+Ch0 is TC: 71.63
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Thread_SaveValuesToArray: 9:38:19 t0=71.6, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=124
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:38:20 t0=71.6, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=125
+***tc_temp3 = 0xAFE, Neg=0, tc_temp_float=21.98
+*************************************************
+Ch0 is TC: 71.57
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:38:21 t0=71.6, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=126
+Thread_SaveValuesToArray: 9:38:22 t0=71.6, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=127
+***tc_temp3 = 0xAF2, Neg=0, tc_temp_float=21.89
+*************************************************
+Ch0 is TC: 71.40
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:38:23 t0=71.4, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=128
+Thread_SaveValuesToArray: 9:38:24 t0=71.4, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=129
+***tc_temp3 = 0xAF0, Neg=0, tc_temp_float=21.88
+*************************************************
+Ch0 is TC: 71.38
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:38:25 t0=71.4, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=130
+Thread_SaveValuesToArray: 9:38:26 t0=71.4, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=131
+***tc_temp3 = 0xAF8, Neg=0, tc_temp_float=21.94
+*************************************************
+Ch0 is TC: 71.49
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:38:27 t0=71.5, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=132
+***tc_temp3 = 0xAF7, Neg=0, tc_temp_float=21.93
+*************************************************
+Thread_SaveValuesToArray: 9:38:28 t0=71.5, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=133
+Ch0 is TC: 71.47
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:38:29 t0=71.5, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=134
+***tc_temp3 = 0xAFE, Neg=0, tc_temp_float=21.98
+*************************************************
+Thread_SaveValuesToArray: 9:38:30 t0=71.5, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=135
+Ch0 is TC: 71.57
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:38:31 t0=71.6, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=136
+***tc_temp3 = 0xAFA, Neg=0, tc_temp_float=21.95
+*************************************************
+Thread_SaveValuesToArray: 9:38:32 t0=71.6, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=137
+Ch0 is TC: 71.52
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:38:33 t0=71.5, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=138
+***tc_temp3 = 0xB03, Neg=0, tc_temp_float=22.02
+*************************************************
+Ch0 is TC: 71.64
+Thread_SaveValuesToArray: 9:38:34 t0=71.6, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=139
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:38:35 t0=71.6, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=140
+***tc_temp3 = 0xB0B, Neg=0, tc_temp_float=22.09
+*************************************************
+Ch0 is TC: 71.75
+Thread_SaveValuesToArray: 9:38:36 t0=71.8, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=141
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70
+Thread_SaveValuesToArray: 9:38:37 t0=71.8, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=142
+***tc_temp3 = 0xAF5, Neg=0, tc_temp_float=21.91
+*************************************************
+Ch0 is TC: 71.45
+Thread_SaveValuesToArray: 9:38:38 t0=71.4, t1=2501.7, t2=-20000.0, t3=-20000.0, t4=-20000.0 ValuesArrInd=143
+***tc_temp3 = 0x2AE07, Neg=0, tc_temp_float=1372.05
+*************************************************
+Ch1 is TC: 2501.70

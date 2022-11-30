@@ -1,0 +1,1485 @@
+/*
+ * Temperature Logger by Doug Sisco
+ * 
+ * The Temperature Logger records the temperature read from a Maxim 31856 Thermocouple IC and
+ *		creates a line graph viewable as a web page.
+ * 
+ * NEXT
+ *    BUG: The SonicWall drops http packets:
+Ethernet Header
+Ether Type: IP(0x800), Src=[30:ae:a4:0c:ea:c0], Dst=[18:b1:69:ef:b2:a8]
+IP Packet Header
+IP Type: TCP(0x6), Src=[192.168.1.87], Dst=[192.185.123.20]
+TCP Packet Header
+TCP Flags = [ACK,PSH,], Src=[64060], Dst=[80], Checksum=0x920f
+Application Header
+HTTP
+Value:[0]
+DROPPED, Drop Code: 105(Enforced Content Filter Policy), Module Id: 65(CFS), (Ref.Id: _7155_uyHtJcpfngKrRmv) 1:2)
+
+*    Http return code should be examined and the LED turned RED if bad.
+ *    LED should be yellow when first powered on and no internet connection.
+ *    
+ *    Every sample send total sample count, power-on time.
+ *	  Every N samples send event log.
+ *
+ *    Current values: include time of this value since, if it is old it will NOT show in the chart.
+ *		Also may be a warning that the value is not current.
+ *    Startup: currently the web server is blocked until the date is set.
+ *        The date should be set to 1970 (or an old date) and then updated when the time svr is contacted.
+ *    Need unit testing.
+ *    Need reboot button.
+ *    Check that all config settings are within range: I found that one of the axis settings was out of range but was
+ *       saved as part of the config.
+ *    Select temperatures to include in title (tab).
+ *    Setting to enable/disable slope.
+ *    Setting to select channel for title.
+ *    Zoom should be function of browser, not the same on all browsers.
+ *    Arrows in tab and in status pane to show temperature trends.
+ *    In main.htm, update values that are invalid with blanks.
+ *		WHAT IS CHARTSAMPLES??
+ *    Add channel names.
+ *		Setting to enable channel on chart.
+ *		If ajax does not respond within x seconds, show warning
+ *    If last N readings were in error then report.
+ *		Signal strength, battery level.
+ *		Bluetooth interface (for IP address, etc.)
+ *		Label each channel
+ *		Assign each channel to a slot.
+ *		Assign each channel color.
+ *		Warning email when channel temp reaches a high or low value.
+ * 
+ *		Bluetooth interface (for IP address, etc.)
+ * 
+ *		Press a push button to enable web server for 10 minutes (make this an option).
+ * 
+ * 
+ *		Show statistics: number of data points, current value.
+ * 
+ *		Use localized graph js.
+ * 
+ *		Show battery level.
+ * 
+ *		Download values as csv file.
+ * 
+ * 
+ *		Add multiple temperature inputs.
+ * 
+ * DEBUGGER
+ *    2-13-20 To use the debugger perform the following steps:
+ *      Set the DEBUGGER switch to 1.
+ *      Program using the serial port.
+ *      If debugger still doesn't work, unplug and re-plug the Olimex device. Then disconnect and reconnect the Olimex device
+ *         to the VM. Check that the color LED resistor is 1K or higher.
+ *      If that doesn't work then throw the entire board off the deck and scream as loud as possible.
+ * 
+ * MAINTENANCE
+ *    4-11-20 4.8 Added remote reset capability.
+ *
+ *    4-10-20 4.7 Added logging of channel ONLINE/OFFLINE status messages. 
+ *
+ *    4-9-20 Changed the TC temperature read functions to use the built-in MAX31856 open-circuit detection.
+ *      Also determined that the MAX31856 MUX design is sound and accurate for K-type thermocouples but 
+ *      is not accurate above 1000F.
+ *
+ *    4-8-20 Researched new driver for MAX31856 to fix the problem where tc readings are about 5F too high.
+ *      After some testing I found that the problem is the thermocouple wire, not the MAX31856.
+ *      Also, high temperature measurements are accurate.
+ *      I also researched whether a new driver would allow for faster temperature readings. I (re-)discovered that 
+ *          the MAX31856 datasheet indicates that measurements take a minimum of 160ms.
+ *
+ *    3-29-20 4.0 Added Over-The-Air (OTA) program updates (see Design Notes, below).
+ *      Added EventLog (see Design Notes, below). 
+ *
+ *    2-13-20 Confirmed that the time is synchronized every hour. I did this by setting SW1 to change the time and then waiting 
+ *      for the time to be set correctly.
+ *      
+ *    Also found a fix to the problem that starting a serial connection using Putty causes a reboot: pins 1 or 2 of the serial
+ *       connector (PREN or D0) are enabled when Putty is started.  I made a connector that breaks these connections, and this fixes
+ *       the problem but of course prevents programming through the serial port.
+ *
+ *    2-13-20 Pushbutton switches: attempted to create an interrupt for the switches but after many hours
+ *      concluded that the gpio interrupts are buggy in this ESP-IDF release. One guy on a forum said he finally
+ *      gave up on getting interrupts to work. I found that the interrupts work but that they trigger intermittently
+ *      regardless of the mode (neg or pos edge). I finally decided to simply poll the switches at 10hz.
+ *
+ *    2-11-20 2.1.1 Updated to ESP/IDF release v3.3 (was 3.2.2).
+ *
+ *    2-10-20 2.1 System reboots if a WIFI error persists for 10 minutes.
+ *
+ *    11-15-19 To enhance detection of good thermocouple temperature readings I added TC_LOW_MAX test in Thread_ReadTemperature().
+ *    Changed constant values of min and max TC values to TC_HIGH_MAX and TC_LOW_MAX.
+ *  
+ *    11-13-19 In Thread_SendDataToSvr() removed LoopCount and added uptime.
+ *    Configured new 'effort_pi' network.
+ *    Changed WEB_URL to 'post_data.php'.
+ *
+ *    10-20-19 We now check for the svr response: server errors are now detected and the LED is changed accordingly.
+ *    Note that if the SQL database cannot be contacted at all then an error is only reported in OpenSocket() at a timeout
+ *       which takes about 30 seconds.
+ *    Also note that this functionality cannot be tested by suspending the svr account because suspension does not disable the SQL server.
+ *
+ *    10-5-19 Removed code to read and write Config to flash. Eventually we may want to save the webserver address to flash.
+ *    Removed hostname from config.
+ *
+ *    9-5-19 Added MCP2317 with I2C interface.
+ *    Changed TC MUX address pins to MCP2317 outputs.
+ *    Added channel LEDs to MCP2317 output.
+ *    Changed tri-color LED pins to debugger pins.
+ *    Changed triac output to MCP2317 output.
+ *
+ *    8-30-19 Changed MAX31856 SPI to use alternate pins so that it doesn't interfere with debugger connection.
+ *
+ *    8-29-19 Thermocouple open-sensor errors are now detected and reported as INVALID_TEMPERATURE.
+ *    Confirmed that MAX31856 library uses the standard spi_master.c SPI library.
+ *    
+ *    Found that MAX31856 takes 143ms to take a measurement, and thus the 250ms delay in max31856_oneshot_temperature() is warranted.
+ *    
+ *    Found that unconnected TC channels were "bleeding" to the next adjacent channel because the 74HC4051 was holding the charge. 
+ *       To fix this I added a 1M resistor across the MAX31856 sensor input. It does not seem to interfere with readings but it fixes the 
+ *       "bleeding" problem. 
+ *       We may also need protection devices from each input to ground to prevent static damage.
+ *       
+ *    Tested TC inputs for accuracy at 32F and range from -28F to 1000F.
+ *
+ *	  8-25-19 In appmain(), changed the priority of the Thread_ReadTemperature thread to maximum. This significantly reduces the number of DS18B20 read errors
+ *		from 6% to .5%. 
+ *	  Changed Thread_ReadTemperature() so that when a sensor read error occurs, the last good value is stored in the data point. In the last version
+ *		a null value was stored.
+ *	  Confirmed the timing of DS18B20 reads in ds18b20.cpp.
+ *	  Added CChannel::Connected (at least one valid read has occurred).
+ *
+ *	  8-11-19 Attempted setting the current time from the GET response but there doesn't seem to be
+ *	     an easy way to do this. It appears that the time is always synced to the NTP using an open socket,
+ *	     though I could not confirm this.
+ *
+ *    6-19-19 Fixed memory leak in server/common.js/UpdateData(). 
+ *
+ *    6-18-19 Found that if a channel is not updating we will still see a current value but
+ *       the chart line will not appear. This is because the chart only shows current values.
+ *
+ *    6-17-19 Moved project to local drive (j:) because phpStorm doees not play well with mapped drives: some of the files simply 
+ *       would not sync from phpStorm to the NAS folder.
+ *
+ *    6-16-19 Completed printing current values on charts using additional SQL query.
+ *    Fixed problem where chart updates would halt. This was due to occasional errors in the JSON returned 
+ *       to the JS script: these errors were not handled so the script would simply quit. I added an error
+ *       handler which simply calls another
+ *
+ *	  6-15-19 ESP-IDF V3.3 
+ *	     Disabled html server.
+ *	     Bug: crash after about 5 hours:
+ *       -assertion "Operating mode must not be set while SNTP client is running" failed: file "C:/SysGCC/esp32/esp-idf/v3.3/components/lwip/lwip/src/apps/sntp/sntp.c", line 600, function: sntp_setoperatingmode abort() was called at PC 0x400d4243 on core 0
+ *       This was due to the thread Thread_UpdateTime() which was created on 5-3-19.
+ *       Removed all ESP-IDF informational statements by phy_printf(const char* format, ...) with an empty function in components/esp32/lib_printf.c to solve your problem.
+ *
+ *    5-3-19 Time is updated once per hour. 
+ *
+ *    2-15-19 Added Sensor Type menu to settings panel.
+ *			Added slope calculation.
+ * 
+ *    2-13-19 Added TC selector, removed thermocouple_task() and moved it to Thread_ReadTemperature().
+ * 
+ *    2.10 Fixed thermocouple sign problem in max31856.c/thermocouple_read_temperature().
+ * 
+ *    2.9 Added Config::CheckValues().
+ *        Increased accuracy of 18b20 sensors in ds18b20_get_temp().
+ * 
+ *    2.8 Initial update does not print invalid values on left.
+ *			 Bigger buttons.
+ *        After MAX_SUCCESSIVE_INVALID_READS successive temp reads the value is recorded as INVALID_TEMP (instead of being ignored).
+ *        Chart now reflects the same colors as the left panel. 
+ *           In ProcessChartRequest() added 'null' entries for invalid values instead of simply skipping the values in the chart data.
+ *    2.7 Changed X-axis date format.
+ * 
+ * 
+ * DESIGN NOTES
+ *      3-29-20 OTA uses the simple non-SSL example in C:\SysGCC\esp32\esp-idf\v3.3\examples\system\ota\simple_ota_example.
+ *          This code had a few problems and I had to modifiy some library code to make it work properly.
+ *          FIRMWARE_UPGRADE_PORT is defined in C:\SysGCC\esp32\esp-idf\v3.3\components\esp_http_client\esp_http_client.c
+ *          I had to hard code this because it overrides the URL port nor the client port.
+ *          See also the change to C:\SysGCC\esp32\esp-idf\v3.3\components\esp_https_ota\src\esp_https_ota.c to prevent an infinite loop in the case of a bad URL.
+ *          
+ *          OTA has it's own task loop which checks the flag FirmwareUpgradeInProcess once per second. It retreives the bin file, flashes it
+ *          and then reboots.
+ *          OTA is initiated by setting the SQL table var deviceflags bit 1. This flag is read with every data POST and is then reset during the next POST.
+ *
+ *      To use the Olimex debugger the tricolor led 100 ohm resistor must be removed. 
+ *      ALSO, you must first set DEBUGGER compiler directive in tc_common.h and flash using the serial port.
+ *      You might be able to flash using the debugger but it's easier to use the serial port first.
+ *
+ *      The MCP23S17 driver code is from  https://esp32.com/viewtopic.php?t=9309
+ *
+  *		The MAX31856 driver code is from https://github.com/djkilgore/max31856.
+ * 
+ * Unusable: 6,7,8,9,10,11 (connected internally)
+ * Inputs-only: 34,35,36,39
+ *   12 is also unusable as an input on startup. * 
+ * 
+ * TOOLCHAIN NOTES
+ * 
+ * To send messages to error.txt, use make flash monitor &> error.txt
+ * 
+ * 3-28-20 For OTA, in VisualGDB Project Properties, ESP-IDF Configuration, Partition Settings section choose "custom partition table csv".
+ * 
+ * BUGS
+ *	  8-10-19 I had the same problem as 3-28-19, this time I removed the USB power supply from the wall and 
+ *	     re-plugged and this immediately fixed the problem.
+ *    3-28-19 Wlan suddenly would not connect until I removed the 'lasertag' wless entry, then it connected imediately.
+ * 
+ */
+// ***************** ESP PIN ASSIGNMENTS *****************
+/*
+  D0      MAX31856 SDI also serial port
+  D1      Serial port TXD
+  D2      Unused
+  D3      Serial port RXD
+  D4      MAX31856 SDO
+  D5      SENSOR 3
+  D6-11   unusable (connected internally)
+  D12     JTAG, LED BLUE
+  D13     JTAG, LED GREEN
+  D14     JTAG, LED RED
+  D15     JTAG
+  D16     MAX31856 SCK
+  D17     unused
+  D18     SENSOR 10
+  D19     SENSOR 4
+  D20 no pin
+  D21     SENSOR 11
+  D22     SENSOR 12
+  D23     unused
+  D24 no pin
+  D25     SENSOR 1
+  D26     SENSOR 2
+  D27     MAX31856 CS
+  D28 no pin
+  D32     MCP2317 SCK
+  D33     MCP2317 SDA
+  D34     unused         INPUT-ONLY
+  D35     unused         INPUT-ONLY
+  D36     PB2            INPUT-ONLY
+  D37, D38 no pin
+  D39     PB1            INPUT-ONLY
+       
+  See https://randomnerdtutorials.com/esp32-pinout-reference-gpios/
+*/
+
+
+// **************** STRUCTS ****************
+
+// CONSTANTS
+/*
+			 [new Date(2015,01,01, 15,0,30), 65],
+			 [new Date(2015,01,01, 15,0,31), 66],
+			 [new Date(2015,01,01, 15,0,35), 67],
+			 [new Date(2015,01,02, 15,0,37), 66],
+			 [new Date(2015,01,02, 15,0,39), 68],
+			 [new Date(2015,01,02, 15,0,40), 69]
+ */
+#include "tc_common.h"
+
+// ****************************************************************************************************
+// GLOBALS
+
+// Indicates that a reset has been requested in this number of seconds.
+volatile int ResetRequestSec = 0;
+CDataPoint ValuesArr[MAX_SAMPLES];
+// Time at boot used to caculate up time. This is set in TimeSetup().
+time_t BootTime;
+volatile int ValuesArrInd = 0;
+std::queue<CDataPoint> SvrDataPointQ;
+max31856_cfg_t max31856;
+CConfig Config;
+//float temp1;
+//int Count = 0;
+char strftime_buf[64];
+
+#define BUF_SIZE_SKT 300
+#define BUF_SIZE (300)
+//int sock;
+int sockSMTP;
+int WifiAuthIndex = 0;
+int WifiStatus = 0;
+unsigned long long MACAddr;
+// Indicates that this unit is being identified.
+int DeviceFlags = 0;
+int SystemStatusFlag = 0;
+int ThermocoupleCurrent = 0;
+
+//E_BLINKTYPE BlinkType = BLINK_OFF;
+// This is the low level for dimming the LEDs. When set the leds will dim instead of blink.
+//int LEDDimLowLevel = 0;
+
+CStatusLED StatusLED;
+
+volatile int Sw1Pressed = 0;
+volatile int Sw2Pressed = 0;
+
+// Number of seconds since we have successfully contacted the svr.
+long TimeSvrConnectSec = 0;
+
+// Current value of the MCP23017 ports.
+int MCP23017CurVal = 0;
+
+//char HostName[20];
+long TimeSinceBootMS = 0;
+//long TimeSinceLastMsgMS = 0;
+// Indicates that the leds should show power on.
+//bool PowerBlinkIndictor = 1;
+
+CEventLog EventLog;
+
+// This holds the wifi authentication.
+typedef struct {
+	const char *SSID;
+	const char *Pwd;
+} s_WifiAuth;
+
+// Configure possible wireless networks here.
+// Be sure to change this constant or we will crash.
+// Note that this is zero-based, so with one entry use '0'. 
+#define WIFIAUTH_LAST_INDEX 1
+s_WifiAuth WifiAuth[] = {
+	{"full_quiver", "samrizzo"},
+//	{"pcbcguest", "jesuslovesme"},
+	{"effort_pi", "$JerRizzo5$"}
+};
+
+static void obtain_time(void) {
+	xEventGroupWaitBits(wifi_event_group, CONNECTED_BIT, false, true, portMAX_DELAY);
+	initialize_sntp();
+
+	time_t now = 0;
+	struct tm timeinfo = {0,0,0,0,0,1970,0,0,0};
+
+	ESP_LOGI(TAG, "Setting system time..\n");
+	vTaskDelay(2000 / portTICK_PERIOD_MS);
+	time(&now);
+	localtime_r(&now, &timeinfo);
+}
+
+#include "lwip/apps/sntp.h"
+
+
+static void initialize_sntp(void) {
+	ESP_LOGI(TAG, "Initializing SNTP");
+	sntp_setoperatingmode(SNTP_OPMODE_POLL); // 6-15-19 dgs $$$ THIS LINE CAUSES THE ASSERTION!
+	sntp_setservername(0, (char*)"pool.ntp.org");
+    
+//    sntp_set_time_sync_notification_cb(TimeSyncNotification);
+//    sntp_set_sync_mode(SNTP_SYNC_MODE_SMOOTH); // Added 2-10-20
+	sntp_init();
+}
+
+
+
+static esp_err_t event_handler(void *ctx, system_event_t *event) {
+    char s100[100];
+    
+	switch (event->event_id) {
+		case SYSTEM_EVENT_AP_START:
+			printf("Event:ESP32 is started in AP mode\n");
+			break;
+		
+		case SYSTEM_EVENT_AP_STACONNECTED:
+			xEventGroupSetBits(wifi_event_group, CLIENT_CONNECTED_BIT);
+			break;
+
+		case SYSTEM_EVENT_AP_STADISCONNECTED:
+			xEventGroupSetBits(wifi_event_group, CLIENT_DISCONNECTED_BIT);
+			break;		
+
+	case SYSTEM_EVENT_STA_START:
+			//printf("event_handler() SYSTEM_EVENT_STA_START\n");
+			esp_wifi_connect();
+			break;
+		case SYSTEM_EVENT_STA_GOT_IP:
+			//printf("event_handler() SYSTEM_EVENT_STA_GOT_IP\n");
+			xEventGroupSetBits(wifi_event_group, CONNECTED_BIT);  	
+			sprintf(s100,"My IP is " IPSTR "\n", IP2STR(&event->event_info.got_ip.ip_info.ip));  	
+
+			//        printf("netmask: " IPSTR "\n", IP2STR(&event->event_info.got_ip.ip_info.netmask));
+			//        printf("gw: " IPSTR "\n", IP2STR(&event->event_info.got_ip.ip_info.gw));
+			//        printf("\n");
+			fflush(stdout);
+			WifiStatus = 1; // $$$ was 1
+			break;
+    	
+		case SYSTEM_EVENT_STA_DISCONNECTED:
+			//printf("event_handler() SYSTEM_EVENT_STA_DISCONNECTED\n");
+
+			// If wifi was never connected..
+			if (WifiStatus == 0) {
+				//printf("event_handler() Trying the next wless network..\n");
+				// Try the next wireless network.
+				WifiAuthIndex++;
+				if (WifiAuthIndex > WIFIAUTH_LAST_INDEX)
+					WifiAuthIndex = 0;
+
+				//printf("event_handler() WifiAuthIndex=%u\n",WifiAuthIndex);
+				printf("event_handler() Wifi trying to connect to %s with pwd %s\n", WifiAuth[WifiAuthIndex].SSID, WifiAuth[WifiAuthIndex].Pwd);
+				wifi_config_t sta_config;
+				sta_config.sta.bssid_set = false;
+				strcpy((char*) sta_config.sta.ssid, WifiAuth[WifiAuthIndex].SSID);
+				strcpy((char*) sta_config.sta.password, WifiAuth[WifiAuthIndex].Pwd);
+
+				//printf("event_handler() esp_wifi_set_config\n");
+				esp_wifi_set_config(WIFI_IF_STA, &sta_config);
+			}
+
+			WifiStatus = 0;
+			/* This is a workaround as ESP32 WiFi libs don't currently
+				auto-reassociate. */
+			//printf("event_handler() esp_wifi_connect\n");
+			esp_wifi_connect();
+		
+			xEventGroupClearBits(wifi_event_group, CONNECTED_BIT);
+			break;
+		default:
+			break;
+	}
+	return ESP_OK;
+}
+
+static int initialise_wifi(void) {
+	tcpip_adapter_init();
+	wifi_event_group = xEventGroupCreate();
+	ESP_ERROR_CHECK(esp_event_loop_init(event_handler, NULL));
+	wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
+	ESP_ERROR_CHECK(esp_wifi_init(&cfg));
+	ESP_ERROR_CHECK(esp_wifi_set_storage(WIFI_STORAGE_RAM));
+	ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
+
+	wifi_config_t sta_config;
+	sta_config.sta.bssid_set = false;
+	strcpy((char*) sta_config.sta.ssid, WifiAuth[0].SSID);
+	strcpy((char*) sta_config.sta.password, WifiAuth[0].Pwd);
+
+	ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &sta_config));
+
+	esp_wifi_stop();
+	vTaskDelay(pdMS_TO_TICKS(1000));
+
+	int r = esp_wifi_start();
+	return r;
+}
+
+/**
+ ** Determine if time has been obtained.
+ ** 
+ ** Return 0 if not valid, 1 if valid.
+ ***/
+int TimeValid() {
+    time_t now;
+
+    time(&now);
+    
+    if (now > 1570000000)
+        return 1;
+ 
+    return 0;
+}
+
+void TimeSetup(int ForceUpdate) {
+	time_t now;
+	struct tm timeinfo;
+
+	time(&now);
+	localtime_r(&now, &timeinfo);
+	// Is time set?
+	if(ForceUpdate || timeinfo.tm_year < (2016 - 1900)) {
+//		ESP_LOGI(TAG, "Time is not set yet. Connecting to WiFi and getting time over NTP.");
+		obtain_time();
+		// update 'now' variable with current time
+		time(&now);
+	}
+
+	// Set timezone to Eastern Standard Time and print local time
+	setenv("TZ", "EST5EDT,M3.2.0/2,M11.1.0", 1);
+	tzset();
+	localtime_r(&now, &timeinfo);
+	strftime(strftime_buf, sizeof (strftime_buf), "%c", &timeinfo);
+    char s100[100];
+	sprintf (s100,"The current time is: %s\n", strftime_buf);
+    EventLog.Log(s100, ELogLevel::INFO, 1);
+    
+    // Set the boot time.
+    BootTime = now;
+}
+
+//static void UART_Init() {
+//	printf("UART_Init()\n");
+//
+//	/* Configure parameters of an UART driver,
+//	 * communication pins and install the driver */
+//	uart_config_t uart_config = {
+//		.baud_rate = 1200,
+//		.data_bits = UART_DATA_8_BITS,
+//		.parity = UART_PARITY_DISABLE,
+//		.stop_bits = UART_STOP_BITS_1,
+//		.flow_ctrl = UART_HW_FLOWCTRL_DISABLE
+//	};
+//	uart_param_config(UART_NUM_1, &uart_config);
+//	// RXD pin is GPIO 5
+//	uart_set_pin(UART_NUM_1, UART_PIN_NO_CHANGE, GPIO_NUM_5, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
+//	uart_driver_install(UART_NUM_1, BUF_SIZE * 2, 0, 0, NULL, 0);
+//
+//	// Configure a temporary buffer for the incoming data
+//	data = (uint8_t *) malloc(BUF_SIZE);
+//}
+
+/**
+ * Get the WIFI channel and signal strength.
+ * 
+ * @param info
+ */
+void getWifiInfo(SWifiInfo *info) {
+	info->rssi = 0;
+	info->channel = 0;
+	wifi_ap_record_t wifidata;
+	esp_wifi_sta_get_ap_info(&wifidata);
+	if (wifidata.primary != 0) {
+		info->rssi = wifidata.rssi;
+		info->channel = wifidata.primary;
+	}
+}
+
+
+/**
+ ** Save the current data point to the data array.
+ ***/
+void SaveDataPointToArray(CDataPoint DataPoint) {
+	if (Config.EnableLogging) {
+		//printf("Thread_SaveValuesToArray: %u:%u:%u t0=%.1f, t1=%.1f, t2=%.1f, t3=%.1f, t4=%.1f ValuesArrInd=%u\n",timeinfo.tm_hour,timeinfo.tm_min,timeinfo.tm_sec,
+		//		  Config.ChannelsAr[0].ValueCurrent,Config.ChannelsAr[1].ValueCurrent,Config.ChannelsAr[2].ValueCurrent,Config.ChannelsAr[3].ValueCurrent,Config.ChannelsAr[4].ValueCurrent, ValuesArrInd);
+
+			// Add the new value to the array.
+		for (int i=0; i<NUM_CHANNELS; i++)
+			ValuesArr[ValuesArrInd].val[i] = DataPoint.val[i];
+
+		ValuesArr[ValuesArrInd].time = DataPoint.time;
+
+		ValuesArrInd++;
+		if (ValuesArrInd >= MAX_SAMPLES)
+			ValuesArrInd = 0;	
+	} else 
+		printf("Logging disabled\n");
+}
+
+void NVS_Init() {
+	// Initialize NVS
+	esp_err_t err = nvs_flash_init();
+	if (err == ESP_ERR_NVS_NO_FREE_PAGES) {
+		// NVS partition was truncated and needs to be erased
+		// Retry nvs_flash_init
+		ESP_ERROR_CHECK(nvs_flash_erase());
+		err = nvs_flash_init();
+	}
+	ESP_ERROR_CHECK(err);
+}
+
+//esp_err_t Read(char *tag, char *value, size_t len) {
+//	nvs_handle my_handle;
+//
+//	// Get this target's name.
+//	esp_err_t err = nvs_open("preferences", NVS_READWRITE, &my_handle);
+//
+//	if (err != ESP_OK)
+//		printf("Error (%d) opening NVS handle!\n", err);
+//	else {
+//		err = nvs_get_str(my_handle, tag, value, &len);
+//		//printf("nvs_get_str: err=%X, '%s'\n",err,value);
+//	}
+//
+//	nvs_close(my_handle);
+//	return err;
+//}
+
+//esp_err_t Write(char *tag, char *value) {
+//	nvs_handle my_handle;
+//
+//	// Get this target's name.
+//	esp_err_t err = nvs_open("preferences", NVS_READWRITE, &my_handle);
+//
+//	if (err == ESP_OK) {
+//		err = nvs_set_str(my_handle, tag, value);
+//	} else
+//		printf("Error (%d) opening NVS handle!\n", err);
+//
+//	nvs_close(my_handle);
+//	return err;
+//}
+
+void Thread_CPUTimeUpdate() {
+	while (1) {
+		vTaskDelay(10 / portTICK_PERIOD_MS);
+
+		TimeSinceBootMS++;
+	}
+}
+
+void Replace(string& source, string const& find, string const& replace) {
+	for (string::size_type i = 0; (i = source.find(find, i)) != string::npos;) {
+		source.replace(i, find.length(), replace);
+		i += replace.length();
+	}
+}
+
+
+/**
+ * Parse an html header string.
+ * 
+ * @param buf
+ * @param buflen
+ * @param StrArr
+ * @param StrMaxlen
+ */
+///
+int Parse(char *buf, int buflen, string StrArr[], int StrMaxlen) {
+	char *ptr = buf;
+	int i = 0;
+	char s[5];
+
+	for (i=0; i<StrMaxlen; i++)
+		StrArr[i].clear();
+
+	i=0;
+	// While EOL not detected and we are not at the end of the buffer..
+	while (*ptr != '\n' && (int)(ptr-buf) < buflen) {
+		//printf("While\n");
+		
+		//printf("i=%u *ptr=%c\n",i,*ptr);
+		// If this is a separator..
+		if ( strchr("?=& ",*ptr) ) {
+			// Save the separator as the current array token.
+			if (StrArr[i].size() > 0 && i < StrMaxlen-1)
+				i++;
+			s[0] = *ptr; s[1] = 0;
+			StrArr[i] = s;
+			if (i < StrMaxlen-1)
+				i++;
+		}
+		else {
+			// Add this char to the current array value.
+			StrArr[i] += (char)(*ptr);
+		}
+		ptr++;
+	}
+	return i;
+}
+
+// for string delimiter
+vector<string> split(string s, string delimiter) {
+	size_t pos_start = 0, pos_end, delim_len = delimiter.length();
+	string token;
+	vector<string> res;
+
+	while ((pos_end = s.find(delimiter, pos_start)) != string::npos) {
+		token = s.substr(pos_start, pos_end - pos_start);
+		pos_start = pos_end + delim_len;
+		res.push_back(token);
+	}
+
+	res.push_back(s.substr(pos_start));
+	return res;
+}
+
+
+
+//void Thread_BatteryTest() {
+//	adc1_config_width(ADC_WIDTH_9Bit);
+//	adc1_config_channel_atten(ADC1_CHANNEL_0, ADC_ATTEN_DB_11);
+//
+//	// https://esp-idf.readthedocs.io/en/v2.0/api/peripherals/dac.html
+//	// For curve fitting see https://mycurvefit.com/
+//	while (1) {
+//		float val = adc1_get_raw(ADC1_CHANNEL_0); // dgs: was adc1_get_voltage
+////		ClientStats.BatteryVoltage = (0.00951 * val + 1.263)*10;
+//		//printf("Battery=%d\n",ClientStats.BatteryVoltage);
+//		//dac_out_voltage(DAC_CHANNEL_1, val/2);
+//		delay(1000);
+//	}
+//}
+
+int SMTPWaitReply(int WaitTimeMS, string &s) {
+	char SMTPBuf[200];
+	int len;
+
+	// While there is no reply..
+	do {
+		// Get a CMsg from the server.
+		len = read(sockSMTP, SMTPBuf, BUF_SIZE_SKT);
+
+		// If disconnect occurred..
+		if (len < 0) {
+			printf("SMTP Disconnect\n");
+			return len;
+		}
+
+		DelayMS(1);
+	} while (len == 0 && WaitTimeMS-- > 0);
+
+	if (len > 0) {
+		SMTPBuf[len] = 0;
+		s = SMTPBuf;
+		printf("SMTP SVR: %s\n", SMTPBuf);
+	}
+	return len;
+}
+
+
+
+//static xQueueHandle gpio_evt_queue = NULL;
+
+//static void gpio_isr_handler(void* arg)
+//{
+//    uint32_t gpio_num = (uint32_t) arg;
+//    Sw1Pressed = 1;
+////    xQueueSendFromISR(gpio_evt_queue, &gpio_num, NULL);
+//    //    printf("gpio_isr_handler\n");
+//}
+
+void InitGPIO() {
+
+#if !DEBUGGER
+	// Init LED outputs
+	gpio_pad_select_gpio(LEDR_GPIO_NUM);
+	gpio_set_direction(LEDR_GPIO_NUM, GPIO_MODE_OUTPUT);
+	gpio_set_level(LEDR_GPIO_NUM, 0);
+	
+	gpio_pad_select_gpio(LEDG_GPIO_NUM);
+	gpio_set_direction(LEDG_GPIO_NUM, GPIO_MODE_OUTPUT);
+	gpio_set_level(LEDG_GPIO_NUM, 1);
+	
+	gpio_pad_select_gpio(LEDB_GPIO_NUM);
+	gpio_set_direction(LEDB_GPIO_NUM, GPIO_MODE_OUTPUT);
+	gpio_set_level(LEDB_GPIO_NUM, 1);
+#endif
+    // Configure pushbutton switch I/O.
+    gpio_pad_select_gpio(SW1_GPIO_NUM);
+    gpio_set_direction(SW1_GPIO_NUM, GPIO_MODE_INPUT);
+    gpio_pad_select_gpio(SW2_GPIO_NUM);
+    gpio_set_direction(SW2_GPIO_NUM, GPIO_MODE_INPUT); 
+
+    // NOTE THAT THIS CODE DOES NOT WORK! WE STILL GET SPURIOUS INTERRUPTS!
+//    gpio_config_t io_conf;
+//    //set as output mode
+//    io_conf.mode = GPIO_MODE_INPUT;
+//    //bit mask of the pins that you want to set,e.g.GPIO18/19
+//    io_conf.pin_bit_mask = (uint64_t)1 << SW1_GPIO_NUM;
+//    //disable pull-down mode
+//    io_conf.pull_down_en = (gpio_pulldown_t)0;
+//    //disable pull-up mode
+//    io_conf.pull_up_en = (gpio_pullup_t)1;
+//    //interrupt of falling edge
+//    io_conf.intr_type = GPIO_INTR_NEGEDGE;
+//    gpio_config(&io_conf);
+//  
+//    gpio_install_isr_service(0);
+//    gpio_isr_handler_add((gpio_num_t)SW1_GPIO_NUM, gpio_isr_handler, (void*)SW1_GPIO_NUM);
+}
+
+
+
+void CStatusLED::Set(int status) {
+	SystemStatusFlag = status;
+	
+	if (SystemStatusFlag == SYS_STATUS_WARNING)
+		LEDSetColor(BLUE);
+	else if (SystemStatusFlag == SYS_STATUS_ERR)
+		LEDSetColor(RED);
+	else
+		LEDSetColor(GREEN);
+}
+
+void CStatusLED::Blank() {
+	int c = LEDColor;
+	LEDSetColor(0);
+	LEDColor = c;
+}
+
+void CStatusLED::Restore() {
+	LEDSetColor(LEDColor);
+}
+
+
+// Set the LED color as 0xRRGGBB.
+// Where RR, GG, and BB are either on or off.
+// Color is restored to last if color == -1.
+void CStatusLED::LEDSetColor(int color) {
+	// If we want to restore the color..
+	if(color < 0) {
+		gpio_set_direction((gpio_num_t) LEDR_GPIO_NUM, GPIO_MODE_OUTPUT);	
+		gpio_set_direction((gpio_num_t) LEDG_GPIO_NUM, GPIO_MODE_OUTPUT);
+		gpio_set_direction((gpio_num_t) LEDB_GPIO_NUM, GPIO_MODE_OUTPUT);
+		color = LEDColor;
+	}
+	else
+		LEDColor = color;
+	
+	if (color & 0xff0000)
+		LEDR_ON;
+	else
+		LEDR_OFF;
+	
+	if (color & 0x00ff00)
+		LEDG_ON;
+	else
+		LEDG_OFF;
+	
+	if (color & 0x0000ff)
+		LEDB_ON;
+	else
+		LEDB_OFF;
+}
+
+
+/**
+ * Read the configuration from the VFS.
+ * 
+ * See https://github.com/espressif/esp-idf/tree/master/examples/storage/nvs_rw_blob
+ * 
+ * @return 
+ */
+//esp_err_t CConfig::Read() {
+//	printf("Restoring configuration from FLASH..\n");
+//	esp_err_t err;
+//	size_t required_size;
+//	nvs_handle my_handle;
+//	
+//	// Open the NVS.
+//	err = nvs_open("preferences", NVS_READWRITE, &my_handle);
+//
+//	if (err != ESP_OK)
+//		printf("Error (%d) opening NVS handle!\n", err);
+//	else {
+//		required_size = sizeof(Config);
+//		//printf("required_size=%u\n", (int)required_size);
+//		
+//		if (required_size > 0) {
+//			err = nvs_get_blob(my_handle, "config", this, &required_size);
+//			if (err != ESP_OK) {
+//				printf("Error nvs_get_blob.\n");
+//			}
+//		}
+//	}	
+//	nvs_close(my_handle);
+//		
+//	// Test all config values for ranges.
+//	if ( Config.CheckValues() )
+//		err = ESP_FAIL;
+//	
+//	return err;
+//}
+
+/**
+ * Write the configuration to the VFS.
+ * 
+ * @return 
+ */
+//esp_err_t CConfig::Write() {
+//	esp_err_t err;
+//	size_t required_size;
+//	nvs_handle my_handle;
+//
+//	printf("**** Writing Config..\n");
+//	
+//	// Open the NVS.
+//	err = nvs_open("preferences", NVS_READWRITE, &my_handle);
+//	
+//	// Write the config to the VFS.
+//	required_size = sizeof(Config);
+//	err = nvs_set_blob(my_handle, "config", this, required_size);
+//
+//	if (err != ESP_OK) 
+//		printf("Error in nvs_set_blob.\n");
+//
+//	// Commit
+//	err = nvs_commit(my_handle);
+//	if (err != ESP_OK) 
+//		printf("NVS commit error.\n");
+//
+//	nvs_close(my_handle);
+//	
+//	return err;
+//}
+
+/**
+ * Select a thermocouple input.
+ * 
+ * @param n
+ */
+void ThermocoupleSelect(int n) {
+    MCP23017CurVal = (MCP23017CurVal & ~0xe000) | (n << 13);
+    MCP23017WriteBoth(MCP23017CurVal);
+}
+
+
+/**
+ * Light or extinguish the given channel LED.
+ *
+ */
+void ChannelLED(int LEDNum, int Enable) {
+    if (LEDNum > 11 || LEDNum < 0)
+        return;
+    
+    if (Enable)
+        MCP23017CurVal = (MCP23017CurVal & ~(1 << LEDNum));
+    else
+        MCP23017CurVal = (MCP23017CurVal |  (1 << LEDNum));
+    
+    MCP23017WriteBoth(MCP23017CurVal);
+}
+
+///
+/*		
+ * Get a sample given the offset from the current index.
+ * 
+ * @param offset
+ * @param Sample
+ * @return -1 on error.
+ */
+int GetSample(int offset,CDataPoint &Sample) {
+	if (offset < 0 || offset > MAX_SAMPLES-1)
+		return -1;
+	
+	int i = ValuesArrInd - offset - 1;
+	
+	if (i < 0)
+		i += MAX_SAMPLES;
+	
+	Sample = ValuesArr[i];
+	return 0;
+}
+
+	
+char *Trim(char *str) {
+	char *end;
+
+	// Trim leading space
+	while(isspace((unsigned char)*str)) str++;
+
+	if (*str == 0)  // All spaces?
+	  return str;
+
+	// Trim trailing space
+	end = str + strlen(str) - 1;
+	while (end > str && isspace((unsigned char)*end)) end--;
+
+	// Write new null terminator character
+	end[1] = '\0';
+
+	return str;
+}
+
+// *******************************************************************************************
+// THIS IS THE AP CODE
+static void start_dhcp_server() {
+    
+	// initialize the tcp stack
+	tcpip_adapter_init();
+	// stop DHCP server
+	ESP_ERROR_CHECK(tcpip_adapter_dhcps_stop(TCPIP_ADAPTER_IF_AP));
+	// assign a static IP to the network interface
+	tcpip_adapter_ip_info_t info;
+	memset(&info, 0, sizeof(info));
+	IP4_ADDR(&info.ip, 192, 168, 1, 1);
+	IP4_ADDR(&info.gw, 192, 168, 1, 1); //ESP acts as router, so gw addr will be its own addr
+	IP4_ADDR(&info.netmask, 255, 255, 255, 0);
+	ESP_ERROR_CHECK(tcpip_adapter_set_ip_info(TCPIP_ADAPTER_IF_AP, &info));
+	// start the DHCP server   
+	ESP_ERROR_CHECK(tcpip_adapter_dhcps_start(TCPIP_ADAPTER_IF_AP));
+	printf("DHCP server started \n");
+}
+static void initialise_wifi_in_ap(void)
+{
+	esp_log_level_set("wifi", ESP_LOG_NONE);  // disable wifi driver logging
+	wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
+	ESP_ERROR_CHECK(esp_wifi_init(&cfg));
+	ESP_ERROR_CHECK(esp_wifi_set_storage(WIFI_STORAGE_RAM));
+	ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_AP));
+
+	// configure the wifi connection and start the interface
+	wifi_config_t ap_config;
+	
+	ap_config.ap.ssid_len = 0;
+	ap_config.ap.channel = 0;
+	ap_config.ap.authmode = AP_AUTHMODE;
+	ap_config.ap.ssid_hidden = 0;
+	ap_config.ap.max_connection = AP_MAX_CONNECTIONS;
+	ap_config.ap.beacon_interval = AP_BEACON_INTERVAL;
+	strcpy((char*)ap_config.ap.ssid, AP_SSID);
+	strcpy((char*)ap_config.ap.password,AP_PASSPHARSE);
+	
+	ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_AP, &ap_config));
+	ESP_ERROR_CHECK(esp_wifi_start());
+	printf("ESP WiFi started in AP mode \n");
+}
+
+// print the list of connected stations
+void printStationList() 
+{
+	printf(" Connected stations:\n");
+	printf("--------------------------------------------------\n");
+	
+	wifi_sta_list_t wifi_sta_list;
+	tcpip_adapter_sta_list_t adapter_sta_list;
+   
+	memset(&wifi_sta_list, 0, sizeof(wifi_sta_list));
+	memset(&adapter_sta_list, 0, sizeof(adapter_sta_list));
+   
+	ESP_ERROR_CHECK(esp_wifi_ap_get_sta_list(&wifi_sta_list));	
+	ESP_ERROR_CHECK(tcpip_adapter_get_sta_list(&wifi_sta_list, &adapter_sta_list));
+	
+	for (int i = 0; i < adapter_sta_list.num; i++) {
+		
+		tcpip_adapter_sta_info_t station = adapter_sta_list.sta[i];
+		printf("%d - mac: %.2x:%.2x:%.2x:%.2x:%.2x:%.2x - IP: %s\n",
+			i + 1,
+			station.mac[0],
+			station.mac[1],
+			station.mac[2],
+			station.mac[3],
+			station.mac[4],
+			station.mac[5],
+			ip4addr_ntoa(&(station.ip)));
+	}
+	
+	printf("\n");
+}
+
+void print_sta_info(void *pvParam) {
+	printf("print_sta_info task started \n");
+	while (1) {	
+		EventBits_t staBits = xEventGroupWaitBits(wifi_event_group, CLIENT_CONNECTED_BIT | CLIENT_CONNECTED_BIT, pdTRUE, pdFALSE, portMAX_DELAY);
+		if ((staBits & CLIENT_CONNECTED_BIT) != 0) printf("New station connected\n\n");
+		else printf("A station disconnected\n\n");
+		printStationList();
+	}
+}
+
+std::string str_toupper(std::string str) {
+    std::string loc;
+    for (std::string::size_type i = 0; i < str.length(); ++i)
+        loc += std::toupper(str[i]);
+    return loc;
+}
+
+/**
+ ** Update the time once per hour.
+ ***/
+void Thread_UpdateTime(void *pvParameter) {
+    while (1) {
+        // Delay for 1 hr
+        vTaskDelay(pdMS_TO_TICKS(60 * 60  * 1000));	
+        TimeSetup(1);
+    }
+}
+
+void PrintCurrentTime() {
+    struct tm timeinfo;
+    time_t now = time(0);
+    
+    localtime_r(&now, &timeinfo);
+    strftime(strftime_buf, sizeof(strftime_buf), "%c", &timeinfo);
+    printf("%s\n", strftime_buf);    
+}
+
+/**
+ ** If we have not been able to contact the server for 10 minutes then reboot.
+ ** Once per day set the time.
+ ***/
+void Thread_OncePerSecond(void *pvParameters) {   
+    int Seconds = 0;
+    char s200[200];
+    bool LoggedErrorState = 0;
+    
+    while (1) {      
+        // If we are in an error state because of a WIFI error (or any other connection error)..
+        //    Wait a little while and then reboot. hopefully this will resolve the problem.
+        if(SystemStatusFlag == SYS_STATUS_ERR) {
+            sprintf(s200,"Rebooting in %lu sec\n", ERROR_REBOOT_TIME_SEC-TimeSvrConnectSec);
+            if (!LoggedErrorState) {
+                LoggedErrorState = 1;
+                EventLog.Log(s200,ELogLevel::CRITICAL, 1);
+            }
+            // If time to reboot..
+            if (TimeSvrConnectSec++ > ERROR_REBOOT_TIME_SEC) {
+                printf("\n\n**** REBOOTING!\n\n");
+                EventLog.Log("REBOOTING NOW..", ELogLevel::CRITICAL, 1);
+                esp_restart();
+            }
+        } else
+            TimeSvrConnectSec = 0;
+
+        // Handle a reset request.
+        if (ResetRequestSec > 0) {
+            if (--ResetRequestSec == 0) {
+                EventLog.Log("Rebooting now!");
+                esp_restart();
+            }
+        }
+        
+        if (Seconds++ == 60) {
+            Seconds = 0;
+            
+ //            PrintCurrentTime();
+        }
+        
+        if (Sw1Pressed) {
+            EventLog.Log("Sw1 Pressed", ELogLevel::INFO);
+            Sw1Pressed = 0;          
+
+            printf("Sw1 pressed!\n");
+        }
+        
+        if (Sw2Pressed) {
+            Sw2Pressed = 0;          
+            
+            EventLog.Log("Sw2 Pressed", ELogLevel::INFO);
+        }            
+        // Delay 1 second.
+        vTaskDelay( pdMS_TO_TICKS(1000) );	
+    }
+}
+
+/**
+ ** This thread polls the switches.
+ ** 
+ ** NOTE that I tried to get the GPIO interrupt to work but I get spurious interrupts.
+ ***/
+void Thread_SwitchPoller(void *pvParameters) { 
+    while (1) {
+        if ( !gpio_get_level(SW1_GPIO_NUM) )
+            Sw1Pressed = 1;
+        if ( !gpio_get_level(SW2_GPIO_NUM) )
+            Sw2Pressed = 1;
+        
+        // Delay 1 second.
+        vTaskDelay(pdMS_TO_TICKS(100));
+    }
+}
+
+/**
+ ** Get the Json string for this entry.
+ ** 
+*/
+string CEventLogEntry::Json() {
+    char s200[200];
+    
+    string JsonStr = "[";
+    sprintf(s200, "%lu,%u,", (long)time, (int)level);
+    JsonStr += s200;
+    JsonStr += "\"" + text + "\"";
+    JsonStr += "]";
+    return JsonStr;
+}
+
+void CEventLog::Log(std::string text, ELogLevel Level, bool Print) {
+    CEventLogEntry EventLogEntry;
+    
+    // Remove all \n chars.
+    std::replace(text.begin(), text.end(), '\n', ' ');
+    
+    if (Level >= CurLevel) {
+        EventLogEntry.text = text;
+        time(&EventLogEntry.time);
+        EventLogEntry.level = Level;
+    
+        // Push the data point to the server queue.
+        if(EventLogQueue.size() < LOG_QUEUE_SIZE) {
+            EventLogQueue.push(EventLogEntry);
+        }
+        
+        if (Print || PRINT_ALL_LOGS) {
+            printf("**Log():%s\n", text.c_str());
+            fflush(stdout);
+        }
+    }
+}
+
+/**
+ ** Get the JSON string for all log entries.
+ ** 
+ ** Don't remove the entries from the queue; we will do this later!
+ ***/
+string CEventLog::Json() {
+    string JsonStr;
+    
+    if (EventLogQueue.size() <= 0)
+        return JsonStr;
+    
+    JsonStr += "\"log\":[";
+
+    CEventLogEntry Event;
+    
+    while (EventLogQueue.size() > 0) {
+        // Get a data point from the queue.
+        Event = EventLogQueue.front();
+        
+        EventLogQueue.pop();
+        JsonStr += Event.Json() + ",";
+    }
+    // Removed the last comma from the string.
+    JsonStr.pop_back();
+    
+    JsonStr += "]";
+    
+    return JsonStr;
+}
+
+void EventLogLog(char *s) {
+    EventLog.Log(s);    
+}
+    
+void app_main(void) {
+    char s200[200];
+    
+    sprintf(s200, "Ver %s %s", VERSION, COPYRIGHT);
+    EventLog.Log(s200, ELogLevel::INFO, 1);
+    sprintf(s200, "Webserver:%s, WebURL:%s", WEB_SERVER, WEB_URL);
+    EventLog.Log(s200, ELogLevel::INFO, 1);
+    
+    printf("\nESP-IDF ver: %s\n", esp_get_idf_version());
+    printf("DEBUGGER:%u\n"
+    	"PRINT_TEMPERATURE_VALUES:%u\n"
+    	"PRINT_SENSOR_ERRORS:%u\n"
+    	"PRINT_ONEWIRE_RESET_PULSE:%u\n"
+    	"PRINT_CURRENT_DATAPOINT_TIME:%u\n"
+        "PRINT_WEB_CONN_INFO:%u\n",
+        DEBUGGER,
+        PRINT_TEMPERATURE_VALUES,
+        PRINT_SENSOR_ERRORS,
+        PRINT_ONEWIRE_RESET_PULSE,
+        PRINT_CURRENT_DATAPOINT_TIME,
+        PRINT_WEB_CONN_INFO);
+    
+    // Disable the annoying ESP-IDF messages.
+//    esp_log_level_set("*", ESP_LOG_INFO);
+    esp_log_level_set("*", ESP_LOG_NONE);
+	
+    // Init the GPIO.
+    InitGPIO();
+    xTaskCreatePinnedToCore((TaskFunction_t) &Thread_SwitchPoller, "Thread_SwitchPoller", 2048, NULL, 1, NULL, 0);
+
+    // Init the MCP23017 I2C interface.
+    esp_err_t ret = mcp23017_init(I2C_SDA, I2C_SCL);
+    // Turn all LEDs off.
+    MCP23017CurVal = 0xffff;
+    MCP23017WriteBoth(MCP23017CurVal);
+    // Set status led
+	StatusLED.Set(SYS_STATUS_WARNING);
+    
+    // Disable brownout detector.
+    WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0); 
+	
+    // Init the values array.
+    for(int i = 0 ; i < MAX_SAMPLES ; i++)
+    	ValuesArr[i].time = 0;
+	
+    // Initialize NVS.
+    esp_err_t err = nvs_flash_init();
+    if (err == ESP_ERR_NVS_NO_FREE_PAGES || err == ESP_ERR_NVS_NEW_VERSION_FOUND) {
+        // 1.OTA app partition table has a smaller NVS partition size than the non-OTA
+        // partition table. This size mismatch may cause NVS initialization to fail.
+        // 2.NVS partition contains data in new format and cannot be recognized by this version of code.
+        // If this happens, we erase NVS partition and initialize NVS again.
+        ESP_ERROR_CHECK(nvs_flash_erase());
+        err = nvs_flash_init();
+    }
+    ESP_ERROR_CHECK(err);
+    
+    /*
+ * I REMOVED THIS BECAUSE NONE OF THE CONFIG VALUES NEED TO BE STORED IN FLASH.
+	esp_err_t err = Config.Read();
+	
+	// If we are forcing a config write or there was an error reading the config or if the check value is incorrect..
+	if(err || Config.CheckValue != CHECK_VALUE_INIT) {
+		printf("\n---> CONFIG READ ERROR <---\n\n");
+		// Init the configuration and write it to flash.
+		Config.Init();
+		Config.Write();
+	}
+*/  
+	
+    //*******************************************************************
+    // IMPORTANT: THE FOLLOWING NEEDS TO BE DONE AFTER Config.Init()!
+    // Init the DS18B20 sensors.
+    Config.ChannelsAr[0].SetChannel18b20((gpio_num_t)25);
+    Config.ChannelsAr[1].SetChannel18b20((gpio_num_t)26);
+    Config.ChannelsAr[2].SetChannel18b20((gpio_num_t)5);
+    Config.ChannelsAr[3].SetChannel18b20((gpio_num_t)19);
+    Config.ChannelsAr[4].SetChannelMAX31856(0);
+    Config.ChannelsAr[5].SetChannelMAX31856(1);
+    Config.ChannelsAr[6].SetChannelMAX31856(2);
+    Config.ChannelsAr[7].SetChannelMAX31856(3);
+    Config.ChannelsAr[8].SetChannelMAX31856(4);
+    Config.ChannelsAr[9].SetChannel18b20((gpio_num_t)18);
+    Config.ChannelsAr[10].SetChannel18b20((gpio_num_t)21);
+    Config.ChannelsAr[11].SetChannel18b20((gpio_num_t)22);
+    //*******************************************************************
+
+    // LED test
+    for(int i = 0 ; i < 12 ; i++) {
+        ChannelLED(i, 1);
+        vTaskDelay(pdMS_TO_TICKS(50));	
+    } 
+    // Leave all LEDs on for 1 second.
+    vTaskDelay(pdMS_TO_TICKS(1000));	
+    
+    // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#if 0
+    	int count = 0;
+    while (1) {
+        float v1 = Config.ChannelsAr[0].T18b20.ds18b20_get_temp();
+        float v2 = Config.ChannelsAr[1].T18b20.ds18b20_get_temp();
+        float v3 = Config.ChannelsAr[2].T18b20.ds18b20_get_temp();
+        float v4 = Config.ChannelsAr[3].T18b20.ds18b20_get_temp();
+        float v5 = Config.ChannelsAr[9].T18b20.ds18b20_get_temp();
+        float v6 = Config.ChannelsAr[10].T18b20.ds18b20_get_temp();
+        float v7 = Config.ChannelsAr[11].T18b20.ds18b20_get_temp();
+		
+        printf("%u %.1f %.1f %.1f %.1f %.1f %.1f %.1f\n", count++, v1, v2, v3, v4, v5, v6, v7);
+        vTaskDelay(pdMS_TO_TICKS(200)); 
+    }
+#endif	 
+		
+    // This is extra code which really does nothing except help to fix the 
+    // intermittent wifi connection problem.
+    // If wifi doesn't connect then either enable or disable this bit of code.
+#ifdef FIX_WIFI_CONNECTION_PROBLEM
+    	vTaskDelay(pdMS_TO_TICKS(200));
+#endif
+
+    // Start reading the temperature sensors. This thread has the highest priority 
+    // since it uses precise delays to read the DS18B20 sensors. It was found that 
+    // a low priority results in more checksum errors.
+    // 5-3-19 I lowered this from 8 to 5 because the time was getting way behind.
+    // 10-6-19 Moved this to BEFORE initialise_wifi() so the sensor LEDs will indicate valid sensors right away. 
+    xTaskCreate(&Thread_ReadTemperature, "Thread_ReadTemperature", 2048, NULL, configMAX_PRIORITIES, NULL);
+
+    // Init the wifi connection.
+    if(initialise_wifi())
+    	printf("ERROR INITING WIFI!!\n");
+	
+    // Read the MAC address.
+    uint8_t mac[6];
+    system_efuse_read_mac(mac);
+	
+    sprintf(s200, "MAC: %02X:%02X:%02X:%02X:%02X:%02X\n", mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
+    EventLog.Log(s200, ELogLevel::INFO, 1);
+
+    MACAddr = ((long long)mac[0] << 40) + ((long long)mac[1] << 32) + ((long long)mac[2] << 24)
+    	+ ((long long)mac[3] << 16) + ((long long)mac[4] << 8) + (long long)mac[5]; 
+	
+    // Set the host name.
+    // Don't put a space in the hostname or it won't update!
+    // If done properly the router will show the new hostname immediately.
+    //	string s(Config.HostName);
+    char s100[100], s120[120];
+    sprintf(s100, "CloudLogger_%02X:%02X", mac[4], mac[5]);    
+    sprintf(s120, "My HostName is %s.\n", s100);
+    EventLog.Log(s120, ELogLevel::INFO, 1);
+    tcpip_adapter_set_hostname(TCPIP_ADAPTER_IF_STA, s100);
+
+    // I'm not sure why, but without this we get watchdog timer errors.
+    // Wait here until wifi is connected.
+    printf("Connecting to WIFI..\n");
+    xEventGroupWaitBits(wifi_event_group, CONNECTED_BIT, false, true, portMAX_DELAY);
+
+    // Set low power wifi mode. This alternates between 50mA and 100mA.
+    // **** MAYBE WAIT UNTIL WE ARE CONNECTED BEFORE DOING THIS??? ****
+    // See https://github.com/espressif/esp-idf/blob/master/examples/wifi/power_save/main/power_save.c
+    //	esp_wifi_set_ps(WIFI_PS_MODEM);
+
+    	// see http://esp32.info/docs/esp_idf/html/dd/d3c/group__xTaskCreate.html
+    	//	xTaskCreatePinnedToCore((TaskFunction_t) & Thread_BatteryTest, "Thread_BatteryTest", 2048, NULL, 1, NULL, 0);
+    	//	xTaskCreatePinnedToCore((TaskFunction_t) & Thread_Beep, "Thread_Beep", 2048, NULL, 1, NULL, 0);
+    	// xTaskCreate(&http_server, "http_server", 15000, NULL, 5, NULL);
+
+    	// Get the current time and set up the time server.
+    	printf("Configuring the time..\n");
+    TimeSetup(1);
+
+    // Set status led
+    StatusLED.Set(SYS_STATUS_OK);
+	
+    xTaskCreate(&Thread_OncePerSecond, "Thread_OncePerSecond", 2048, NULL, 1, NULL);
+    xTaskCreate(&Thread_SendDataToSvr, "Thread_SendDataToSvr", 4096, NULL, 5, NULL);
+    xTaskCreate(&FirmwareUpgradeTask,  "FirmwareUpgradeTask",  8192, NULL, 5, NULL);
+
+    // ******************************************************************************************************************
+
+#if CONFIG_EXAMPLE_CONNECT_WIFI
+    /* Ensure to disable any WiFi power save mode, this allows best throughput
+     * and hence timings for overall OTA operation.
+     */
+    esp_wifi_set_ps(WIFI_PS_NONE);
+#endif // CONFIG_EXAMPLE_CONNECT_WIFI
+}
+
+
+esp_err_t _http_event_handler(esp_http_client_event_t *evt)
+{
+    switch (evt->event_id) {
+    case HTTP_EVENT_ERROR:
+        ESP_LOGD(TAG, "HTTP_EVENT_ERROR");
+        break;
+    case HTTP_EVENT_ON_CONNECTED:
+        ESP_LOGD(TAG, "HTTP_EVENT_ON_CONNECTED");
+        break;
+    case HTTP_EVENT_HEADER_SENT:
+        ESP_LOGD(TAG, "HTTP_EVENT_HEADER_SENT");
+        break;
+    case HTTP_EVENT_ON_HEADER:
+        ESP_LOGD(TAG, "HTTP_EVENT_ON_HEADER, key=%s, value=%s", evt->header_key, evt->header_value);
+        break;
+    case HTTP_EVENT_ON_DATA:
+        ESP_LOGD(TAG, "HTTP_EVENT_ON_DATA, len=%d", evt->data_len);
+        break;
+    case HTTP_EVENT_ON_FINISH:
+        ESP_LOGD(TAG, "HTTP_EVENT_ON_FINISH");
+        break;
+    case HTTP_EVENT_DISCONNECTED:
+        ESP_LOGD(TAG, "HTTP_EVENT_DISCONNECTED");
+        break;
+    }
+    return ESP_OK;
+}
+
+void FirmwareUpgradeTask(void * pvParameter) {
+    xEventGroupWaitBits(wifi_event_group, CONNECTED_BIT, false,true,portMAX_DELAY);
+    
+    esp_http_client_config_t config;
+    config.url = FIRMWARE_UPGRADE_URL;
+    config.cert_pem = (char*)0;
+    config.event_handler = _http_event_handler;
+    config.buffer_size = 512; // dgs - added to fix bug: this was not init'd and caused the upgrade to fail.
+    // config.port dgs - See note about FIRMWARE_UPGRADE_PORT in tc_common .h
+    config.disable_auto_redirect = 1;
+
+    #ifdef CONFIG_EXAMPLE_SKIP_COMMON_NAME_CHECK
+    config.skip_cert_common_name_check = true;
+    #endif
+    
+    while (1) {
+        if (FirmwareUpgradeInProcess) {
+            EventLog.Log("Upgrading firmware...");
+            vTaskDelay(500 / portTICK_PERIOD_MS);
+                esp_err_t ret = esp_https_ota(&config);
+            if (ret == ESP_OK) {
+                EventLog.Log("Firmware upgrade complete.. restarting.");
+                ResetRequestSec = REBOOT_DELAY_TIME;
+                while (1) {
+                    vTaskDelay(1000 / portTICK_PERIOD_MS);
+                }
+            }
+            else {
+                EventLog.Log("Firmware upgrade failed.");
+                FirmwareUpgradeInProcess = 0;
+            }
+        }
+        vTaskDelay(1000 / portTICK_PERIOD_MS);
+     }
+}

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{803FD0C6-D64E-4E16-9DC3-1DAEC859A3D2}") = "ThermoLogger", "ThermoLogger.vgdbproj", "{93A3D054-3276-4349-9EAC-4A08B17F9DFE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|VisualGDB = Debug|VisualGDB
+		MinSizeRel|VisualGDB = MinSizeRel|VisualGDB
+		Release|VisualGDB = Release|VisualGDB
+		RelWithDebInfo|VisualGDB = RelWithDebInfo|VisualGDB
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{93A3D054-3276-4349-9EAC-4A08B17F9DFE}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
+		{93A3D054-3276-4349-9EAC-4A08B17F9DFE}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
+		{93A3D054-3276-4349-9EAC-4A08B17F9DFE}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
+		{93A3D054-3276-4349-9EAC-4A08B17F9DFE}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
+		{93A3D054-3276-4349-9EAC-4A08B17F9DFE}.Release|VisualGDB.ActiveCfg = Debug|VisualGDB
+		{93A3D054-3276-4349-9EAC-4A08B17F9DFE}.Release|VisualGDB.Build.0 = Debug|VisualGDB
+		{93A3D054-3276-4349-9EAC-4A08B17F9DFE}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
+		{93A3D054-3276-4349-9EAC-4A08B17F9DFE}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {356BC48F-B9F5-4D65-BD6B-BA99C342083C}
+	EndGlobalSection
+EndGlobal

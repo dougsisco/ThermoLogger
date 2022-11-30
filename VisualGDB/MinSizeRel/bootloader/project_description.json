@@ -1,0 +1,18 @@
+{
+    "project_name":       "bootloader",
+    "project_path":       "C:/SysGCC/esp32/esp-idf/v3.3/components/bootloader/subproject",
+    "build_dir":          "C:/Projects/ThermoLogger/VisualGDB/MinSizeRel/bootloader",
+    "config_file":        "C:/Projects/ThermoLogger/sdkconfig",
+    "config_defaults":    "",
+    "app_elf":            "bootloader.elf",
+    "app_bin":            "bootloader.bin",
+    "git_revision":       "v3.3.1-95-gc38bf3534",
+    "phy_data_partition": "",
+    "monitor_baud" : "921600",
+    "config_environment" : {
+        "COMPONENT_KCONFIGS" : " C:/SysGCC/esp32/esp-idf/v3.3/components/efuse/Kconfig C:/SysGCC/esp32/esp-idf/v3.3/components/esp32/Kconfig C:/SysGCC/esp32/esp-idf/v3.3/components/log/Kconfig C:/SysGCC/esp32/esp-idf/v3.3/components/spi_flash/Kconfig",
+        "COMPONENT_KCONFIGS_PROJBUILD" : " C:/SysGCC/esp32/esp-idf/v3.3/components/bootloader/Kconfig.projbuild C:/SysGCC/esp32/esp-idf/v3.3/components/esptool_py/Kconfig.projbuild C:/SysGCC/esp32/esp-idf/v3.3/components/partition_table/Kconfig.projbuild"
+    },
+    "build_components" : [ "soc", "esp32", "log", "bootloader", "spi_flash", "micro-ecc", "efuse", "bootloader_support", "main", "esptool_py", "partition_table" ],
+    "build_component_paths" : [ "C:/SysGCC/esp32/esp-idf/v3.3/components/soc", "C:/SysGCC/esp32/esp-idf/v3.3/components/esp32", "C:/SysGCC/esp32/esp-idf/v3.3/components/log", "C:/SysGCC/esp32/esp-idf/v3.3/components/bootloader", "C:/SysGCC/esp32/esp-idf/v3.3/components/spi_flash", "C:/SysGCC/esp32/esp-idf/v3.3/components/micro-ecc", "C:/SysGCC/esp32/esp-idf/v3.3/components/efuse", "C:/SysGCC/esp32/esp-idf/v3.3/components/bootloader_support", "C:/SysGCC/esp32/esp-idf/v3.3/components/bootloader/subproject/main", "C:/SysGCC/esp32/esp-idf/v3.3/components/esptool_py", "C:/SysGCC/esp32/esp-idf/v3.3/components/partition_table" ]
+}

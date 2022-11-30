@@ -1,0 +1,87 @@
+{
+	"backtrace" : 2,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_custom_target",
+			"ldgen_process_template"
+		],
+		"files" : 
+		[
+			"C:/SysGCC/esp32/esp-idf/v3.3/tools/cmake/ldgen.cmake",
+			"C:/SysGCC/esp32/esp-idf/v3.3/components/esp32/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 85,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 73,
+				"parent" : 1
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"id" : "ldgen_section_infos::@6890427a1f51a3e7e1df"
+		}
+	],
+	"id" : "ldgen_esp32.project.ld_script::@c361781f7cb51efad0ea",
+	"name" : "ldgen_esp32.project.ld_script",
+	"paths" : 
+	{
+		"build" : "esp-idf/esp32",
+		"source" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp32"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				1,
+				2
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 2,
+			"isGenerated" : true,
+			"path" : "VisualGDB/Debug/esp-idf/esp32/CMakeFiles/ldgen_esp32.project.ld_script",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "VisualGDB/Debug/esp-idf/esp32/CMakeFiles/ldgen_esp32.project.ld_script.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "VisualGDB/Debug/esp-idf/esp32/esp32.project.ld.rule",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "UTILITY"
+}

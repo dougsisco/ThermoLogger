@@ -1,0 +1,95 @@
+{
+	"backtrace" : 3,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_custom_target",
+			"ldgen_generate_sections_info",
+			"register_component"
+		],
+		"files" : 
+		[
+			"C:/SysGCC/esp32/esp-idf/v3.3/tools/cmake/ldgen.cmake",
+			"C:/SysGCC/esp32/esp-idf/v3.3/tools/cmake/components.cmake",
+			"C:/SysGCC/esp32/esp-idf/v3.3/components/soc/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 2
+			},
+			{
+				"command" : 2,
+				"file" : 2,
+				"line" : 18,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 67,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 39,
+				"parent" : 2
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"id" : "idf_component_soc::@824f1541829f13857909"
+		}
+	],
+	"id" : "idf_component_soc_sections_info::@824f1541829f13857909",
+	"name" : "idf_component_soc_sections_info",
+	"paths" : 
+	{
+		"build" : "esp-idf/soc",
+		"source" : "C:/SysGCC/esp32/esp-idf/v3.3/components/soc"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				1,
+				2
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 3,
+			"isGenerated" : true,
+			"path" : "VisualGDB/Debug/esp-idf/soc/CMakeFiles/idf_component_soc_sections_info",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "VisualGDB/Debug/esp-idf/soc/CMakeFiles/idf_component_soc_sections_info.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "VisualGDB/Debug/esp-idf/soc/idf_component_soc.sections_info.rule",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "UTILITY"
+}

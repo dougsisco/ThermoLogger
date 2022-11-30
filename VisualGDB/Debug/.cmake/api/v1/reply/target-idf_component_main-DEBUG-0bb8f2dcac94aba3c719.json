@@ -1,0 +1,1507 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "esp-idf/main/libmain.a"
+		}
+	],
+	"backtrace" : 2,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"register_component",
+			"target_compile_options",
+			"target_include_directories",
+			"add_component_dependencies",
+			"target_compile_definitions",
+			"add_definitions",
+			"idf_get_git_revision",
+			"idf_import_components",
+			"project"
+		],
+		"files" : 
+		[
+			"C:/SysGCC/esp32/esp-idf/v3.3/tools/cmake/components.cmake",
+			"main/CMakeLists.txt",
+			"C:/SysGCC/esp32/esp-idf/v3.3/CMakeLists.txt",
+			"C:/SysGCC/esp32/esp-idf/v3.3/tools/cmake/idf_functions.cmake",
+			"C:/SysGCC/esp32/esp-idf/v3.3/tools/cmake/project.cmake",
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 4,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 62,
+				"parent" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 120,
+				"parent" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 122,
+				"parent" : 1
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 119,
+				"parent" : 1
+			},
+			{
+				"file" : 2
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 7
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 9
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 11
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 13
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 15
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 17
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 19
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 21
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 23
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 25
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 27
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 29
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 31
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 33
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 35
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 37
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 39
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 41
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 43
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 45
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 47
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 49
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 51
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 53
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 55
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 57
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 59
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 61
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 63
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 65
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 67
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 69
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 71
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 73
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 75
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 37,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 146,
+				"parent" : 77
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 123,
+				"parent" : 1
+			},
+			{
+				"file" : 5
+			},
+			{
+				"command" : 9,
+				"file" : 5,
+				"line" : 6,
+				"parent" : 80
+			},
+			{
+				"command" : 8,
+				"file" : 4,
+				"line" : 173,
+				"parent" : 81
+			},
+			{
+				"command" : 7,
+				"file" : 3,
+				"line" : 377,
+				"parent" : 82
+			},
+			{
+				"command" : 6,
+				"file" : 3,
+				"line" : 234,
+				"parent" : 83
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 121,
+				"parent" : 1
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-mlongcalls -g   -mlongcalls -Og -ffunction-sections -fdata-sections -fstrict-volatile-bitfields -nostdlib -Wall -Werror=all -Wno-error=unused-function -Wno-error=unused-but-set-variable -Wno-error=unused-variable -Wno-error=deprecated-declarations -Wextra -Wno-unused-parameter -Wno-sign-compare -ggdb -std=gnu++11 -fno-rtti -fno-exceptions"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 79,
+					"define" : "ESP_PLATFORM"
+				},
+				{
+					"backtrace" : 79,
+					"define" : "GCC_NOT_5_2_0=0"
+				},
+				{
+					"backtrace" : 79,
+					"define" : "HAVE_CONFIG_H"
+				},
+				{
+					"backtrace" : 84,
+					"define" : "IDF_VER=\"v3.3.1-95-gc38bf3534\""
+				},
+				{
+					"backtrace" : 0,
+					"define" : "MBEDTLS_CONFIG_FILE=\"mbedtls/esp_config.h\""
+				},
+				{
+					"backtrace" : 0,
+					"define" : "UNITY_INCLUDE_CONFIG_H"
+				},
+				{
+					"backtrace" : 0,
+					"define" : "WITH_POSIX"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 5,
+					"path" : "C:/Projects/ThermoLogger/VisualGDB/Debug/config"
+				},
+				{
+					"backtrace" : 8,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/app_trace/include"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/app_update/include"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/spi_flash/include"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/bootloader_support/include"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/asio/asio/asio/include"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/asio/port/include"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/lwip/include/apps"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/lwip/include/apps/sntp"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/lwip/lwip/src/include"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/lwip/port/esp32/include"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/lwip/port/esp32/include/arch"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/lwip/include_compat"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/vfs/include"
+				},
+				{
+					"backtrace" : 14,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/coap/port/include"
+				},
+				{
+					"backtrace" : 14,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/coap/port/include/coap"
+				},
+				{
+					"backtrace" : 14,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/coap/libcoap/include"
+				},
+				{
+					"backtrace" : 14,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/coap/libcoap/include/coap"
+				},
+				{
+					"backtrace" : 16,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/console"
+				},
+				{
+					"backtrace" : 18,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/driver/include"
+				},
+				{
+					"backtrace" : 18,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp_ringbuf/include"
+				},
+				{
+					"backtrace" : 20,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/efuse/include"
+				},
+				{
+					"backtrace" : 20,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/efuse/esp32/include"
+				},
+				{
+					"backtrace" : 22,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp-tls"
+				},
+				{
+					"backtrace" : 22,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/mbedtls/port/include"
+				},
+				{
+					"backtrace" : 22,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/mbedtls/mbedtls/include"
+				},
+				{
+					"backtrace" : 22,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp32/include"
+				},
+				{
+					"backtrace" : 22,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/tcpip_adapter/include"
+				},
+				{
+					"backtrace" : 22,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp_event/include"
+				},
+				{
+					"backtrace" : 22,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/log/include"
+				},
+				{
+					"backtrace" : 22,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/newlib/platform_include"
+				},
+				{
+					"backtrace" : 22,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/newlib/include"
+				},
+				{
+					"backtrace" : 22,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/freertos/include"
+				},
+				{
+					"backtrace" : 22,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/heap/include"
+				},
+				{
+					"backtrace" : 22,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/soc/esp32/include"
+				},
+				{
+					"backtrace" : 22,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/soc/include"
+				},
+				{
+					"backtrace" : 24,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp_adc_cal/include"
+				},
+				{
+					"backtrace" : 26,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp_http_client/include"
+				},
+				{
+					"backtrace" : 26,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/nghttp/port/include"
+				},
+				{
+					"backtrace" : 26,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/nghttp/nghttp2/lib/includes"
+				},
+				{
+					"backtrace" : 28,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp_http_server/include"
+				},
+				{
+					"backtrace" : 30,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp_https_ota/include"
+				},
+				{
+					"backtrace" : 32,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp_https_server/include"
+				},
+				{
+					"backtrace" : 32,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/openssl/include"
+				},
+				{
+					"backtrace" : 34,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/espcoredump/include"
+				},
+				{
+					"backtrace" : 36,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/ethernet/include"
+				},
+				{
+					"backtrace" : 38,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/expat/expat/expat/lib"
+				},
+				{
+					"backtrace" : 38,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/expat/port/include"
+				},
+				{
+					"backtrace" : 40,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/fatfs/src"
+				},
+				{
+					"backtrace" : 40,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/wear_levelling/include"
+				},
+				{
+					"backtrace" : 40,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/sdmmc/include"
+				},
+				{
+					"backtrace" : 42,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/freemodbus/modbus/include"
+				},
+				{
+					"backtrace" : 42,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/freemodbus/modbus_controller"
+				},
+				{
+					"backtrace" : 44,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/idf_test/include"
+				},
+				{
+					"backtrace" : 46,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/jsmn/include"
+				},
+				{
+					"backtrace" : 48,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/json/cJSON"
+				},
+				{
+					"backtrace" : 50,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/libsodium/libsodium/src/libsodium/include"
+				},
+				{
+					"backtrace" : 50,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/libsodium/port_include"
+				},
+				{
+					"backtrace" : 52,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/mdns/include"
+				},
+				{
+					"backtrace" : 54,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/micro-ecc/micro-ecc"
+				},
+				{
+					"backtrace" : 56,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/mqtt/esp-mqtt/include"
+				},
+				{
+					"backtrace" : 56,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/tcp_transport/include"
+				},
+				{
+					"backtrace" : 58,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/nvs_flash/include"
+				},
+				{
+					"backtrace" : 60,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/protobuf-c/protobuf-c"
+				},
+				{
+					"backtrace" : 62,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/protocomm/include/common"
+				},
+				{
+					"backtrace" : 62,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/protocomm/include/security"
+				},
+				{
+					"backtrace" : 62,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/protocomm/include/transports"
+				},
+				{
+					"backtrace" : 64,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/pthread/include"
+				},
+				{
+					"backtrace" : 66,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/smartconfig_ack/include"
+				},
+				{
+					"backtrace" : 68,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/spiffs/include"
+				},
+				{
+					"backtrace" : 70,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/ulp/include"
+				},
+				{
+					"backtrace" : 72,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/unity/include"
+				},
+				{
+					"backtrace" : 72,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/unity/unity/src"
+				},
+				{
+					"backtrace" : 74,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/wifi_provisioning/include"
+				},
+				{
+					"backtrace" : 76,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/wpa_supplicant/include"
+				},
+				{
+					"backtrace" : 76,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/wpa_supplicant/port/include"
+				},
+				{
+					"backtrace" : 78,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/xtensa-debug-module/include"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				4,
+				7
+			],
+			"traceableCompileCommandFragments" : 
+			[
+				{
+					"backtrace" : 3,
+					"fragment" : "-mlongcalls"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Og"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-ffunction-sections"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-fdata-sections"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-fstrict-volatile-bitfields"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-nostdlib"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wall"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Werror=all"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wno-error=unused-function"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wno-error=unused-but-set-variable"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wno-error=unused-variable"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wno-error=deprecated-declarations"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wextra"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wno-unused-parameter"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wno-sign-compare"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-ggdb"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-std=gnu++11"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-fno-rtti"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-fno-exceptions"
+				}
+			]
+		},
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-mlongcalls -g   -mlongcalls -Og -ffunction-sections -fdata-sections -fstrict-volatile-bitfields -nostdlib -Wall -Werror=all -Wno-error=unused-function -Wno-error=unused-but-set-variable -Wno-error=unused-variable -Wno-error=deprecated-declarations -Wextra -Wno-unused-parameter -Wno-sign-compare -ggdb -std=gnu99 -Wno-old-style-declaration"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 79,
+					"define" : "ESP_PLATFORM"
+				},
+				{
+					"backtrace" : 79,
+					"define" : "GCC_NOT_5_2_0=0"
+				},
+				{
+					"backtrace" : 79,
+					"define" : "HAVE_CONFIG_H"
+				},
+				{
+					"backtrace" : 84,
+					"define" : "IDF_VER=\"v3.3.1-95-gc38bf3534\""
+				},
+				{
+					"backtrace" : 0,
+					"define" : "MBEDTLS_CONFIG_FILE=\"mbedtls/esp_config.h\""
+				},
+				{
+					"backtrace" : 0,
+					"define" : "UNITY_INCLUDE_CONFIG_H"
+				},
+				{
+					"backtrace" : 0,
+					"define" : "WITH_POSIX"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 5,
+					"path" : "C:/Projects/ThermoLogger/VisualGDB/Debug/config"
+				},
+				{
+					"backtrace" : 8,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/app_trace/include"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/app_update/include"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/spi_flash/include"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/bootloader_support/include"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/asio/asio/asio/include"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/asio/port/include"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/lwip/include/apps"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/lwip/include/apps/sntp"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/lwip/lwip/src/include"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/lwip/port/esp32/include"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/lwip/port/esp32/include/arch"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/lwip/include_compat"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/vfs/include"
+				},
+				{
+					"backtrace" : 14,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/coap/port/include"
+				},
+				{
+					"backtrace" : 14,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/coap/port/include/coap"
+				},
+				{
+					"backtrace" : 14,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/coap/libcoap/include"
+				},
+				{
+					"backtrace" : 14,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/coap/libcoap/include/coap"
+				},
+				{
+					"backtrace" : 16,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/console"
+				},
+				{
+					"backtrace" : 18,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/driver/include"
+				},
+				{
+					"backtrace" : 18,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp_ringbuf/include"
+				},
+				{
+					"backtrace" : 20,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/efuse/include"
+				},
+				{
+					"backtrace" : 20,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/efuse/esp32/include"
+				},
+				{
+					"backtrace" : 22,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp-tls"
+				},
+				{
+					"backtrace" : 22,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/mbedtls/port/include"
+				},
+				{
+					"backtrace" : 22,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/mbedtls/mbedtls/include"
+				},
+				{
+					"backtrace" : 22,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp32/include"
+				},
+				{
+					"backtrace" : 22,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/tcpip_adapter/include"
+				},
+				{
+					"backtrace" : 22,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp_event/include"
+				},
+				{
+					"backtrace" : 22,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/log/include"
+				},
+				{
+					"backtrace" : 22,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/newlib/platform_include"
+				},
+				{
+					"backtrace" : 22,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/newlib/include"
+				},
+				{
+					"backtrace" : 22,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/freertos/include"
+				},
+				{
+					"backtrace" : 22,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/heap/include"
+				},
+				{
+					"backtrace" : 22,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/soc/esp32/include"
+				},
+				{
+					"backtrace" : 22,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/soc/include"
+				},
+				{
+					"backtrace" : 24,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp_adc_cal/include"
+				},
+				{
+					"backtrace" : 26,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp_http_client/include"
+				},
+				{
+					"backtrace" : 26,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/nghttp/port/include"
+				},
+				{
+					"backtrace" : 26,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/nghttp/nghttp2/lib/includes"
+				},
+				{
+					"backtrace" : 28,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp_http_server/include"
+				},
+				{
+					"backtrace" : 30,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp_https_ota/include"
+				},
+				{
+					"backtrace" : 32,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/esp_https_server/include"
+				},
+				{
+					"backtrace" : 32,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/openssl/include"
+				},
+				{
+					"backtrace" : 34,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/espcoredump/include"
+				},
+				{
+					"backtrace" : 36,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/ethernet/include"
+				},
+				{
+					"backtrace" : 38,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/expat/expat/expat/lib"
+				},
+				{
+					"backtrace" : 38,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/expat/port/include"
+				},
+				{
+					"backtrace" : 40,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/fatfs/src"
+				},
+				{
+					"backtrace" : 40,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/wear_levelling/include"
+				},
+				{
+					"backtrace" : 40,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/sdmmc/include"
+				},
+				{
+					"backtrace" : 42,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/freemodbus/modbus/include"
+				},
+				{
+					"backtrace" : 42,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/freemodbus/modbus_controller"
+				},
+				{
+					"backtrace" : 44,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/idf_test/include"
+				},
+				{
+					"backtrace" : 46,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/jsmn/include"
+				},
+				{
+					"backtrace" : 48,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/json/cJSON"
+				},
+				{
+					"backtrace" : 50,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/libsodium/libsodium/src/libsodium/include"
+				},
+				{
+					"backtrace" : 50,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/libsodium/port_include"
+				},
+				{
+					"backtrace" : 52,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/mdns/include"
+				},
+				{
+					"backtrace" : 54,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/micro-ecc/micro-ecc"
+				},
+				{
+					"backtrace" : 56,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/mqtt/esp-mqtt/include"
+				},
+				{
+					"backtrace" : 56,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/tcp_transport/include"
+				},
+				{
+					"backtrace" : 58,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/nvs_flash/include"
+				},
+				{
+					"backtrace" : 60,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/protobuf-c/protobuf-c"
+				},
+				{
+					"backtrace" : 62,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/protocomm/include/common"
+				},
+				{
+					"backtrace" : 62,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/protocomm/include/security"
+				},
+				{
+					"backtrace" : 62,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/protocomm/include/transports"
+				},
+				{
+					"backtrace" : 64,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/pthread/include"
+				},
+				{
+					"backtrace" : 66,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/smartconfig_ack/include"
+				},
+				{
+					"backtrace" : 68,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/spiffs/include"
+				},
+				{
+					"backtrace" : 70,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/ulp/include"
+				},
+				{
+					"backtrace" : 72,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/unity/include"
+				},
+				{
+					"backtrace" : 72,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/unity/unity/src"
+				},
+				{
+					"backtrace" : 74,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/wifi_provisioning/include"
+				},
+				{
+					"backtrace" : 76,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/wpa_supplicant/include"
+				},
+				{
+					"backtrace" : 76,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/wpa_supplicant/port/include"
+				},
+				{
+					"backtrace" : 78,
+					"path" : "C:/SysGCC/esp32/esp-idf/v3.3/components/xtensa-debug-module/include"
+				}
+			],
+			"language" : "C",
+			"sourceIndexes" : 
+			[
+				5,
+				6,
+				8
+			],
+			"traceableCompileCommandFragments" : 
+			[
+				{
+					"backtrace" : 3,
+					"fragment" : "-mlongcalls"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Og"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-ffunction-sections"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-fdata-sections"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-fstrict-volatile-bitfields"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-nostdlib"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wall"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Werror=all"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wno-error=unused-function"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wno-error=unused-but-set-variable"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wno-error=unused-variable"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wno-error=deprecated-declarations"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wextra"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wno-unused-parameter"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wno-sign-compare"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-ggdb"
+				},
+				{
+					"backtrace" : 85,
+					"fragment" : "-std=gnu99"
+				},
+				{
+					"backtrace" : 85,
+					"fragment" : "-Wno-old-style-declaration"
+				}
+			]
+		}
+	],
+	"id" : "idf_component_main::@7368607ed66887415643",
+	"name" : "idf_component_main",
+	"nameOnDisk" : "libmain.a",
+	"paths" : 
+	{
+		"build" : "esp-idf/main",
+		"source" : "main"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				4,
+				5,
+				6,
+				7,
+				8
+			]
+		},
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				3
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "main/ds18b20.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "main/main.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "main/http_client.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"path" : "main/tc_common.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "main/ThreadReadTemp.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 1,
+			"path" : "main/max31856.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 1,
+			"path" : "main/mcp23017.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "capdns/captportal.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 1,
+			"path" : "capdns/captdns.c",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}
