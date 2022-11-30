@@ -2102,3 +2102,15 @@
 1471	1509	6907388768181875	esp-idf/main/idf_component_main.sections_info	2ebeac8cbef495a
 1509	4636	6907388799225930	ThermoLogger.elf	f2b7185d979744a6
 4636	4866	6907388801721934	ThermoLogger.bin	7e22a3bb77894469
+49	169	6609660769463543	bootloader-prefix/src/bootloader-stamp/bootloader-build	31c36664c40b7229
+49	169	6609660769463543	bootloader/bootloader.elf	31c36664c40b7229
+49	169	6609660769463543	bootloader/bootloader.bin	31c36664c40b7229
+49	169	6609660769463543	bootloader/bootloader.map	31c36664c40b7229
+47	339	6915507646885363	esp-idf/app_update/CMakeFiles/idf_component_app_update.dir/esp_app_desc.c.obj	a819951fe7a96f51
+340	478	6915507647821365	esp-idf/app_update/libapp_update.a	181fce2b1542e2be
+479	521	6915507648757366	esp-idf/app_update/idf_component_app_update.sections_info	7bd7a5cbeca60bda
+57	1152	6915507654841377	esp-idf/main/CMakeFiles/idf_component_main.dir/main.cpp.obj	c06accac3ed20c89
+1165	1254	6915507655933379	esp-idf/main/libmain.a	3e21df0b702073a1
+1254	1290	6915507656401380	esp-idf/main/idf_component_main.sections_info	2ebeac8cbef495a
+1290	4999	6915507693217444	ThermoLogger.elf	f2b7185d979744a6
+5000	5239	6915507695713449	ThermoLogger.bin	7e22a3bb77894469
